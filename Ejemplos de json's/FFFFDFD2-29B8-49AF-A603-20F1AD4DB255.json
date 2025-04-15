@@ -1,0 +1,137 @@
+{
+    "identificacion": {
+        "version": 3,
+        "ambiente": "01",
+        "tipoDte": "03",
+        "numeroControl": "DTE-03-00050002-000000000000993",
+        "codigoGeneracion": "FFFFDFD2-29B8-49AF-A603-20F1AD4DB255",
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "tipoContingencia": null,
+        "motivoContin": null,
+        "fecEmi": "2024-11-18",
+        "horEmi": "11:14:55",
+        "tipoMoneda": "USD"
+    },
+    "documentoRelacionado": null,
+    "emisor": {
+        "nit": "06141208161010",
+        "nrc": "2527786",
+        "nombre": "ANGREY, S.A. DE C.V.",
+        "codActividad": "47300",
+        "descActividad": "Venta de combustibles, lubricantes y otros (gasolineras)",
+        "nombreComercial": "PUMA PORTEZUELO",
+        "tipoEstablecimiento": "01",
+        "direccion": {
+            "departamento": "02",
+            "municipio": "10",
+            "complemento": "Carr. a Chalchuapa desvio a Candelaria de la Frontera, Santa Ana."
+        },
+        "telefono": "24017484",
+        "correo": "pumaportosuelo@gmail.com",
+        "codEstableMH": "0005",
+        "codEstable": "0005",
+        "codPuntoVentaMH": "0002",
+        "codPuntoVenta": "0002"
+    },
+    "receptor": {
+        "nit": "000133803",
+        "nrc": "1529708",
+        "nombre": "BENITEZ, CALISTRO",
+        "codActividad": "47739",
+        "descActividad": "VENTA AL POR MAYOR",
+        "nombreComercial": null,
+        "direccion": {
+            "departamento": "02",
+            "municipio": "10",
+            "complemento": "SAN SALVADOR"
+        },
+        "telefono": "24017484",
+        "correo": "facturas@grupovenecia.net"
+    },
+    "otrosDocumentos": null,
+    "ventaTercero": null,
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "tipoItem": 1,
+            "numeroDocumento": null,
+            "cantidad": 11.730200,
+            "codigo": "02010001",
+            "codTributo": null,
+            "uniMedida": 99,
+            "descripcion": "DIESEL",
+            "precioUni": 2.751871,
+            "montoDescu": 0.00,
+            "ventaNoSuj": 0.00,
+            "ventaExenta": 0.000000,
+            "ventaGravada": 32.280000,
+            "tributos": [
+                "20",
+                "D1",
+                "C8"
+            ],
+            "psv": 0.000000,
+            "noGravado": 0.00
+        }
+    ],
+    "resumen": {
+        "totalNoSuj": 0.00,
+        "totalExenta": 0.00,
+        "totalGravada": 32.28,
+        "subTotalVentas": 32.28,
+        "descuNoSuj": 0.00,
+        "descuExenta": 0.00,
+        "descuGravada": 0.00,
+        "porcentajeDescuento": 0.00,
+        "totalDescu": 0.00,
+        "tributos": [
+            {
+                "codigo": "20",
+                "descripcion": "Impuesto al Valor Agregado 13%",
+                "valor": 4.20
+            },
+            {
+                "codigo": "D1",
+                "descripcion": "FOVIAL ($0.20 Ctvs. por gal�n)",
+                "valor": 2.35
+            },
+            {
+                "codigo": "C8",
+                "descripcion": "COTRANS ($0.10 Ctvs. por gal�n)",
+                "valor": 1.17
+            }
+        ],
+        "subTotal": 32.28,
+        "ivaPerci1": 0.00,
+        "ivaRete1": 0.00,
+        "reteRenta": 0.00,
+        "montoTotalOperacion": 40.00,
+        "totalNoGravado": 0.00,
+        "totalPagar": 40.00,
+        "totalLetras": "CUARENTA 00/100 DOLARES",
+        "saldoFavor": 0.00,
+        "condicionOperacion": 1,
+        "pagos": [
+            {
+                "codigo": "01",
+                "montoPago": 40.00,
+                "referencia": null,
+                "plazo": null,
+                "periodo": null
+            }
+        ],
+        "numPagoElectronico": ""
+    },
+    "extension": {
+        "nombEntrega": null,
+        "docuEntrega": null,
+        "nombRecibe": null,
+        "docuRecibe": null,
+        "placaVehiculo": null,
+        "observaciones": ""
+    },
+    "apendice": null,
+    "selloRecibido": "2024275E527E36FB4023AE1FB16A26E244B6RSSC",
+    "firmaElectronica": "eyJhbGciOiJSUzUxMiJ9.ew0KICAiaWRlbnRpZmljYWNpb24iIDogew0KICAgICJ2ZXJzaW9uIiA6IDMsDQogICAgImFtYmllbnRlIiA6ICIwMSIsDQogICAgInRpcG9EdGUiIDogIjAzIiwNCiAgICAibnVtZXJvQ29udHJvbCIgOiAiRFRFLTAzLTAwMDUwMDAyLTAwMDAwMDAwMDAwMDk5MyIsDQogICAgImNvZGlnb0dlbmVyYWNpb24iIDogIkZGRkZERkQyLTI5QjgtNDlBRi1BNjAzLTIwRjFBRDREQjI1NSIsDQogICAgInRpcG9Nb2RlbG8iIDogMSwNCiAgICAidGlwb09wZXJhY2lvbiIgOiAxLA0KICAgICJ0aXBvQ29udGluZ2VuY2lhIiA6IG51bGwsDQogICAgIm1vdGl2b0NvbnRpbiIgOiBudWxsLA0KICAgICJmZWNFbWkiIDogIjIwMjQtMTEtMTgiLA0KICAgICJob3JFbWkiIDogIjExOjE0OjU1IiwNCiAgICAidGlwb01vbmVkYSIgOiAiVVNEIg0KICB9LA0KICAiZG9jdW1lbnRvUmVsYWNpb25hZG8iIDogbnVsbCwNCiAgImVtaXNvciIgOiB7DQogICAgIm5pdCIgOiAiMDYxNDEyMDgxNjEwMTAiLA0KICAgICJucmMiIDogIjI1Mjc3ODYiLA0KICAgICJub21icmUiIDogIkFOR1JFWSwgUy5BLiBERSBDLlYuIiwNCiAgICAiY29kQWN0aXZpZGFkIiA6ICI0NzMwMCIsDQogICAgImRlc2NBY3RpdmlkYWQiIDogIlZlbnRhIGRlIGNvbWJ1c3RpYmxlcywgbHVicmljYW50ZXMgeSBvdHJvcyAoZ2Fzb2xpbmVyYXMpIiwNCiAgICAibm9tYnJlQ29tZXJjaWFsIiA6ICJQVU1BIFBPUlRFWlVFTE8iLA0KICAgICJ0aXBvRXN0YWJsZWNpbWllbnRvIiA6ICIwMSIsDQogICAgImRpcmVjY2lvbiIgOiB7DQogICAgICAiZGVwYXJ0YW1lbnRvIiA6ICIwMiIsDQogICAgICAibXVuaWNpcGlvIiA6ICIxMCIsDQogICAgICAiY29tcGxlbWVudG8iIDogIkNhcnIuIGEgQ2hhbGNodWFwYSBkZXN2aW8gYSBDYW5kZWxhcmlhIGRlIGxhIEZyb250ZXJhLCBTYW50YSBBbmEuIg0KICAgIH0sDQogICAgInRlbGVmb25vIiA6ICIyNDAxNzQ4NCIsDQogICAgImNvcnJlbyIgOiAicHVtYXBvcnRvc3VlbG9AZ21haWwuY29tIiwNCiAgICAiY29kRXN0YWJsZU1IIiA6ICIwMDA1IiwNCiAgICAiY29kRXN0YWJsZSIgOiAiMDAwNSIsDQogICAgImNvZFB1bnRvVmVudGFNSCIgOiAiMDAwMiIsDQogICAgImNvZFB1bnRvVmVudGEiIDogIjAwMDIiDQogIH0sDQogICJyZWNlcHRvciIgOiB7DQogICAgIm5pdCIgOiAiMDAwMTMzODAzIiwNCiAgICAibnJjIiA6ICIxNTI5NzA4IiwNCiAgICAibm9tYnJlIiA6ICJCRU5JVEVaLCBDQUxJU1RSTyIsDQogICAgImNvZEFjdGl2aWRhZCIgOiAiNDc3MzkiLA0KICAgICJkZXNjQWN0aXZpZGFkIiA6ICJWRU5UQSBBTCBQT1IgTUFZT1IiLA0KICAgICJub21icmVDb21lcmNpYWwiIDogbnVsbCwNCiAgICAiZGlyZWNjaW9uIiA6IHsNCiAgICAgICJkZXBhcnRhbWVudG8iIDogIjAyIiwNCiAgICAgICJtdW5pY2lwaW8iIDogIjEwIiwNCiAgICAgICJjb21wbGVtZW50byIgOiAiU0FOIFNBTFZBRE9SIg0KICAgIH0sDQogICAgInRlbGVmb25vIiA6ICIyNDAxNzQ4NCIsDQogICAgImNvcnJlbyIgOiAiZmFjdHVyYXNAZ3J1cG92ZW5lY2lhLm5ldCINCiAgfSwNCiAgIm90cm9zRG9jdW1lbnRvcyIgOiBudWxsLA0KICAidmVudGFUZXJjZXJvIiA6IG51bGwsDQogICJjdWVycG9Eb2N1bWVudG8iIDogWyB7DQogICAgIm51bUl0ZW0iIDogMSwNCiAgICAidGlwb0l0ZW0iIDogMSwNCiAgICAibnVtZXJvRG9jdW1lbnRvIiA6IG51bGwsDQogICAgImNhbnRpZGFkIiA6IDExLjczMDIsDQogICAgImNvZGlnbyIgOiAiMDIwMTAwMDEiLA0KICAgICJjb2RUcmlidXRvIiA6IG51bGwsDQogICAgInVuaU1lZGlkYSIgOiA5OSwNCiAgICAiZGVzY3JpcGNpb24iIDogIkRJRVNFTCIsDQogICAgInByZWNpb1VuaSIgOiAyLjc1MTg3MSwNCiAgICAibW9udG9EZXNjdSIgOiAwLjAsDQogICAgInZlbnRhTm9TdWoiIDogMC4wLA0KICAgICJ2ZW50YUV4ZW50YSIgOiAwLjAsDQogICAgInZlbnRhR3JhdmFkYSIgOiAzMi4yOCwNCiAgICAidHJpYnV0b3MiIDogWyAiMjAiLCAiRDEiLCAiQzgiIF0sDQogICAgInBzdiIgOiAwLjAsDQogICAgIm5vR3JhdmFkbyIgOiAwLjANCiAgfSBdLA0KICAicmVzdW1lbiIgOiB7DQogICAgInRvdGFsTm9TdWoiIDogMC4wLA0KICAgICJ0b3RhbEV4ZW50YSIgOiAwLjAsDQogICAgInRvdGFsR3JhdmFkYSIgOiAzMi4yOCwNCiAgICAic3ViVG90YWxWZW50YXMiIDogMzIuMjgsDQogICAgImRlc2N1Tm9TdWoiIDogMC4wLA0KICAgICJkZXNjdUV4ZW50YSIgOiAwLjAsDQogICAgImRlc2N1R3JhdmFkYSIgOiAwLjAsDQogICAgInBvcmNlbnRhamVEZXNjdWVudG8iIDogMC4wLA0KICAgICJ0b3RhbERlc2N1IiA6IDAuMCwNCiAgICAidHJpYnV0b3MiIDogWyB7DQogICAgICAiY29kaWdvIiA6ICIyMCIsDQogICAgICAiZGVzY3JpcGNpb24iIDogIkltcHVlc3RvIGFsIFZhbG9yIEFncmVnYWRvIDEzJSIsDQogICAgICAidmFsb3IiIDogNC4yDQogICAgfSwgew0KICAgICAgImNvZGlnbyIgOiAiRDEiLA0KICAgICAgImRlc2NyaXBjaW9uIiA6ICJGT1ZJQUwgKCQwLjIwIEN0dnMuIHBvciBnYWzDs24pIiwNCiAgICAgICJ2YWxvciIgOiAyLjM1DQogICAgfSwgew0KICAgICAgImNvZGlnbyIgOiAiQzgiLA0KICAgICAgImRlc2NyaXBjaW9uIiA6ICJDT1RSQU5TICgkMC4xMCBDdHZzLiBwb3IgZ2Fsw7NuKSIsDQogICAgICAidmFsb3IiIDogMS4xNw0KICAgIH0gXSwNCiAgICAic3ViVG90YWwiIDogMzIuMjgsDQogICAgIml2YVBlcmNpMSIgOiAwLjAsDQogICAgIml2YVJldGUxIiA6IDAuMCwNCiAgICAicmV0ZVJlbnRhIiA6IDAuMCwNCiAgICAibW9udG9Ub3RhbE9wZXJhY2lvbiIgOiA0MC4wLA0KICAgICJ0b3RhbE5vR3JhdmFkbyIgOiAwLjAsDQogICAgInRvdGFsUGFnYXIiIDogNDAuMCwNCiAgICAidG90YWxMZXRyYXMiIDogIkNVQVJFTlRBIDAwLzEwMCBET0xBUkVTIiwNCiAgICAic2FsZG9GYXZvciIgOiAwLjAsDQogICAgImNvbmRpY2lvbk9wZXJhY2lvbiIgOiAxLA0KICAgICJwYWdvcyIgOiBbIHsNCiAgICAgICJjb2RpZ28iIDogIjAxIiwNCiAgICAgICJtb250b1BhZ28iIDogNDAuMCwNCiAgICAgICJyZWZlcmVuY2lhIiA6IG51bGwsDQogICAgICAicGxhem8iIDogbnVsbCwNCiAgICAgICJwZXJpb2RvIiA6IG51bGwNCiAgICB9IF0sDQogICAgIm51bVBhZ29FbGVjdHJvbmljbyIgOiAiIg0KICB9LA0KICAiZXh0ZW5zaW9uIiA6IHsNCiAgICAibm9tYkVudHJlZ2EiIDogbnVsbCwNCiAgICAiZG9jdUVudHJlZ2EiIDogbnVsbCwNCiAgICAibm9tYlJlY2liZSIgOiBudWxsLA0KICAgICJkb2N1UmVjaWJlIiA6IG51bGwsDQogICAgInBsYWNhVmVoaWN1bG8iIDogbnVsbCwNCiAgICAib2JzZXJ2YWNpb25lcyIgOiAiIg0KICB9LA0KICAiYXBlbmRpY2UiIDogbnVsbA0KfQ.Bto_bYgeuzj77fJsHJWph1ljdRPZBlAX9AV2xWZjt-20DsSLqUP59Yd4niBBPc4S--PV5OGgnp3mAdu6AKsV7KzOu1Bp01ELb6dCQnV2BwoMZykFma1NW9JwyoDgixxyaLu7ASo2VGuQ58v69ZWOnw3Ux6ytJAwpKwVRpxjDDMWXB7rUHLoFvphsh46JeZVv9Eacw-wd1TRqHvtY9YmGKhzcTujnnYvGWz2Iswyn7yRdigfIZ1LERAMGYz69TqttAMAQ_332cb-zmd3lrqSSA7VwQI9cn06oIAEVno8VskdkQ0amvx2N39sItPkY7NAMLx0wz-9L3mcBv-kbOm2-fg"
+}

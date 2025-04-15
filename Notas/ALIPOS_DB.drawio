@@ -1,0 +1,899 @@
+<mxfile host="65bd71144e">
+    <diagram id="Isgqg18JIiYmSj5bqoWs" name="Page-1">
+        <mxGraphModel dx="660" dy="1655" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="107" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" parent="1" source="2" target="106" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="CO_COMPRAS" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="50" width="350" height="1742" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="+ CORRE (NUMBER) PK" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="26" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+ CODEMP (VARCHAR25)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="52" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="+ CODTIPO (VARCHAR5)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="78" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="+ COMPROB(VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="104" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="+ FECHA (DATE)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="130" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="+ COMPRAIE (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="156" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="+ COMPRAEE (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="182" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ COMPRAIG (FLOAT126)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="208" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ IMPORTACIO (FLOAT126)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="234" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="+ IVA&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;(FLOAT126)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="260" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="+ TOTALCOMP (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="286" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+ RETENCION (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="312" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="+ RETENCIONIVA (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="338" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="+ ANTICIPO (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="364" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="+ MESD (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="390" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="+ ANOD (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="416" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="+ COMRAEXC (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="442" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="+ FECHADIG (DATE)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="468" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="+ COMPRET (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="494" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="+ CDPROV&amp;nbsp; (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="520" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="+ DAI (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="546" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="+ IVAADUANA (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="572" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="+ TIPOPOLIZA (VARCHAR20)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="598" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="+ POLIZA (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="624" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="+ DESCUENTOS (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="650" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="+ CERRADO (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="676" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="+ TIPO_COMPRA (1BYTE)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="702" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="+ ID_TIPOCOMPRA (8BYTE) FK" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="728" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="+ CORRELATIVO_DTE (VARCHAR50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="754" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="+ NUMERO_CONTROL_DTE&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;(VARCHAR50)&lt;/span&gt;&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="780" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="+ SELLO_RECIBIDO_DTE&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;(VARCHAR100)&lt;/span&gt;&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="806" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="+ ID_TIPO_COMPRA_O (8BYTE) FK&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="832" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="+ ES_COMBUSTIBLE (NUMBER1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="858" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="+ FOVIAL (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="884" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="+ COTRANS (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="910" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="+ CODIGO_GENERACION_DTE (VARCHAR40)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="936" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="+ IVA_PERCIBIDO (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="962" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="+ CUENTA_CONTABLE (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="988" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="+ CUENTA_RELACION (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1014" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="+ HORA (VARCHAR8)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1040" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="+ CON_ENTIDAD (CHAR8)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1066" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="+ BLOQUEF_EXCENTAS (VARCHAR30)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1092" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="+ FECHA_FACTURACION_HORA (TIMESTAMP)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1118" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="+ RETENCION_2PORCIENTO (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1144" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="+ COMENTARIO (VARCHAR500)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1170" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="+ ADUANA (VARCHAR2) FK&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1196" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="+ AGENTE ADUANAL (NUMBER) FK&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1222" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="+ PROVEEDOR_ADUANAL (NUMBER) FK&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1248" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="+ PROVEEDOR_EXT (CHAR8) FK" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1274" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="+ CODIGO_IMPORTACION (VARCHAR50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1300" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="+ CONCEPTO_COMPRA (NUMBER) FK" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1326" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="+ CODIGO_FACTURA_CORRE (VARCHAR15)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1352" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="+ DTE_TIPO_OPERACION (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1378" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="+ DTE_CLASIFICACION (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1404" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="+ DTE_SECTOR (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1430" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="+ DTE_TIPO_COSTO_GASTO (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1456" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="+ TIPO_ACTIVO (VARCHAR50)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1482" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="+ PORCENTAJE (VARCHAR50)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1508" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="+ VIDA_UTIL (NUMBER)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1534" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="+ DEPRECIACION (NUMBER1)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1560" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="+ TIPO_DEPRECIACION (CHAR8) FK&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1586" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="+ FECHA_DEPRECIAICON (DATE)&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1612" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="+ PRORRATEO (CHAR1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1638" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="+ PROCESADO_PRORRATEO (CHAR1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1664" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="+ PROCESADO_PRORRATEO_HECHO (CHAR1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1690" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="+ COMPRA_ORIGINAL (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+                    <mxGeometry y="1716" width="350" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="TA_TIPO_COMPRA" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="778" width="230" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="+ ID_TIPOCOMPRA (CHAR8)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="77" vertex="1">
+                    <mxGeometry y="26" width="230" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;+ NOMBRE_TIPO_COMPRA (VARCHAR20)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="77" vertex="1">
+                    <mxGeometry y="52" width="230" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="" style="edgeStyle=none;html=1;entryX=0.004;entryY=0.167;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;entryPerimeter=0;" parent="1" source="33" target="77" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="TA_TIPO_COMPRA_ORIGEN" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="870" width="250" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="+ ID_TIPO_COMPRA_O (CHAR8)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="82" vertex="1">
+                    <mxGeometry y="26" width="250" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="+ NOMBRE_TIPO_COMPRA_O" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="82" vertex="1">
+                    <mxGeometry y="52" width="250" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="37" target="83" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="CO_CONCEPTOS_COMPRA" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="425" y="1350" width="255" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="+ CONCEPTO_COMPRA (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="87" vertex="1">
+                    <mxGeometry y="26" width="255" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="+ DESCRIPCION_CONCEPTO_COMPRA (VARCHAR50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="87" vertex="1">
+                    <mxGeometry y="52" width="255" height="58" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="56" target="88" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="CO_DETCOMPRA" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="-410" width="240" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="+ ID (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="26" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="+ CODEMP (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="52" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="+ CODPROV (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="78" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="+ TIPO (VARCHAR5)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="104" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="+ COMPROB (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="130" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="+ CANTIDAD (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="156" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="+ NOMBRE (VARCHAR250)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="182" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="+ PRECIOU (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="208" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="+ TOT (FLOAT126)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="234" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="+ IDPRODUCTO (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="260" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="+ CORRE_COMPRA (NUMBER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="286" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="+ PARA_INVENTARIO (CHAR1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="312" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="+ CUENTA_CONTABLE (VARCHAR20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="338" width="240" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="+ EXCENTA (NUMBER1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="92" vertex="1">
+                    <mxGeometry y="364" width="240" height="26" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="oezgg8acSVRNYSnEvdYP" name="Page-2">
+        <mxGraphModel dx="626" dy="584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-3" value="" style="edgeStyle=none;html=1;" parent="1" source="Pus2fvjTajd8eDbIFVsy-1" target="Pus2fvjTajd8eDbIFVsy-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-1" value="PROCESO DE FACTURACION AUTOMATICA" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="20" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-5" value="" style="edgeStyle=none;html=1;" parent="1" source="Pus2fvjTajd8eDbIFVsy-2" target="Pus2fvjTajd8eDbIFVsy-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-2" value="SE DESCARGAN LAS FACTURAS EN LA NOCHE, TANTO PDF COMO JSON" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="120" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-10" value="" style="edgeStyle=none;html=1;entryX=0.537;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-4" target="Pus2fvjTajd8eDbIFVsy-8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="310" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-4" value="SE INTENTA INSERTAR EN LA TABLA CO_COMPRAS" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="210" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-8" value="CORRE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="290" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-12" value="Se inserta el id de la compra automaticamente" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-8" vertex="1">
+                    <mxGeometry y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-14" value="CODEEMP" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="450" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-15" value="&lt;div&gt;Se insertara automaticamente un usuario predeterminado&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;PREDETERMINADO: ALIPOS2025&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-14" vertex="1">
+                    <mxGeometry y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-16" value="" style="edgeStyle=none;html=1;exitX=0.517;exitY=0.996;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.497;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-12" target="Pus2fvjTajd8eDbIFVsy-14" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="301" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-17" value="CODTIPO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="610" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-18" value="&lt;div&gt;Tipo de factura que se ingresa&lt;/div&gt;&lt;div&gt;POR EJEMPLO: CCF, FAC&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-17" vertex="1">
+                    <mxGeometry y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-19" value="" style="edgeStyle=none;html=1;entryX=0.486;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-15" target="Pus2fvjTajd8eDbIFVsy-17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-20" value="COMPROB" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="770" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-21" value="&lt;div&gt;Correlativo de la compra (Puede ser el mismo codigo de generacion)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-20" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-22" value="" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-18" target="Pus2fvjTajd8eDbIFVsy-20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-23" value="FECHA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="930" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-24" value="&lt;div&gt;Aqui se insertara la Fecha de emision de la factura descargada&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-23" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-27" style="edgeStyle=none;html=1;entryX=0.506;entryY=0.014;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-21" target="Pus2fvjTajd8eDbIFVsy-23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-1" value="COMPRAIE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1110" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-2" value="&lt;div&gt;Subtotal de compra Interna Excenta&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-1" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-95" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.001;entryY=0.127;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-3" target="_2RXoKeZ-u9fe6G11f5I-91" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="509" y="1350"/>
+                            <mxPoint x="509" y="1280"/>
+                            <mxPoint x="568" y="1280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-3" value="COMPRAEE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1290" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-4" value="&lt;div&gt;Subtotal de compra Externa Excenta&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-3" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-5" value="" style="edgeStyle=none;html=1;entryX=0.493;entryY=0.042;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-24" target="_2RXoKeZ-u9fe6G11f5I-1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-6" style="edgeStyle=none;html=1;entryX=0.497;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-2" target="_2RXoKeZ-u9fe6G11f5I-3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-97" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-7" target="_2RXoKeZ-u9fe6G11f5I-91" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="520" y="1520"/>
+                            <mxPoint x="520" y="1310"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-7" value="COMPRAIG" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1460" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-8" value="&lt;div&gt;Subtotal de compra Interna Gravada&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-7" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-10" value="EXPORTACIO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1630" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-11" value="&lt;div&gt;Subtotal de compra Internacionales o Exportaciones&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-10" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-12" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-4" target="_2RXoKeZ-u9fe6G11f5I-7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-14" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-8" target="_2RXoKeZ-u9fe6G11f5I-10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-15" value="IVA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1800" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-16" value="&lt;div&gt;Impuesto al Valor Agregadp 13%&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-15" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-17" style="edgeStyle=none;html=1;entryX=0.493;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-11" target="_2RXoKeZ-u9fe6G11f5I-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-18" value="TOTALCOM" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="1980" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-19" value="Es el total de la compra, donde ya va los impuestos deducidos y mas" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-18" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-20" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.025;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-16" target="_2RXoKeZ-u9fe6G11f5I-18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-21" value="RETENCION" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="2150" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-22" value="Es el impuesto que equivale al 1%" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-21" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-23" style="edgeStyle=none;html=1;entryX=0.5;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-19" target="_2RXoKeZ-u9fe6G11f5I-21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-24" value="RETENCIONIVA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="2320" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-25" value="No se usa, se pondra como 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-24" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-28" style="edgeStyle=none;html=1;entryX=0.499;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-22" target="_2RXoKeZ-u9fe6G11f5I-24" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-29" value="ANTICIPO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="2490" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-30" value="No se usa, se pondra como 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-29" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-31" style="edgeStyle=none;html=1;entryX=0.494;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-25" target="_2RXoKeZ-u9fe6G11f5I-29" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-32" value="MESD" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="2660" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-33" value="Mes en el que se declarara la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-32" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-34" value="ANOD" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="2830" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-35" value="Año en el que se declarara la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-34" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-36" style="edgeStyle=none;html=1;entryX=0.5;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-30" target="_2RXoKeZ-u9fe6G11f5I-32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-37" style="edgeStyle=none;html=1;entryX=0.494;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-33" target="_2RXoKeZ-u9fe6G11f5I-34" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-38" value="COMPRAEXC" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="2990" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-39" value="Compras excentas (no se usa) se pondra como 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-38" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-40" style="edgeStyle=none;html=1;entryX=0.503;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-35" target="_2RXoKeZ-u9fe6G11f5I-38" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-41" value="FECHADIG" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="3150" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-42" value="Es la fecha en la que se digito la compra, en este caso, sera la fecha o dia en el que se descargo dicha factura" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-41" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-43" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-39" target="_2RXoKeZ-u9fe6G11f5I-41" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-44" value="COMPRET" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="3310" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-45" value="Es el numero de serie para las facturas fisicas, al ser outomatizado, se pondra como NULL" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-44" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-46" style="edgeStyle=none;html=1;entryX=0.508;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-42" target="_2RXoKeZ-u9fe6G11f5I-44" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-47" value="CDPROV" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="3480" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-48" value="Es el id o codigo del proveedor, que no tiene relacion directa con la tabla TA_PROVEEDORES, pero deberia" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-47" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-49" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-45" target="_2RXoKeZ-u9fe6G11f5I-47" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-53" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="3480" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-54" value="" style="edgeStyle=none;html=1;exitX=0.999;exitY=0.489;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-47" target="_2RXoKeZ-u9fe6G11f5I-55" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-57" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-55" target="_2RXoKeZ-u9fe6G11f5I-56" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-55" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Se enlista TODOS los proveedores de la tabla TA_PROVEEDORES, los cuales enlistaremos lo siguiente: Coodigo del proveedor, nombre del proveedor, direccion, y su NIT, para que a la hora de buscar si ya esta registrado (El cual se hara comparando el NIT del json con el NIT del Proveedor), y en caso no este registrado se procedera a Registrarlo&amp;nbsp;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="3480" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-65" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-56" target="_2RXoKeZ-u9fe6G11f5I-64" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-56" value="Ya esta registrado?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="647.5" y="3640" width="85" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-58" value="DAI" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="3620" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-59" value="Es el impuesto al Derecho Arancelario a la Importacion" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-58" vertex="1">
+                    <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-60" style="edgeStyle=none;html=1;entryX=1.002;entryY=0.503;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-56" target="_2RXoKeZ-u9fe6G11f5I-58" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-61" value="SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="587.5" y="3650" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-63" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="3620" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-67" style="edgeStyle=orthogonalEdgeStyle;html=1;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-64" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="3680" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="930" y="3800"/>
+                            <mxPoint x="540" y="3800"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-64" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Se Tomara El Nombre del Proveedor, su direccion (si posee,sino se pondra como NULL)&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;y su NIT, los demas campos estaran como NULL, por si se quiere poner mas datos a dicho proveedor, quedara a criterio del usuario. Luego se creara el cod del proveedor registrado, y ese Cod se pondra en la compra&lt;br&gt;&lt;/span&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="3620" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-66" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="3650" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-69" value="IVAADUANA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="3790" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-70" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Es el IVA o impuesto que cobra la Aduana (no se usa)&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;se pondra como 0&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-69" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-71" style="edgeStyle=none;html=1;entryX=0.502;entryY=-0.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-59" target="_2RXoKeZ-u9fe6G11f5I-69" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-72" value="TIPOPOLIZA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="3944" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-73" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Son los tipos de poliza que puede haber (No se usa)&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;se pondra como 0&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-72" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-74" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-70" target="_2RXoKeZ-u9fe6G11f5I-72" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-75" value="POLIZA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="4110" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-76" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Es el N o Correlativo de la Poliza (No se usa)&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;se pondra como 0&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-75" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-77" style="edgeStyle=none;html=1;entryX=0.499;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-73" target="_2RXoKeZ-u9fe6G11f5I-75" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-78" value="DESCUENTOS" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="4280" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-79" value="Es el total de los descuentos (En caso no haya, se pondra como 0)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-78" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-80" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-76" target="_2RXoKeZ-u9fe6G11f5I-78" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-81" value="CERRADO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="4440" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-82" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Mira si la compra ha sido cerrada (No se usa)&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Se pondra como NULL&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-81" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-83" style="edgeStyle=none;html=1;entryX=0.504;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-79" target="_2RXoKeZ-u9fe6G11f5I-81" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-84" value="TIPO_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="151" y="4600" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-85" value="Mira que tipo de compra es: 1: Compras Internas, 2: Compras Importadas, 3: Compras Internas Excentas Sin IVA, en este caso, dejaremos como valor por defecto 1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-84" vertex="1">
+                    <mxGeometry y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-86" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-82" target="_2RXoKeZ-u9fe6G11f5I-84" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-91" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="567.5" y="1269" width="222.5" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-94" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.094;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-1" target="_2RXoKeZ-u9fe6G11f5I-99" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="1260" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="540" y="1170"/>
+                            <mxPoint x="540" y="1230"/>
+                            <mxPoint x="591" y="1230"/>
+                            <mxPoint x="591" y="1270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-96" value="" style="edgeStyle=none;html=1;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-8" target="_2RXoKeZ-u9fe6G11f5I-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-98" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.07;entryY=1.02;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-11" target="_2RXoKeZ-u9fe6G11f5I-99" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="540" y="1705"/>
+                            <mxPoint x="540" y="1389"/>
+                            <mxPoint x="585" y="1389"/>
+                            <mxPoint x="585" y="1360"/>
+                            <mxPoint x="585" y="1360"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-104" style="edgeStyle=none;html=1;entryX=0.502;entryY=-0.006;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-99" target="_2RXoKeZ-u9fe6G11f5I-105" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="680" y="1390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-99" value="Se ingresara a la tabla CO_DETCOMPRAS los items que tenga dicha compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="1269" width="220" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-105" value="ID" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="582.5" y="1390" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-106" value="Se generara automaticamente el id del detalle de la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-105" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-107" value="CODEMP" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="581.25" y="1511" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-108" value="Se ingresa el Nombre de quien la digito, en este caso sera &quot;ALIPOS2025&quot;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-107" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-109" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.02;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-106" target="_2RXoKeZ-u9fe6G11f5I-107" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-110" value="CODPROV" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="581.25" y="1635" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-111" value="Utilizara el proveedor que se encontro o registro en la compra principal" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-110" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-113" style="edgeStyle=none;html=1;entryX=0.488;entryY=0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-108" target="_2RXoKeZ-u9fe6G11f5I-110" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-114" value="TIPO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="582.5" y="1759" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-115" value="Es el tipo de factura, que tambien sera heredado de la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-114" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-116" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.033;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-111" target="_2RXoKeZ-u9fe6G11f5I-114" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-118" value="COMPROB" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="582.5" y="1880" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-119" value="Es el correlativo de la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-118" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-120" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.036;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-115" target="_2RXoKeZ-u9fe6G11f5I-118" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-121" value="CANTIDAD" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="582.5" y="2000" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-122" value="Es la cantidad del producto" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-121" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-123" style="edgeStyle=none;html=1;entryX=0.488;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-119" target="_2RXoKeZ-u9fe6G11f5I-121" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-124" value="NOMBRE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="582.5" y="2129" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-125" value="Es el nombre del producto" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-124" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-126" style="edgeStyle=none;html=1;entryX=0.485;entryY=-0.009;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-122" target="_2RXoKeZ-u9fe6G11f5I-124" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-127" value="PRECIOU" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="581.25" y="2258" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-128" value="Es el precio unitario de cada porducto" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-127" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-129" style="edgeStyle=none;html=1;entryX=0.492;entryY=-0.012;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-125" target="_2RXoKeZ-u9fe6G11f5I-127" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-130" value="TOT" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="581.25" y="2390" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-131" value="Es el Total del producto (CANTIDAD * PRECIOU)&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-130" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-132" style="edgeStyle=none;html=1;entryX=0.485;entryY=-0.015;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-128" target="_2RXoKeZ-u9fe6G11f5I-130" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-3" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-133" value="IDPRODUCTO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="581.25" y="2520" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-134" value="Es el id del producto asociado, en caso no exista se debera de registrar" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-133" vertex="1">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-135" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-131" target="_2RXoKeZ-u9fe6G11f5I-133" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="2483.5" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-5" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-2" target="leSfUtI8FsCP2ZuYM4d1-4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-2" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Se enlista la tabla TA_PRODUCTOS, para obtener todos los productos&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se enlistara PRODUCTO Y NOMBRE_PRODUCTO) para comprar el nombre obtenido en el json y los enlistados, en caso que el item ya exista, se tomara el id de dicho producto, que sera con este formato: xxxxxxxx por ej.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00001676, en caso no este registrado, se pasara a registrarse&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="872" y="2501" width="236" height="133" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1.004;entryY=0.79;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-4" target="_2RXoKeZ-u9fe6G11f5I-133">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="840" y="2740"/>
+                            <mxPoint x="840" y="2640"/>
+                            <mxPoint x="800" y="2640"/>
+                            <mxPoint x="800" y="2599"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-13" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1031.579617834395" y="2740.8662420382166" as="sourcePoint"/>
+                        <mxPoint x="1182" y="2744" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-4" value="Ya esta registrado?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="947.5" y="2700" width="85" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-6" value="SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="896.5" y="2705" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-7" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1020" y="2705" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-10" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1180" y="2677" width="240" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="896.5" y="2739" as="targetPoint"/>
+                        <mxPoint x="1300" y="2811.5" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1300" y="2854"/>
+                            <mxPoint x="897" y="2854"/>
+                            <mxPoint x="897" y="2744"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-11" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;En el caso de que el producto no este registrado, en la tabla TA_PRODUCTOS se insertara lo siguiente para registrarlo.&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;PRODUCTO(ID), NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO(Sera el mismo nombre), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025).&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Los demas campos seran NULL&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1182" y="2674.5" width="236" height="133" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-16" value="CORRE_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="582.5" y="2660" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-17" value="Es el correlativo de la compra, en este caso es CORRE, se pondra este mismo x cada item" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-16">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-18" style="edgeStyle=none;html=1;entryX=0.5;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-19" value="PARA_INVENTARIO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="581.25" y="2800" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-20" value="Sirve para saber si el item pasara a inventario para venta, se pondra en 0, ya que sera a criterio del usuario" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-19">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-21" style="edgeStyle=none;html=1;entryX=0.496;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-17" target="leSfUtI8FsCP2ZuYM4d1-19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-28" style="edgeStyle=none;html=1;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-22" target="leSfUtI8FsCP2ZuYM4d1-26">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-22" value="CUENTA_CONTABLE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="581.25" y="2940" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-23" value="Es la ceunta contable a la que pertenecera, en caso de ser compra o gasto, sera la misma que en CO_COMPRAS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-22">
+                    <mxGeometry y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-24" style="edgeStyle=none;html=1;entryX=0.491;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-20" target="leSfUtI8FsCP2ZuYM4d1-22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-34" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-26" target="_2RXoKeZ-u9fe6G11f5I-99">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="800" y="3140"/>
+                            <mxPoint x="800" y="1310"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-26" value="EXCENTA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="582.5" y="3090" width="195" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-29" value="Revisara si la compra original tiene o es una compra excenta, si es excenta su valor sera 1, sino, su valor sera 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-26">
+                    <mxGeometry x="3.75" y="31" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-30" value="Se termina de insertar los items" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="3240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-31" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-29" target="leSfUtI8FsCP2ZuYM4d1-30">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-35" value="numItem+1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="785" y="3140" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-36" value="WHERE numItem &amp;lt;= TotalNumItem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="776.25" y="1270" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-37" value="ID_TIPO_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="4760" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-40" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Esta opcion se pondra por default:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00000001 -&amp;gt; Gasto y se podra cambiar a las demas opciones a la hora de editar dicha compra si el usuario lo desea&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-37">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-39" style="edgeStyle=none;html=1;entryX=0.498;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-84" target="leSfUtI8FsCP2ZuYM4d1-37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-41" value="CORRELATIVO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="4920" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-42" value="S&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;e refiere al numero de control que tienen las facturas electronicas, por ejemplo:&amp;nbsp;DTE-03-00550009-000000000009929 -&amp;gt;&amp;nbsp;0000000000009929&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se elimina&amp;nbsp;DTE-03-00550009)&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-41">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-43" style="edgeStyle=none;html=1;entryX=0.501;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-37" target="leSfUtI8FsCP2ZuYM4d1-41">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-44" value="NUMERO_CONTROL_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="5080" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-45" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Utilizando el ejemplo anterior, ahora se pondra el numero de control completo.&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DTE-03-00550009-000000000009929&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-44">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-46" style="edgeStyle=none;html=1;entryX=0.512;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-41" target="leSfUtI8FsCP2ZuYM4d1-44">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-47" value="SELLO_RECIBIDO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="5240" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-48" value="Es un campo dentro del json, que hace referencia al sello que envia el MH, para validar que la factura ha sido procesada o revisada por ellos" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-47">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-49" style="edgeStyle=none;html=1;entryX=0.494;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-44" target="leSfUtI8FsCP2ZuYM4d1-47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-50" value="ID_TIPO_COMPRA_O" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="5400" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-51" value="Ya que, practicamente solamente se envian facturas electronicas a Conpras Internas Grabadas, se pondra como default este.&amp;nbsp;00000003 -&amp;gt; COMPRA INTERNA" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-50">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-52" style="edgeStyle=none;html=1;entryX=0.505;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-47" target="leSfUtI8FsCP2ZuYM4d1-50">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
