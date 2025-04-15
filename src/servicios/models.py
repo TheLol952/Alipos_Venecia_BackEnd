@@ -28,38 +28,60 @@ class Database:
     def insert_invoice(self, *args):
         try:
             sql = """
-                INSERT INTO facturas (
-                    nom_empresa, cod_gen, tipo_dte, estado_doc, estado_doc_inc, sello_recepcion, 
-                    num_iden_recep, accion, observaciones, num_control, nit_emisor, nrc_emisor, 
-                    nom_emisor, nom_receptor, nrc_receptor, nit_receptor, dte, fecha_emision, 
-                    Periodo_tributario, Mes_tributario, procesada, estado, iva, iva_percepcion, 
-                    fovial, cotrans, subtotal, monto
-                ) 
+                INSERT INTO CO_COMPRAS (
+                    CODEMP, CODTIPO, COMPROB, COMPRAIE, COMPRAEE, COMPRAIG, IMPORTACIO, IVA, TOTALCOMP,
+                    RETENCION, RETENCIONIVA, ANTICIPO, MESD, ANOD, COMPRAEXC, COMPRET, CDPROV, DAI,
+                    IVAADUANA, TIPOPOLIZA, POLIZA, DESCUENTOS, CERRADO, TIPO_COMPRA, ID_TIPOCOMPRA,
+                    CORRELATIVO_DTE, NUMERO_CONTROL_DTE, SELLO_RECIBIDO_DTE, ID_TIPO_COMPRA_O,
+                    ES_COMBUSTIBLE, FOVIAL, COTRANS, CODIGO_GENERACION_DTE, IVA_PERCIBIDO,
+                    CUENTA_CONTABLE, CUENTA_RELACION, HORA, CON_ENTIDAD, BLOQUEF_EXCENTAS,
+                    FECHA_FACTURACION_HORA, RETENCION_2PORCIENTO, COMENTARIO, ADUANA, AGENTE_ADUANAL,
+                    PROVEEDOR_EXT, CODIGO_IMPORTACION, CONCEPTO_COMPRA, CODIGO_FACTURA_CORRE,
+                    DTE_TIPO_OPERACION, DTE_CLASIFICACION, DTE_SECTOR, DTE_TIPO_COSTO_GASTO,
+                    TIPO_ACTIVO, PORCENTAJE, VIDA_UTIL, DEPRECIACION, TIPO_DEPRECIACION,
+                    FECHA_DEPRECIACION, PRORRATEO, PROCESADO_PRORRATEO, PROCESADO_PRORRATEO_HECHO,
+                    COMPRA_ORIGINAL
+                )
                 VALUES (
-                    :nom_empresa, :cod_gen, :tipo_dte, :estado_doc, :estado_doc_inc, :sello_recepcion,
-                    :num_iden_recep, :accion, :observaciones, :num_control, :nit_emisor, :nrc_emisor,
-                    :nom_emisor, :nom_receptor, :nrc_receptor, :nit_receptor, :dte, :fecha_emision,
-                    :Periodo_tributario, :Mes_tributario, :procesada, :estado, :iva, :iva_percepcion,
-                    :fovial, :cotrans, :subtotal, :monto
+                    :CODEMP, :CODTIPO, :COMPROB, :COMPRAIE, :COMPRAEE, :COMPRAIG, :IMPORTACIO, :IVA, :TOTALCOMP,
+                    :RETENCION, :RETENCIONIVA, :ANTICIPO, :MESD, :ANOD, :COMPRAEXC, :COMPRET, :CDPROV, :DAI,
+                    :IVAADUANA, :TIPOPOLIZA, :POLIZA, :DESCUENTOS, :CERRADO, :TIPO_COMPRA, :ID_TIPOCOMPRA,
+                    :CORRELATIVO_DTE, :NUMERO_CONTROL_DTE, :SELLO_RECIBIDO_DTE, :ID_TIPO_COMPRA_O,
+                    :ES_COMBUSTIBLE, :FOVIAL, :COTRANS, :CODIGO_GENERACION_DTE, :IVA_PERCIBIDO,
+                    :CUENTA_CONTABLE, :CUENTA_RELACION, :HORA, :CON_ENTIDAD, :BLOQUEF_EXCENTAS,
+                    :FECHA_FACTURACION_HORA, :RETENCION_2PORCIENTO, :COMENTARIO, :ADUANA, :AGENTE_ADUANAL,
+                    :PROVEEDOR_EXT, :CODIGO_IMPORTACION, :CONCEPTO_COMPRA, :CODIGO_FACTURA_CORRE,
+                    :DTE_TIPO_OPERACION, :DTE_CLASIFICACION, :DTE_SECTOR, :DTE_TIPO_COSTO_GASTO,
+                    :TIPO_ACTIVO, :PORCENTAJE, :VIDA_UTIL, :DEPRECIACION, :TIPO_DEPRECIACION,
+                    :FECHA_DEPRECIACION, :PRORRATEO, :PROCESADO_PRORRATEO, :PROCESADO_PRORRATEO_HECHO,
+                    :COMPRA_ORIGINAL
                 )
             """
 
-            keys = [
-                "nom_empresa", "cod_gen", "tipo_dte", "estado_doc", "estado_doc_inc", "sello_recepcion",
-                "num_iden_recep", "accion", "observaciones", "num_control", "nit_emisor", "nrc_emisor",
-                "nom_emisor", "nom_receptor", "nrc_receptor", "nit_receptor", "dte", "fecha_emision",
-                "Periodo_tributario", "Mes_tributario", "procesada", "estado", "iva", "iva_percepcion",
-                "fovial", "cotrans", "subtotal", "monto"
+            columnas = [
+                "CODEMP", "CODTIPO", "COMPROB", "COMPRAIE", "COMPRAEE", "COMPRAIG", "IMPORTACIO", "IVA", "TOTALCOMP",
+                "RETENCION", "RETENCIONIVA", "ANTICIPO", "MESD", "ANOD", "COMPRAEXC", "COMPRET", "CDPROV", "DAI",
+                "IVAADUANA", "TIPOPOLIZA", "POLIZA", "DESCUENTOS", "CERRADO", "TIPO_COMPRA", "ID_TIPOCOMPRA",
+                "CORRELATIVO_DTE", "NUMERO_CONTROL_DTE", "SELLO_RECIBIDO_DTE", "ID_TIPO_COMPRA_O",
+                "ES_COMBUSTIBLE", "FOVIAL", "COTRANS", "CODIGO_GENERACION_DTE", "IVA_PERCIBIDO",
+                "CUENTA_CONTABLE", "CUENTA_RELACION", "HORA", "CON_ENTIDAD", "BLOQUEF_EXCENTAS",
+                "FECHA_FACTURACION_HORA", "RETENCION_2PORCIENTO", "COMENTARIO", "ADUANA", "AGENTE_ADUANAL",
+                "PROVEEDOR_EXT", "CODIGO_IMPORTACION", "CONCEPTO_COMPRA", "CODIGO_FACTURA_CORRE",
+                "DTE_TIPO_OPERACION", "DTE_CLASIFICACION", "DTE_SECTOR", "DTE_TIPO_COSTO_GASTO",
+                "TIPO_ACTIVO", "PORCENTAJE", "VIDA_UTIL", "DEPRECIACION", "TIPO_DEPRECIACION",
+                "FECHA_DEPRECIACION", "PRORRATEO", "PROCESADO_PRORRATEO", "PROCESADO_PRORRATEO_HECHO",
+                "COMPRA_ORIGINAL"
             ]
-            params = dict(zip(keys, args))
 
+            params = dict(zip(columnas, args))
             self.cursor.execute(sql, params)
             self.connection.commit()
 
-            print(f"✅ Factura {params['cod_gen']} insertada correctamente.")
+            print(f"✅ Compra insertada correctamente. Comprobante: {params.get('COMPROB')}")
             return True
+
         except oracledb.Error as e:
-            print(f"❌ Error al insertar la factura {params.get('cod_gen')}: {e}")
+            print(f"❌ Error al insertar la compra: {e}")
             return False
 
     def check_invoice(self, codigo_generacion):
