@@ -65,7 +65,7 @@ class Database:
     def check_invoice(self, codigo_generacion):
         """Verifica si una factura ya existe en Oracle"""
         try:
-            query = "SELECT COUNT(*) FROM facturas WHERE cod_gen = :cod_gen"
+            query = "SELECT COUNT(*) FROM CO_COMPRAS WHERE CODIGO_GENERACION_DTE = :cod_gen"
             self.cursor.execute(query, {"cod_gen": codigo_generacion})
             result = self.cursor.fetchone()
             return result[0] > 0
