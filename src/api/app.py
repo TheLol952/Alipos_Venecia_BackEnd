@@ -6,6 +6,7 @@ import os
 import json
 import logging
 import socket
+from datetime import date
 from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
@@ -117,8 +118,16 @@ def ensure_damaged_folder(year, month):
     return path
 
 # ---------------------------- Procesar correos electrónicos ----------------------------
-def process_emails(start_date, end_date, year, month):
+def process_emails(start_date, end_date):
     global total_correos, total_facturas_descargadas, total_facturas_insertadas, archivos_dañados, correos_ignorados
+
+    # Obtener fecha actual mes y año
+    today = date.today()
+    year = today.year
+    month = today.month
+
+    print(f"🗓️ Año tributario detectado automáticamente: {year}")
+    print(f"🗓️ Mes tributario detectado automáticamente: {str(month).zfill(2)}")
 
     try:
         mail = connect_to_email()
@@ -269,6 +278,7 @@ def process_emails(start_date, end_date, year, month):
                 # Insertar en BD solo si ambos archivos son válidos
                 try:
                     db = Database()
+                    # Revisa si ya hay una factura duplicada en la db
                     if db.check_invoice(codigo_generacion):
                         logging.info(f"🟡 Duplicado: {codigo_generacion}")
                     else:
@@ -314,13 +324,10 @@ if __name__ == "__main__":
     start_date = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
     end_date = input("Ingrese la fecha de fin (YYYY-MM-DD): ")
 
-    year = int(input("Ingrese el año tributario (4 dígitos): "))
-    month = int(input("Ingrese el mes tributario (01-12): "))
-
     if not os.path.exists(DOWNLOAD_FOLDER):
         os.makedirs(DOWNLOAD_FOLDER)
 
-    process_emails(start_date, end_date, year, month)
+    process_emails(start_date, end_date)
 
     # 📌 **Resumen detallado**
     logging.info("\n--- Resumen del procesamiento ---")
