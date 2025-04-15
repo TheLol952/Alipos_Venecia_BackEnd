@@ -5,12 +5,7 @@ import os
 import sys
 from dotenv import load_dotenv
 from pathlib import Path
-
-# Agregar el directorio raíz al PATH de Python
-root_dir = Path(__file__).resolve().parent.parent
-sys.path.append(str(root_dir))
-
-from conexion_oracle import get_connection
+from core.conexion_oracle import get_connection
 
 # Cargar configuración de entorno
 load_dotenv()

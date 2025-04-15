@@ -1,6 +1,6 @@
 import json
-from models import Database
-from clients import consulta_documentos
+from .models import Database
+from .clients import consulta_documentos
 import logging
 
 # Configurar logging

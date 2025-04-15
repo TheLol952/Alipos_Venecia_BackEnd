@@ -10,8 +10,10 @@ from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
 from datetime import datetime
-from services import recepcion_factura
-from models import Database
+import sys
+from pathlib import Path
+from servicios.services import recepcion_factura
+from servicios.models import Database
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")

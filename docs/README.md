@@ -35,30 +35,6 @@ DROP TABLESPACE TANGO23 INCLUDING CONTENTS AND DATAFILES;
 DROP TABLESPACE TANGO23_TOLEDOMAZA INCLUDING CONTENTS AND DATAFILES;
 DROP TABLESPACE ALIPOS INCLUDING CONTENTS AND DATAFILES;
 
-## Eliminar todo el contenido de la DB
-BEGIN
-  FOR obj IN (
-    SELECT object_type, object_name
-    FROM user_objects
-    WHERE object_type IN (
-      'TABLE', 'VIEW', 'SEQUENCE', 'SYNONYM', 'PACKAGE',
-      'FUNCTION', 'PROCEDURE', 'MATERIALIZED VIEW', 'TRIGGER', 'INDEX'
-    )
-  ) LOOP
-    BEGIN
-      EXECUTE IMMEDIATE 'DROP ' || obj.object_type || ' "' || obj.object_name || '"' ||
-        CASE 
-          WHEN obj.object_type = 'TABLE' THEN ' CASCADE CONSTRAINTS'
-          ELSE ''
-        END;
-    EXCEPTION
-      WHEN OTHERS THEN
-        NULL; -- Ignorar errores si algún objeto no puede eliminarse
-    END;
-  END LOOP;
-END;
-/
-
 ## Consulta para mostrar el Nit, Proveedor, Direccion, Nombre Producto, Cuenta contable, Tipo operacion, Clasificacion, Sector y Tipo Costo Gasto.
 
 SELECT

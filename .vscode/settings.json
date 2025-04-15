@@ -1,4 +1,8 @@
 {
     "pip-manager.sourceCustom": "C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
-    "pip-manager.source": "pypi"
+    "pip-manager.source": "pypi",
+    "python.analysis.extraPaths": ["./src"],
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    }
 }
