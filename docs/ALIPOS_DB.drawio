@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Isgqg18JIiYmSj5bqoWs" name="Page-1">
-        <mxGraphModel dx="660" dy="1655" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="699" dy="1669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -293,7 +293,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="oezgg8acSVRNYSnEvdYP" name="Page-2">
-        <mxGraphModel dx="626" dy="584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="553" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -729,7 +729,7 @@
                 <mxCell id="_2RXoKeZ-u9fe6G11f5I-132" style="edgeStyle=none;html=1;entryX=0.485;entryY=-0.015;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-128" target="_2RXoKeZ-u9fe6G11f5I-130" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-3" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-3" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-1" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="_2RXoKeZ-u9fe6G11f5I-133" value="IDPRODUCTO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
@@ -741,16 +741,16 @@
                 <mxCell id="_2RXoKeZ-u9fe6G11f5I-135" style="edgeStyle=none;html=1;entryX=0.492;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-131" target="_2RXoKeZ-u9fe6G11f5I-133" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="870" y="2483.5" width="240" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-5" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-2" target="leSfUtI8FsCP2ZuYM4d1-4">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-5" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-2" target="leSfUtI8FsCP2ZuYM4d1-4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-2" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Se enlista la tabla TA_PRODUCTOS, para obtener todos los productos&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se enlistara PRODUCTO Y NOMBRE_PRODUCTO) para comprar el nombre obtenido en el json y los enlistados, en caso que el item ya exista, se tomara el id de dicho producto, que sera con este formato: xxxxxxxx por ej.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00001676, en caso no este registrado, se pasara a registrarse&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-2" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Se enlista la tabla TA_PRODUCTOS, para obtener todos los productos&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se enlistara PRODUCTO Y NOMBRE_PRODUCTO) para comprar el nombre obtenido en el json y los enlistados, en caso que el item ya exista, se tomara el id de dicho producto, que sera con este formato: xxxxxxxx por ej.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00001676, en caso no este registrado, se pasara a registrarse&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="872" y="2501" width="236" height="133" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1.004;entryY=0.79;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-4" target="_2RXoKeZ-u9fe6G11f5I-133">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1.004;entryY=0.79;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-4" target="_2RXoKeZ-u9fe6G11f5I-133" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="840" y="2740"/>
@@ -760,25 +760,25 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-13" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-13" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1031.579617834395" y="2740.8662420382166" as="sourcePoint"/>
                         <mxPoint x="1182" y="2744" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-4" value="Ya esta registrado?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-4" value="Ya esta registrado?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="947.5" y="2700" width="85" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-6" value="SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-6" value="SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="896.5" y="2705" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-7" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-7" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1020" y="2705" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-10" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-10" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1180" y="2677" width="240" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="896.5" y="2739" as="targetPoint"/>
                         <mxPoint x="1300" y="2811.5" as="sourcePoint"/>
@@ -789,40 +789,40 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-11" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;En el caso de que el producto no este registrado, en la tabla TA_PRODUCTOS se insertara lo siguiente para registrarlo.&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;PRODUCTO(ID), NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO(Sera el mismo nombre), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025).&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Los demas campos seran NULL&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-11" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;En el caso de que el producto no este registrado, en la tabla TA_PRODUCTOS se insertara lo siguiente para registrarlo.&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;PRODUCTO(ID), NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO(Sera el mismo nombre), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025).&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Los demas campos seran NULL&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1182" y="2674.5" width="236" height="133" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-16" value="CORRE_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-16" value="CORRE_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="582.5" y="2660" width="195" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-17" value="Es el correlativo de la compra, en este caso es CORRE, se pondra este mismo x cada item" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-16">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-17" value="Es el correlativo de la compra, en este caso es CORRE, se pondra este mismo x cada item" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-16" vertex="1">
                     <mxGeometry y="31" width="190" height="69" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-18" style="edgeStyle=none;html=1;entryX=0.5;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-16">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-18" style="edgeStyle=none;html=1;entryX=0.5;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-133" target="leSfUtI8FsCP2ZuYM4d1-16" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-19" value="PARA_INVENTARIO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-19" value="PARA_INVENTARIO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="581.25" y="2800" width="195" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-20" value="Sirve para saber si el item pasara a inventario para venta, se pondra en 0, ya que sera a criterio del usuario" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-19">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-20" value="Sirve para saber si el item pasara a inventario para venta, se pondra en 0, ya que sera a criterio del usuario" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-19" vertex="1">
                     <mxGeometry y="31" width="190" height="69" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-21" style="edgeStyle=none;html=1;entryX=0.496;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-17" target="leSfUtI8FsCP2ZuYM4d1-19">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-21" style="edgeStyle=none;html=1;entryX=0.496;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-17" target="leSfUtI8FsCP2ZuYM4d1-19" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-28" style="edgeStyle=none;html=1;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-22" target="leSfUtI8FsCP2ZuYM4d1-26">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-28" style="edgeStyle=none;html=1;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-22" target="leSfUtI8FsCP2ZuYM4d1-26" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-22" value="CUENTA_CONTABLE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-22" value="CUENTA_CONTABLE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="581.25" y="2940" width="195" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-23" value="Es la ceunta contable a la que pertenecera, en caso de ser compra o gasto, sera la misma que en CO_COMPRAS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-22">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-23" value="Es la ceunta contable a la que pertenecera, en caso de ser compra o gasto, sera la misma que en CO_COMPRAS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-22" vertex="1">
                     <mxGeometry y="31" width="190" height="69" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-24" style="edgeStyle=none;html=1;entryX=0.491;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-20" target="leSfUtI8FsCP2ZuYM4d1-22">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-24" style="edgeStyle=none;html=1;entryX=0.491;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-20" target="leSfUtI8FsCP2ZuYM4d1-22" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-34" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-26" target="_2RXoKeZ-u9fe6G11f5I-99">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-34" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-26" target="_2RXoKeZ-u9fe6G11f5I-99" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="800" y="3140"/>
@@ -830,67 +830,175 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-26" value="EXCENTA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-26" value="EXCENTA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="582.5" y="3090" width="195" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-29" value="Revisara si la compra original tiene o es una compra excenta, si es excenta su valor sera 1, sino, su valor sera 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-26">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-29" value="Revisara si la compra original tiene o es una compra excenta, si es excenta su valor sera 1, sino, su valor sera 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-26" vertex="1">
                     <mxGeometry x="3.75" y="31" width="190" height="69" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-30" value="Se termina de insertar los items" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-30" value="Se termina de insertar los items" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="620" y="3240" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-31" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-29" target="leSfUtI8FsCP2ZuYM4d1-30">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-31" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-29" target="leSfUtI8FsCP2ZuYM4d1-30" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-35" value="numItem+1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-35" value="numItem+1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="785" y="3140" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-36" value="WHERE numItem &amp;lt;= TotalNumItem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-36" value="WHERE numItem &amp;lt;= TotalNumItem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="776.25" y="1270" width="230" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-37" value="ID_TIPO_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-37" value="ID_TIPO_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="4760" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-40" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Esta opcion se pondra por default:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00000001 -&amp;gt; Gasto y se podra cambiar a las demas opciones a la hora de editar dicha compra si el usuario lo desea&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-37">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-40" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Esta opcion se pondra por default:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00000001 -&amp;gt; Gasto y se podra cambiar a las demas opciones a la hora de editar dicha compra si el usuario lo desea&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-37" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-39" style="edgeStyle=none;html=1;entryX=0.498;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_2RXoKeZ-u9fe6G11f5I-84" target="leSfUtI8FsCP2ZuYM4d1-37">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-39" style="edgeStyle=none;html=1;entryX=0.498;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-84" target="leSfUtI8FsCP2ZuYM4d1-37" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-41" value="CORRELATIVO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-41" value="CORRELATIVO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="4920" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-42" value="S&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;e refiere al numero de control que tienen las facturas electronicas, por ejemplo:&amp;nbsp;DTE-03-00550009-000000000009929 -&amp;gt;&amp;nbsp;0000000000009929&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se elimina&amp;nbsp;DTE-03-00550009)&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-41">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-42" value="S&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;e refiere al numero de control que tienen las facturas electronicas, por ejemplo:&amp;nbsp;DTE-03-00550009-000000000009929 -&amp;gt;&amp;nbsp;0000000000009929&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Se elimina&amp;nbsp;DTE-03-00550009)&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-41" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-43" style="edgeStyle=none;html=1;entryX=0.501;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-37" target="leSfUtI8FsCP2ZuYM4d1-41">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-43" style="edgeStyle=none;html=1;entryX=0.501;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-37" target="leSfUtI8FsCP2ZuYM4d1-41" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-44" value="NUMERO_CONTROL_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-44" value="NUMERO_CONTROL_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="150" y="5080" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-45" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Utilizando el ejemplo anterior, ahora se pondra el numero de control completo.&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DTE-03-00550009-000000000009929&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-44">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-45" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Utilizando el ejemplo anterior, ahora se pondra el numero de control completo.&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DTE-03-00550009-000000000009929&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-44" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-46" style="edgeStyle=none;html=1;entryX=0.512;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-41" target="leSfUtI8FsCP2ZuYM4d1-44">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-46" style="edgeStyle=none;html=1;entryX=0.512;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-41" target="leSfUtI8FsCP2ZuYM4d1-44" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-47" value="SELLO_RECIBIDO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-47" value="SELLO_RECIBIDO_DTE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="5240" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-48" value="Es un campo dentro del json, que hace referencia al sello que envia el MH, para validar que la factura ha sido procesada o revisada por ellos" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-47">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-48" value="Es un campo dentro del json, que hace referencia al sello que envia el MH, para validar que la factura ha sido procesada o revisada por ellos" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-47" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-49" style="edgeStyle=none;html=1;entryX=0.494;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-44" target="leSfUtI8FsCP2ZuYM4d1-47">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-49" style="edgeStyle=none;html=1;entryX=0.494;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-44" target="leSfUtI8FsCP2ZuYM4d1-47" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-50" value="ID_TIPO_COMPRA_O" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-50" value="ID_TIPO_COMPRA_O" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="5400" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-51" value="Ya que, practicamente solamente se envian facturas electronicas a Conpras Internas Grabadas, se pondra como default este.&amp;nbsp;00000003 -&amp;gt; COMPRA INTERNA" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="leSfUtI8FsCP2ZuYM4d1-50">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-51" value="Ya que, practicamente solamente se envian facturas electronicas a Conpras Internas Grabadas, se pondra como default este.&amp;nbsp;00000003 -&amp;gt; COMPRA INTERNA" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-50" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-52" style="edgeStyle=none;html=1;entryX=0.505;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-47" target="leSfUtI8FsCP2ZuYM4d1-50">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-52" style="edgeStyle=none;html=1;entryX=0.505;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="leSfUtI8FsCP2ZuYM4d1-47" target="leSfUtI8FsCP2ZuYM4d1-50" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-1" value="ES_COMBUSTIBLE" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="5560" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-2" value="Mediante un proceso, se verificara segun el json, si posee los tributos de Fovial y Contras, y si los posee se pondra como 1 (si es combustible) en el caso no haya ni Fovial ni Cotrans, se pontra automaticamente en 0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-1">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-3" style="edgeStyle=none;html=1;entryX=0.497;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="leSfUtI8FsCP2ZuYM4d1-50" target="qS9hm0YQv65U4hbZUVqS-1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-4" value="FOVIAL" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="5720" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-5" value="Es el impuesto del fovial sobre una compra de combustible" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-4">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-6" value="COTRANS" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="5880" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-7" value="Es el impuesto de Cotrans sobre una compra de combustible" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-6">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-8" style="edgeStyle=none;html=1;entryX=0.497;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-2" target="qS9hm0YQv65U4hbZUVqS-4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-9" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-5" target="qS9hm0YQv65U4hbZUVqS-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-10" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CODIGO_GENERACION_DTE&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="6040" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-11" value="Es el id de una compra electronica, es unica." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-10">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-12" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-6" target="qS9hm0YQv65U4hbZUVqS-10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-13" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;IVA_PERCIBIDO&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="6200" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-14" value="Es el 1% que se percibe del sub total de la compra" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-13">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-15" style="edgeStyle=none;html=1;entryX=0.5;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-10" target="qS9hm0YQv65U4hbZUVqS-13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-16" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CUENTA_CONTABLE&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="6360" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-17" value="Mediante un proceso, se comparara el Nit del proveedor con la tabla DICCIONARIO_COMPRAS_AUTO,y asi conocer a que tipo de cuenta se le atribuye a dicho proveedor, por ejemplo si vende combustuble, vigilancia, etc. Se pondra dicha cuenta relacionada a el." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-16">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-18" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-13" target="qS9hm0YQv65U4hbZUVqS-16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-19" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CUENTA_RELACION&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="6530" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-20" value="(No se usa por el momento, se pondra NULL)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-19">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-21" style="edgeStyle=none;html=1;entryX=0.503;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-16" target="qS9hm0YQv65U4hbZUVqS-19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-22" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;HORA&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="6700" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-23" value="Segun la hora en que se descargo la compra, esa misma se pondra en este campo" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-22">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-24" style="edgeStyle=none;html=1;entryX=0.49;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-19" target="qS9hm0YQv65U4hbZUVqS-22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-25" value="&lt;font style=&quot;font-size: 11px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CON_ENTIDAD&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="6870" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-26" value="Segun la sucursal, detectada gracias al diccionario de sucursales, se tomara el nombre devuelto por esta, y se enlistara la tabla CON_ENTIDADES y se comparara la columna NOMBRE_CON_ENTIDAD, para saber a que codigo pertenece esta, para asi... poner dicho codigo en este campo." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-25">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-27" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-22" target="qS9hm0YQv65U4hbZUVqS-25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-28" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;BLOQUEF_EXCENTAS&lt;/font&gt;&lt;/span&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="7030" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-29" value="Solo se usa para facturas fisicas, se pondra como NULL" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-28">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-30" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-25" target="qS9hm0YQv65U4hbZUVqS-28">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-31" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 10px;&quot;&gt;FECHA_FACTURACION_HORA&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="7190" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-32" value="Es la Fecha y hora de la factura (fecha y hora en la que se descargo la factura) por ejemplo 16/04/2025 13:41:47" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-31">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-33" style="edgeStyle=none;html=1;entryX=0.503;entryY=-0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-28" target="qS9hm0YQv65U4hbZUVqS-31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-34" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;RETENCION_2PORCIENTO&lt;/font&gt;&lt;/span&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="7350" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-35" value="En ejemplo de serfinsa, se tomara el dato desde cuerpoDocumento.ivaPercibido" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qS9hm0YQv65U4hbZUVqS-34">
+                    <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="qS9hm0YQv65U4hbZUVqS-36" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qS9hm0YQv65U4hbZUVqS-31" target="qS9hm0YQv65U4hbZUVqS-34">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>

@@ -35,14 +35,15 @@ DROP TABLESPACE TANGO23 INCLUDING CONTENTS AND DATAFILES;
 DROP TABLESPACE TANGO23_TOLEDOMAZA INCLUDING CONTENTS AND DATAFILES;
 DROP TABLESPACE ALIPOS INCLUDING CONTENTS AND DATAFILES;
 
-## Consulta para mostrar el Nit, Proveedor, Direccion, Nombre Producto, Cuenta contable, Tipo operacion, Clasificacion, Sector y Tipo Costo Gasto.
+## Consulta para mostrar el Nit, Proveedor, Direccion, Nombre Producto, Nombre Cuenta, Cuenta contable, Tipo operacion, Clasificacion, Sector, Tipo Costo Gasto y Sucursal.
 
 SELECT
     TP.NIT,
     TP.NOMBRE_PROVEEDOR,
     TP.DIRECCION,
     P.NOMBRE_PRODUCTO AS PRODUCTO,
-    CC.NOMBRE_CUENTA AS CUENTA_CONTABLE,
+    CC.NOMBRE_CUENTA AS NOMBRE_CUENTA,
+    CC.CUENTA_CONTABLE AS CUENTA_CONTABLE,
     CC.DTE_TIPO_OPERACION AS TIPO_OPERACION,
     CC.DTE_CLASIFICACION AS CLASIFICACION,
     CC.DTE_SECTOR AS SECTOR,
@@ -54,7 +55,25 @@ JOIN ALIPOS.TA_PROVEEDORES TP ON TP.PROVEEDOR = C.CDPROV
 JOIN ALIPOS.TA_PRODUCTOS P ON P.PRODUCTO = DC.IDPRODUCTO
 LEFT JOIN ALIPOS.CON_CATALOGO CC ON CC.CUENTA_CONTABLE = C.CUENTA_CONTABLE
 LEFT JOIN ALIPOS.CON_ENTIDADES CE ON CE.CON_ENTIDAD = C.CON_ENTIDAD
-WHERE CE.NOMBRE_CON_ENTIDAD IS NOT NULL;
+WHERE TP.NIT IS NOT NULL 
+  AND CE.NOMBRE_CON_ENTIDAD IS NOT NULL 
+  AND CC.NOMBRE_CUENTA IS NOT NULL 
+  AND CC.DTE_TIPO_OPERACION IS NOT NULL 
+  AND CC.DTE_CLASIFICACION IS NOT NULL 
+  AND CC.DTE_SECTOR IS NOT NULL 
+  AND CC.DTE_TIPO_COSTO_GASTO IS NOT NULL
+GROUP BY 
+    TP.NIT,
+    TP.NOMBRE_PROVEEDOR,
+    TP.DIRECCION,
+    P.NOMBRE_PRODUCTO,
+    CC.NOMBRE_CUENTA,
+    CC.CUENTA_CONTABLE,
+    CC.DTE_TIPO_OPERACION,
+    CC.DTE_CLASIFICACION,
+    CC.DTE_SECTOR,
+    CC.DTE_TIPO_COSTO_GASTO,
+    CE.NOMBRE_CON_ENTIDAD;
 
 ## Taba para el diccionario de compras
 CREATE TABLE DICCIONARIO_COMPRAS_AUTO (
@@ -62,7 +81,8 @@ CREATE TABLE DICCIONARIO_COMPRAS_AUTO (
     NOMBRE_PROVEEDOR VARCHAR2(200),
     DIRECCION VARCHAR2(300),
     PRODUCTO VARCHAR2(500),
-    CUENTA_CONTABLE VARCHAR2(20),
+    NOMBRE_CUENTA VARCHAR2(100),
+    CUENTA_CONTABLE NUMBER,
     TIPO_OPERACION NUMBER,
     CLASIFICACION NUMBER,
     SECTOR NUMBER,
@@ -100,43 +120,63 @@ CREATE OR REPLACE PROCEDURE SP_INSERT_DICCIONARIO_AUTO (
     p_nombre_proveedor IN VARCHAR2,
     p_direccion        IN VARCHAR2,
     p_producto         IN VARCHAR2,
-    p_cuenta_contable  IN VARCHAR2,
+    p_nombre_cuenta    IN VARCHAR2,
+    p_cuenta_contable  IN NUMBER,
     p_tipo_operacion   IN NUMBER,
     p_clasificacion    IN NUMBER,
     p_sector           IN NUMBER,
     p_tipo_costo_gasto IN NUMBER,
     p_sucursal         IN VARCHAR2
 ) AS
+    v_count NUMBER;
 BEGIN
-    INSERT INTO DICCIONARIO_COMPRAS_AUTO (
-        NIT,
-        NOMBRE_PROVEEDOR,
-        DIRECCION,
-        PRODUCTO,
-        CUENTA_CONTABLE,
-        TIPO_OPERACION,
-        CLASIFICACION,
-        SECTOR,
-        TIPO_COSTO_GASTO,
-        SUCURSAL,
-        FRECUENCIA,
-        ULTIMA_COMPRA
-    ) VALUES (
-        p_nit,
-        p_nombre_proveedor,
-        p_direccion,
-        p_producto,
-        p_cuenta_contable,
-        p_tipo_operacion,
-        p_clasificacion,
-        p_sector,
-        p_tipo_costo_gasto,
-        p_sucursal,
-        1,
-        SYSDATE
-    );
+    -- Verificar si el registro ya existe
+    SELECT COUNT(*)
+    INTO v_count
+    FROM DICCIONARIO_COMPRAS_AUTO
+    WHERE NIT = p_nit
+      AND PRODUCTO = p_producto
+      AND CUENTA_CONTABLE = p_cuenta_contable
+      AND TIPO_OPERACION = p_tipo_operacion
+      AND CLASIFICACION = p_clasificacion
+      AND SECTOR = p_sector
+      AND TIPO_COSTO_GASTO = p_tipo_costo_gasto
+      AND SUCURSAL = p_sucursal;
     
-    COMMIT;
+    -- Solo insertar si no existe
+    IF v_count = 0 THEN
+        INSERT INTO DICCIONARIO_COMPRAS_AUTO (
+            NIT,
+            NOMBRE_PROVEEDOR,
+            DIRECCION,
+            PRODUCTO,
+            NOMBRE_CUENTA,
+            CUENTA_CONTABLE,
+            TIPO_OPERACION,
+            CLASIFICACION,
+            SECTOR,
+            TIPO_COSTO_GASTO,
+            SUCURSAL,
+            FRECUENCIA,
+            ULTIMA_COMPRA
+        ) VALUES (
+            p_nit,
+            p_nombre_proveedor,
+            p_direccion,
+            p_producto,
+            p_nombre_cuenta,
+            p_cuenta_contable,
+            p_tipo_operacion,
+            p_clasificacion,
+            p_sector,
+            p_tipo_costo_gasto,
+            p_sucursal,
+            1,
+            SYSDATE
+        );
+        
+        COMMIT;
+    END IF;
 END;
 /
 

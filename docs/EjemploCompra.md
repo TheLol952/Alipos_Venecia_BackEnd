@@ -15,7 +15,7 @@
 *ANTICIPO --> ???
 *MESD --> Mes tributario al que se declarara
 *ANOD --> Año tributario al que se declarara
-*COMPRAEXC --> Compras Exentas
+*COMPRAEXC --> Compras Exentas (Se pondra como 0)
 *FECHADIG --> Fecha en la que fue digitada la compra (en este contexto, la fecha en la que fue descargada la factura)
 *COMPRET --> Numero de serie de la compra (En el caso que sea factura fisica)
 *CDPROV --> Codigo del proveedor?
