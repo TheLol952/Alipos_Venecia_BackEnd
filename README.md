@@ -73,11 +73,11 @@ El sistema primero verificara la sucursal asociada a esa compra dentro de la tab
 
 Luego comparara la Sucursal con el Municipio, y si el Municipio localizado en el item, concide con una de las sucursales, se tomara esa sucursal como la original, y en caso no lo logre se pondra como sucursal desconocida.
 
-### Enlistar e insertar proveedores
-Este proceso enlistara a todos los proveedores de la tabla TA_PROVEEDORES, donde se enlistara los siguientes campos: CODIGO_PROVEEDOR, NOMBRE_PROVEEDOR, DIRECCION Y NIT. Y en el caso que a la hora de insertar una compra en la db, y no se logre identificar a un proveedor (Comparando el Nit y la Direccion del proveedor en la compra y en la db), registrara a dicho proveedor en la tabla.
+### Enlistar e insertar proveedores (HECHO)
+Este proceso recibira como parametro el json de la compra y enlistara a todos los proveedores de la tabla TA_PROVEEDORES, donde se enlistara los siguientes campos: CODIGO_PROVEEDOR, NOMBRE_PROVEEDOR, DIRECCION Y NIT. Y en el caso que a la hora de insertar una compra en la db, y no se logre identificar a un proveedor (Comparando el Nit y la Direccion del proveedor en la compra y en la db), registrara a dicho proveedor en la tabla, retornando al proveedor en cuestion, ya sea 
 
-### Enlistar e insertar productos  
-Este proceso se encargara de enlistar todos los productos en la tabla TA_PRODUCTOS, donde se enlistaran los siguientes campos: PRODUCTO(id) y NOMBRE_PRODUCTO. Y en el caso que a la hora de insertar una compra en la db, y no se logre identificar un producto (Se comprarara el nombre del producto en el json que se encuentra en 'cuerpoDocumento' en la entidad 'Descripcion' vs la columna NOMBRE_PRODUCTO) se insertara en la tabla los siguientes valores: PRODUCTO(id auto incrementable), NOMBRE_PRODUCTO, DESCRIPCION(Nombre del item), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025), los demas campos seran puestos como NULL.
+### Enlistar e insertar productos (HECHO)
+Este proceso se encargara de enlistar todos los productos en la tabla TA_PRODUCTOS, donde se enlistaran los siguientes campos: PRODUCTO(id) y NOMBRE_PRODUCTO. Y en el caso que a la hora de insertar una compra en la db, y no se logre identificar un producto (Se comprarara el nombre del producto en el json que se encuentra en 'cuerpoDocumento' en la entidad 'Descripcion' vs la columna NOMBRE_PRODUCTO) se insertara en la tabla los siguientes valores: PRODUCTO(id auto incrementable), NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO(Nombre del item), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025), los demas campos seran puestos como NULL.
 
 ### Formatear numero de control DTE 
 Este pequeño proceso formateara el numero de control DTE, para que en lugar de ser: DTE-03-XXXX-XXX9929
