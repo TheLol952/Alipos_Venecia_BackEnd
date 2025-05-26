@@ -1,6 +1,12 @@
 ##  Para instalar las dependencias del proyecto:
 'pip install -r requirements.txt'
 
+## Activar entorno virtual
+'.\venv\Scripts\activate'
+
+## Correr archivos, por ejemplo
+'python .\src\procedimientos\DiccionarioSucursales.py'
+
 ## Importa la db.DMP a Oracle sql
 'impdp ALIPOS/ALIPOS2025 DIRECTORY=dmp_dir DUMPFILE=ALIPOS_db.DMP LOGFILE=retry_import.log'
 
@@ -58,22 +64,6 @@ LEFT JOIN ALIPOS.CON_ENTIDADES CE ON CE.CON_ENTIDAD = C.CON_ENTIDAD
 WHERE TP.NIT IS NOT NULL 
   AND CE.NOMBRE_CON_ENTIDAD IS NOT NULL 
   AND CC.NOMBRE_CUENTA IS NOT NULL 
-  AND CC.DTE_TIPO_OPERACION IS NOT NULL 
-  AND CC.DTE_CLASIFICACION IS NOT NULL 
-  AND CC.DTE_SECTOR IS NOT NULL 
-  AND CC.DTE_TIPO_COSTO_GASTO IS NOT NULL
-GROUP BY 
-    TP.NIT,
-    TP.NOMBRE_PROVEEDOR,
-    TP.DIRECCION,
-    P.NOMBRE_PRODUCTO,
-    CC.NOMBRE_CUENTA,
-    CC.CUENTA_CONTABLE,
-    CC.DTE_TIPO_OPERACION,
-    CC.DTE_CLASIFICACION,
-    CC.DTE_SECTOR,
-    CC.DTE_TIPO_COSTO_GASTO,
-    CE.NOMBRE_CON_ENTIDAD;
 
 ## Taba para el diccionario de compras
 CREATE TABLE DICCIONARIO_COMPRAS_AUTO (
@@ -97,7 +87,7 @@ CREATE TABLE DICCIONARIO_COMPRAS_AUTO (
 CREATE TABLE DICCIONARIO_SUCURSALES (
     ID NUMBER PRIMARY KEY,
     SUCURSAL VARCHAR2(100) NOT NULL,
-    PALABRA_CLAVE VARCHAR2(100) NOT NULL
+    PALABRA_CLAVE VARCHAR2(200) NOT NULL
 );
 
 -- 2. Secuencia
@@ -130,11 +120,16 @@ CREATE OR REPLACE PROCEDURE SP_INSERT_DICCIONARIO_AUTO (
 ) AS
     v_count NUMBER;
 BEGIN
+    -- Validar que el NIT tenga exactamente 17 caracteres
+    IF LENGTH(p_nit) != 17 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El NIT debe tener exactamente 17 caracteres. NIT proporcionado: ' || p_nit);
+    END IF;
+
     -- Verificar si el registro ya existe
     SELECT COUNT(*)
     INTO v_count
     FROM DICCIONARIO_COMPRAS_AUTO
-    WHERE NIT = p_nit
+      WHERE NIT = p_nit
       AND PRODUCTO = p_producto
       AND CUENTA_CONTABLE = p_cuenta_contable
       AND TIPO_OPERACION = p_tipo_operacion
@@ -142,8 +137,8 @@ BEGIN
       AND SECTOR = p_sector
       AND TIPO_COSTO_GASTO = p_tipo_costo_gasto
       AND SUCURSAL = p_sucursal;
-    
-    -- Solo insertar si no existe
+
+    -- Insertar solo si no existe
     IF v_count = 0 THEN
         INSERT INTO DICCIONARIO_COMPRAS_AUTO (
             NIT,
@@ -174,11 +169,15 @@ BEGIN
             1,
             SYSDATE
         );
-        
+
         COMMIT;
     END IF;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
 END;
-/
 
 ## Ejemplo Proceso almacenado
 BEGIN
