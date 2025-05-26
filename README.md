@@ -79,31 +79,9 @@ Este proceso recibira como parametro el json de la compra y enlistara a todos lo
 ### Enlistar e insertar productos (HECHO)
 Este proceso se encargara de enlistar todos los productos en la tabla TA_PRODUCTOS, donde se enlistaran los siguientes campos: PRODUCTO(id) y NOMBRE_PRODUCTO. Y en el caso que a la hora de insertar una compra en la db, y no se logre identificar un producto (Se comprarara el nombre del producto en el json que se encuentra en 'cuerpoDocumento' en la entidad 'Descripcion' vs la columna NOMBRE_PRODUCTO) se insertara en la tabla los siguientes valores: PRODUCTO(id auto incrementable), NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO(Nombre del item), PRECIO_UNITARIO, USUARIO_CREACION(ALIPOS2025), los demas campos seran puestos como NULL.
 
-### Formatear numero de control DTE 
+### Formatear numero de control DTE (HECHO)
 Este pequeño proceso formateara el numero de control DTE, para que en lugar de ser: DTE-03-XXXX-XXX9929
 para que ahora sea asi --> 9929.
-
-### Insertar productos en DETCOMPRAS 
-Este proceso se encargara de insertar todos los items dentro de una compra, hacia la tabla CO_DETCOMPRAS donde se deberan de ingresar los siguientes campos: ID(auto), CODEEMP(ALIPOS2025), CODPROV(Codigo del proveedor 'Nit' segun la compra original), TIPO(Segun compra), COMPROB(Es el correlativo de la compra original), CANTIDAD, PRECIOU, TOT(Total), IDPRODUCTO(Es el id del producto, se utilizara el proceso 3), CORRE_COMPRA(es el id de la compra 'CORRE', que se pondra x veces segun el N de items), PARA_INVENTARIO(Si el item se enviara para inventario, su valor sera 1, sino su valor por defecto sera 0), CUENTA_CONTABLE(Es la cuenta contable que heredara de la compra), EXCENTA(Por defecto, su valor sera 0).
-
-### Verificar si es combustible
-Este proceso recibira como parametro el archivo json y verificara si la compra posee estos 2 elementos en "cuerpoDocumento" dentro del atributo "tributos" en los cuales estaran 2 codigos, siendo "D1" para el Fovial, y "C8" para el Cotrans, luego en "resumen" deberan estar ambos detallados conteniendo:
-{
-    codigo: D1,
-    descripcion: 'Fovial',
-    valor: 2.34
-}
-y
-{
-    codigo: C8,
-    descripcion: 'Cotrans',
-    valor: 1.08
-}
-ambos valores seran almacenados en las columnas FOVIAL Y COTRANS, y en este caso se deduce que la compra realizada es combustible, por lo tanto se marcara  ES_COMBUSTIBLE(1), el valor por defecto sera de 0 hasta que se demuestre que la compra es de tipo combustible.
-
-### Obtener los datos de una compra (json)
-Este proceso recibira como parametro el archivo json y revisara que posea estos atributos:
-CODTIPO(En los archivos json hay un atributo llamado 'tipoDte' que tiene un valor, dicho valor se comparara con la tabla DTE_TIPO_DOCUMENTO_002, y comparara la columna CODIGO_MH y extraera el valor con el que coincidio), COMPROB(Sera el correlativo del numero de control sin guiones ni ceros, por ejemplo: 8207, se utilizara el proceso 4), FECHA(Es la fecha de emision de la factura), COMPRAIE(Se pondra en 0, ya que no se reciben compras excentas en digital), COMPRAEE(Similar al caso anterior, se pondra en 0), COMPRAIG(Se tomara este valor de 'resumen.totalGravada', que es el subtotal de la compra), IVA(Se tomara de 'resumen.tributos[codigo:20, valor:(13%)]' que sera el 13% del subtotal), TOTALCOMP(Es la sumatoria del subtotal + iva, o se puede tomar de 'totalPagar'), RETENCION(Se aplica el 1% sobre el subtotal, o se toma de 'resumen.ivaRete1'), DESCUENTOS(Es el total de los descuentos de la compra, se tomara de 'resumen.totalDescu'), IVA_PERCIBIDO(Se aplica el 1% sobre el subtotal, o se toma directamente de 'resumen.ivaPerci1').
 
 ### Auto detectar la cuenta contable sobre una compra (HECHO)
 Este proceso buscara asignarle una cuenta contable, segun el producto o la naturaleza de la empresa, por ejemplo si el producto es agua se intuira que la cuenta contable a la que pertenecera sera 'Agua Potable' y en el caso de que el producto sea ambiguo/nuevo/desconocido, sera por la empresa(NIT) que si por ejemplo la empresa es Texaco, se intuira que la cuenta contable sera 'Combustibles y Lubricantes', y lo hara de esta manera:
@@ -151,3 +129,26 @@ Ahora segun todos los datos anteriormente recopilados, los insertaremos en la ta
     ## AutoCuentaContable.py (HECHO)
     Este procedimiento al ser llamado ejecutara y llamara a los anteriores archivos creados y los datos retornados los guardara en variables que se utilizaran mas adelante, primero se ejecutara el archivo
     CuentaSucursalesService.py, luego CuentaBaseService.py y finalmente CuentaFinalService.py y ahora que hemos obtenido y guardado todos los datos necesarios, los insertaremos en nuesta db en la tabla, pero eso lo haremos en otro procedimiento, por el momento soalemte retornaremos los datos: CUENTA_CONTABLE, CUENTA_RELACION, CON_ENTIDAD, DTE_TIPO_OPERACION, DTE_CLASIFICACION, DTE_SECTOR, DTE_TIPO_COSTO_GASTO.
+
+### Insertar productos en DETCOMPRAS 
+Este proceso se encargara de insertar todos los items dentro de una compra, hacia la tabla CO_DETCOMPRAS donde se deberan de ingresar los siguientes campos: ID(auto), CODEEMP(ALIPOS2025), CODPROV(Codigo del proveedor 'Nit' segun la compra original formateada), TIPO(Segun compra), COMPROB(Es el correlativo de la compra original), CANTIDAD, PRECIOU, TOT(Total), IDPRODUCTO(Es el id del producto, se utilizara el proceso 3), CORRE_COMPRA(es el id de la compra 'CORRE', que se pondra x veces segun el N de items), PARA_INVENTARIO(Si el item se enviara para inventario, su valor sera 1, sino su valor por defecto sera 0), CUENTA_CONTABLE(Es la cuenta contable que heredara de la compra), EXCENTA(Por defecto, su valor sera 0).
+
+### Verificar si es combustible
+Este proceso recibira como parametro el archivo json y verificara si la compra posee estos 2 elementos en "cuerpoDocumento" dentro del atributo "tributos" en los cuales estaran 2 codigos, siendo "D1" para el Fovial, y "C8" para el Cotrans, luego en "resumen" deberan estar ambos detallados conteniendo:
+{
+    codigo: D1,
+    descripcion: 'Fovial',
+    valor: 2.34
+}
+y
+{
+    codigo: C8,
+    descripcion: 'Cotrans',
+    valor: 1.08
+}
+ambos valores seran almacenados en las columnas FOVIAL Y COTRANS, y en este caso se deduce que la compra realizada es combustible, por lo tanto se marcara  ES_COMBUSTIBLE(1), el valor por defecto sera de 0 hasta que se demuestre que la compra es de tipo combustible.
+
+### Obtener los datos de una compra (json)
+Este proceso recibira como parametro el archivo json y revisara que posea estos atributos:
+CODTIPO(En los archivos json hay un atributo llamado 'tipoDte' que tiene un valor, dicho valor se comparara con la tabla DTE_TIPO_DOCUMENTO_002, y comparara la columna CODIGO_MH y extraera el valor con el que coincidio), COMPROB(Sera el correlativo del numero de control sin guiones ni ceros, por ejemplo: 8207, se utilizara el proceso 4), FECHA(Es la fecha de emision de la factura), COMPRAIE(Se pondra en 0, ya que no se reciben compras excentas en digital), COMPRAEE(Similar al caso anterior, se pondra en 0), COMPRAIG(Se tomara este valor de 'resumen.totalGravada', que es el subtotal de la compra), IVA(Se tomara de 'resumen.tributos[codigo:20, valor:(13%)]' que sera el 13% del subtotal), TOTALCOMP(Es la sumatoria del subtotal + iva, o se puede tomar de 'totalPagar'), RETENCION(Se aplica el 1% sobre el subtotal, o se toma de 'resumen.ivaRete1'), DESCUENTOS(Es el total de los descuentos de la compra, se tomara de 'resumen.totalDescu'), IVA_PERCIBIDO(Se aplica el 1% sobre el subtotal, o se toma directamente de 'resumen.ivaPerci1').
+
