@@ -13,7 +13,7 @@ load_dotenv()
 
 # Proveedores generales con una sola dirección, que pueden llegar a ofrecer servicios en diferentes sucursales
 PROVEEDORES_GENERALES = [
-    "06140107911039",  # COSASE
+    "0614-010791-103-9",  # COSASE
     "06140312931018",  # BANCO DE AMÉRICA
     "02100501991017",  # COSELSA
     # Agrega más si es necesario
