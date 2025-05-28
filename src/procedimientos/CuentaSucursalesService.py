@@ -32,13 +32,11 @@ class CuentaSucursalesService:
         # 3. Intento de identificación principal
         dicc = ds.cargar_diccionario_sucursales()
         sucursal = ds.identificar_sucursal(descripcion, dicc)
-        print(f"🔎 Sucursal identificada 1: {sucursal}")
 
         # 4. Si no se encuentra, se usa el diccionario automático,
         auto_detectado = False
         if sucursal == "SUCURSAL_DESCONOCIDA":
             sucursal_auto = ds.identificar_sucursal_auto(descripcion, dicc)
-            print(f"🔎 Sucursal identificada 2 (auto): {sucursal_auto}")
             if sucursal_auto != "SUCURSAL_DESCONOCIDA_AUTO":
                 sucursal = sucursal_auto
                 auto_detectado = True
