@@ -23,7 +23,7 @@ class ListarInsertarProductos:
             USUARIO_CREACION_FECHA=SYSDATE,
             CODIGO_BARRAS=NULL, COD_PRODUC=NULL, COLUMNA=:columna,
             FORMULA=NULL, MODIFICADOR=NULL, TIPO_CREACION=NULL
-          y agrega NEXT_ID formateado a lista
+            y agrega NEXT_ID formateado a lista
         Retorna lista de strings con los IDs de productos procesados
         """
         items = data.get("cuerpoDocumento", [])

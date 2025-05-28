@@ -26,7 +26,7 @@ class FormatearControlDTE:
         
 # Punto de entrada para prueba manual
 if __name__ == "__main__":
-    print("🚀 Servicio CuentaBase iniciado...")
+    print("🚀 Servicio Formateo DTE iniciado...")
     try:
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)
