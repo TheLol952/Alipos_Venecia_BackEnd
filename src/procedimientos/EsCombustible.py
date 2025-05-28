@@ -1,40 +1,48 @@
 import json
 
+def get_from_json(data: dict, paths: list[list[str]], default=None):
+    """
+    Intenta extraer un valor de `data` usando rutas alternativas.
+    Cada ruta es una lista de llaves anidadas. Retorna el primer valor encontrado o `default`.
+    """
+    for path in paths:
+        current = data
+        try:
+            for key in path:
+                current = current[key]
+            return current
+        except (KeyError, TypeError):
+            continue
+    return default
 
 def EsCombustible(data: dict) -> tuple[int, float, float]:
     """
     Verifica si la compra en el JSON es de tipo combustible:
-    - Comprueba que en al menos un ítem de cuerpoDocumento existan los códigos 'D1' y 'C8' en "tributos".
-    - Busca en data['resumen']['tributos'] los valores de FOVIAL (codigo 'D1') y COTRANS (codigo 'C8').
-    - Devuelve:
-        ES_COMBUSTIBLE: 1 si ambos códigos están presentes y tienen valor > 0, 0 en caso contrario.
-        FOVIAL: valor asociado al codigo 'D1' en resumen (0.0 si no existe).
-        COTRANS: valor asociado al codigo 'C8' en resumen (0.0 si no existe).
+    - Usa get_from_json para extraer cuerpoDocumento y resumen.tributos
+    - Devuelve (ES_COMBUSTIBLE, FOVIAL, COTRANS)
     """
+    # 1) Leer todos los ítems
+    items = get_from_json(data, paths=[['cuerpoDocumento']], default=[])
+    trib_codes = set()
+    if isinstance(items, list):
+        for item in items:
+            trib_codes.update(item.get('tributos', []))
+
+    # 2) Leer los tributos del resumen
+    resumen_tributos = get_from_json(data, paths=[['resumen','tributos']], default=[])
     fovial = 0.0
     cotrans = 0.0
-    es_combus = 0
+    if isinstance(resumen_tributos, list):
+        for trib in resumen_tributos:
+            if trib.get('codigo') == 'D1':
+                fovial = float(trib.get('valor', 0))
+            elif trib.get('codigo') == 'C8':
+                cotrans = float(trib.get('valor', 0))
 
-    # Recolectar todos los códigos de tributos presentes en los ítems
-    trib_codes = set()
-    for item in data.get('cuerpoDocumento', []):
-        trib_codes.update(item.get('tributos', []))
-
-    # Extraer valores desde resumen
-    for trib in data.get('resumen', {}).get('tributos', []):
-        codigo = trib.get('codigo')
-        valor = trib.get('valor', 0)
-        if codigo == 'D1':
-            fovial = float(valor)
-        elif codigo == 'C8':
-            cotrans = float(valor)
-
-    # Determinar combustible
-    if {'D1', 'C8'}.issubset(trib_codes) and fovial > 0 and cotrans > 0:
-        es_combus = 1
+    # 3) Determinar si es combustible
+    es_combus = 1 if {'D1','C8'}.issubset(trib_codes) and fovial > 0 and cotrans > 0 else 0
 
     return es_combus, fovial, cotrans
-
 
 # Punto de entrada para prueba manual
 if __name__ == "__main__":

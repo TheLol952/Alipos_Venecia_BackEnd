@@ -24,7 +24,7 @@ def obtenerCuentaContable(data: dict) -> tuple:
     3. Obtiene cuenta base y datos DTE.
     4. Genera cuenta final y relación.
     5. Devuelve una tupla con:
-       (CUENTA_CONTABLE, CUENTA_RELACION, CON_ENTIDAD,
+        (CUENTA_CONTABLE, CUENTA_RELACION, CON_ENTIDAD,
         DTE_TIPO_OPERACION, DTE_CLASIFICACION, DTE_SECTOR, DTE_TIPO_COSTO_GASTO)
     """
     # 1. Servicio de sucursales
@@ -33,7 +33,7 @@ def obtenerCuentaContable(data: dict) -> tuple:
 
     # 2. Validar detección de sucursal
     if not nombre_sucursal or "DESCONOCIDA" in nombre_sucursal:
-        return ('Null', 'Null', 'Null', 'Null', 'Null', 'Null', 'Null')
+        return ('null', 'null', 'null', 'null', 'null', 'null', 'null')
 
     # Extraer campos de sucursal
     con_entidad = sucursal_info.get("ConEntidad")
