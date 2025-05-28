@@ -1,5 +1,5 @@
 ##  Para instalar las dependencias del proyecto:
-'pip install -r requirements.txt'
+'pip install -r src/core/requirements.txt'
 
 ## Activar entorno virtual
 '.\venv\Scripts\activate'

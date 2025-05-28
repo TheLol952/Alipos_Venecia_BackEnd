@@ -130,10 +130,10 @@ Ahora segun todos los datos anteriormente recopilados, los insertaremos en la ta
     Este procedimiento al ser llamado ejecutara y llamara a los anteriores archivos creados y los datos retornados los guardara en variables que se utilizaran mas adelante, primero se ejecutara el archivo
     CuentaSucursalesService.py, luego CuentaBaseService.py y finalmente CuentaFinalService.py y ahora que hemos obtenido y guardado todos los datos necesarios, los insertaremos en nuesta db en la tabla, pero eso lo haremos en otro procedimiento, por el momento soalemte retornaremos los datos: CUENTA_CONTABLE, CUENTA_RELACION, CON_ENTIDAD, DTE_TIPO_OPERACION, DTE_CLASIFICACION, DTE_SECTOR, DTE_TIPO_COSTO_GASTO.
 
-### Insertar productos en DETCOMPRAS 
-Este proceso se encargara de insertar todos los items dentro de una compra, hacia la tabla CO_DETCOMPRAS donde se deberan de ingresar los siguientes campos: ID(auto), CODEEMP(ALIPOS2025), CODPROV(Codigo del proveedor 'Nit' segun la compra original formateada), TIPO(Segun compra), COMPROB(Es el correlativo de la compra original), CANTIDAD, PRECIOU, TOT(Total), IDPRODUCTO(Es el id del producto, se utilizara el proceso 3), CORRE_COMPRA(es el id de la compra 'CORRE', que se pondra x veces segun el N de items), PARA_INVENTARIO(Si el item se enviara para inventario, su valor sera 1, sino su valor por defecto sera 0), CUENTA_CONTABLE(Es la cuenta contable que heredara de la compra), EXCENTA(Por defecto, su valor sera 0).
+### Insertar productos en DETCOMPRAS (HECHO)
+Este proceso se encargara de insertar todos los items dentro de una compra, hacia la tabla CO_DETCOMPRAS donde se deberan de ingresar los siguientes campos: ID(auto), CODEEMP(ALIPOS2025), CODPROV(Codigo del proveedor 'Nit' segun la compra original formateada), TIPO(Segun compra, que esta por defecto 1), COMPROB(Es el correlativo de la compra original, que es el numero de controls DTE pero formateado), CANTIDAD, PRECIOU, TOT(Total), IDPRODUCTO(Es el id del producto, se utilizara el proceso 3), CORRE_COMPRA(es el id de la compra 'CORRE', que se pondra x veces segun el N de items), PARA_INVENTARIO(Si el item se enviara para inventario, su valor sera 1, sino su valor por defecto sera 0), CUENTA_CONTABLE(Es la cuenta contable que heredara de la compra), EXCENTA(Por defecto, su valor sera 0).
 
-### Verificar si es combustible
+### Verificar si es combustible (HECHO)
 Este proceso recibira como parametro el archivo json y verificara si la compra posee estos 2 elementos en "cuerpoDocumento" dentro del atributo "tributos" en los cuales estaran 2 codigos, siendo "D1" para el Fovial, y "C8" para el Cotrans, luego en "resumen" deberan estar ambos detallados conteniendo:
 {
     codigo: D1,
@@ -147,8 +147,9 @@ y
     valor: 1.08
 }
 ambos valores seran almacenados en las columnas FOVIAL Y COTRANS, y en este caso se deduce que la compra realizada es combustible, por lo tanto se marcara  ES_COMBUSTIBLE(1), el valor por defecto sera de 0 hasta que se demuestre que la compra es de tipo combustible.
+El procedimiento Retornara los siguientes valores: ES_COMBUSTIBLE, FOVIAL(valor) Y COTRANS(valor)
 
-### Obtener los datos de una compra (json)
+### Obtener los datos de una compra (json) (HECHO)
 Este proceso recibira como parametro el archivo json y revisara que posea estos atributos:
 CODTIPO(En los archivos json hay un atributo llamado 'tipoDte' que tiene un valor, dicho valor se comparara con la tabla DTE_TIPO_DOCUMENTO_002, y comparara la columna CODIGO_MH y extraera el valor con el que coincidio), COMPROB(Sera el correlativo del numero de control sin guiones ni ceros, por ejemplo: 8207, se utilizara el proceso 4), FECHA(Es la fecha de emision de la factura), COMPRAIE(Se pondra en 0, ya que no se reciben compras excentas en digital), COMPRAEE(Similar al caso anterior, se pondra en 0), COMPRAIG(Se tomara este valor de 'resumen.totalGravada', que es el subtotal de la compra), IVA(Se tomara de 'resumen.tributos[codigo:20, valor:(13%)]' que sera el 13% del subtotal), TOTALCOMP(Es la sumatoria del subtotal + iva, o se puede tomar de 'totalPagar'), RETENCION(Se aplica el 1% sobre el subtotal, o se toma de 'resumen.ivaRete1'), DESCUENTOS(Es el total de los descuentos de la compra, se tomara de 'resumen.totalDescu'), IVA_PERCIBIDO(Se aplica el 1% sobre el subtotal, o se toma directamente de 'resumen.ivaPerci1').
 

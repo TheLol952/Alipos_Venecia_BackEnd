@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Isgqg18JIiYmSj5bqoWs" name="Page-1">
-        <mxGraphModel dx="772" dy="1482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="705" dy="1538" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -293,7 +293,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="oezgg8acSVRNYSnEvdYP" name="Page-2">
-        <mxGraphModel dx="772" dy="382" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="658" dy="345" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -323,7 +323,7 @@
                 <mxCell id="Pus2fvjTajd8eDbIFVsy-12" value="Se inserta el id de la compra automaticamente" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-8" vertex="1">
                     <mxGeometry y="30" width="290" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="Pus2fvjTajd8eDbIFVsy-14" value="CODEEMP" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                <mxCell id="Pus2fvjTajd8eDbIFVsy-14" value="CODEMP" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="450" width="300" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="Pus2fvjTajd8eDbIFVsy-15" value="&lt;div&gt;Se insertara automaticamente un usuario predeterminado&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;PREDETERMINADO: ALIPOS2025&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-14" vertex="1">
@@ -337,9 +337,11 @@
                 <mxCell id="Pus2fvjTajd8eDbIFVsy-17" value="CODTIPO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="610" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="Pus2fvjTajd8eDbIFVsy-18" value="&lt;div&gt;Tipo de factura que se ingresa&lt;/div&gt;&lt;div&gt;POR EJEMPLO: CCF, FAC&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-17" vertex="1">
-                    <mxGeometry y="30" width="290" height="90" as="geometry"/>
-                </mxCell>
+                <object label="&lt;div&gt;Tipo de factura que se ingresa&lt;/div&gt;&lt;div&gt;POR EJEMPLO: CCF, FAC&lt;/div&gt;" hedietLinkedDataV1_path="../../src/procedimientos/InsertarCompraMain.py" hedietLinkedDataV1_start_col_x-num="11" hedietLinkedDataV1_start_line_x-num="23" hedietLinkedDataV1_end_col_x-num="11" hedietLinkedDataV1_end_line_x-num="23" id="Pus2fvjTajd8eDbIFVsy-18">
+                    <mxCell style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Pus2fvjTajd8eDbIFVsy-17" vertex="1">
+                        <mxGeometry y="30" width="290" height="90" as="geometry"/>
+                    </mxCell>
+                </object>
                 <mxCell id="Pus2fvjTajd8eDbIFVsy-19" value="" style="edgeStyle=none;html=1;entryX=0.486;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Pus2fvjTajd8eDbIFVsy-15" target="Pus2fvjTajd8eDbIFVsy-17" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
@@ -405,7 +407,7 @@
                 <mxCell id="_2RXoKeZ-u9fe6G11f5I-10" value="EXPORTACIO" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="1630" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="_2RXoKeZ-u9fe6G11f5I-11" value="&lt;div&gt;Subtotal de compra Internacionales o Exportaciones&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-10" vertex="1">
+                <mxCell id="_2RXoKeZ-u9fe6G11f5I-11" value="&lt;div&gt;Subtotal de compra Internacionales o Exportaciones,&amp;nbsp; po defecto 0&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="_2RXoKeZ-u9fe6G11f5I-10" vertex="1">
                     <mxGeometry x="5" y="30" width="290" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="_2RXoKeZ-u9fe6G11f5I-12" style="edgeStyle=none;html=1;entryX=0.497;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-4" target="_2RXoKeZ-u9fe6G11f5I-7" edge="1">
@@ -848,10 +850,10 @@
                 <mxCell id="leSfUtI8FsCP2ZuYM4d1-36" value="WHERE numItem &amp;lt;= TotalNumItem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="776.25" y="1270" width="230" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-37" value="ID_TIPO_COMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-37" value="ID_TIPOCOMPRA" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
                     <mxGeometry x="151" y="4760" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="leSfUtI8FsCP2ZuYM4d1-40" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Esta opcion se pondra por default:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;00000001 -&amp;gt; Gasto y se podra cambiar a las demas opciones a la hora de editar dicha compra si el usuario lo desea&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-37" vertex="1">
+                <mxCell id="leSfUtI8FsCP2ZuYM4d1-40" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Esta opcion se pondra por default:&amp;nbsp;&lt;/font&gt;00000003&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp; y se podra cambiar a las demas opciones a la hora de editar dicha compra si el usuario lo desea&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="leSfUtI8FsCP2ZuYM4d1-37" vertex="1">
                     <mxGeometry x="-1" y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="leSfUtI8FsCP2ZuYM4d1-39" style="edgeStyle=none;html=1;entryX=0.498;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_2RXoKeZ-u9fe6G11f5I-84" target="leSfUtI8FsCP2ZuYM4d1-37" edge="1">
