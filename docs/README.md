@@ -78,8 +78,6 @@ CREATE TABLE DICCIONARIO_COMPRAS_AUTO (
     SECTOR NUMBER,
     TIPO_COSTO_GASTO NUMBER,
     SUCURSAL VARCHAR2(100),
-    FRECUENCIA NUMBER DEFAULT 1,
-    ULTIMA_COMPRA DATE
 );
 
 ## Tabla para el diccionario de sucursales, esta tendra por objetivo identificar palabras clave que se le atribuyen a una sucursal, por ejemplo si en una direccion hace mencion a San Miguel, tomara en cuenta esa direecion clave, y a la hora que se encuentre con mas facturas con esa direccion, se asumira que dicha compra le pertenece a San Miguel
@@ -166,8 +164,6 @@ BEGIN
             p_sector,
             p_tipo_costo_gasto,
             p_sucursal,
-            1,
-            SYSDATE
         );
 
         COMMIT;
