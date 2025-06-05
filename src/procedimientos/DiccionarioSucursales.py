@@ -41,21 +41,18 @@ def normalize_nit(nit):
 
 # Cargar diccionario de sucursales desde la BD
 def cargar_diccionario_sucursales():
+    """Carga el diccionario manual de sucursales desde la BD"""
     try:
         with get_connection() as conn:
             with conn.cursor() as cur:
-                cur.execute("SELECT SUCURSAL, PALABRA_CLAVE FROM DICCIONARIO_SUCURSALES")
-                rows = cur.fetchall()
-                
-                diccionario = {}
-                for sucursal, palabra_clave in rows:
-                    sucursal_norm = normalize(sucursal)
-                    palabra_clave_norm = normalize(palabra_clave)
-                    diccionario.setdefault(sucursal_norm, []).append(palabra_clave_norm)
-                
-                return diccionario
+                cur.execute("""
+                    SELECT SUCURSAL, PALABRA_CLAVE 
+                    FROM DICCIONARIO_SUCURSALES
+                    ORDER BY ID
+                """)
+                return {normalize(sucursal): normalize(clave) 
+                        for sucursal, clave in cur.fetchall()}
     except Exception as e:
-        print("❌ Error al cargar el diccionario de sucursales:", e)
         return {}
 
 # Identifica la sucursal según la descripción y el diccionario, usando fuzzy matching
@@ -103,8 +100,7 @@ def identificar_sucursal_auto(descripcion, diccionario):
                 if row:
                     return row[0]
     except Exception as e:
-        print("❌ Error al buscar en DICCIONARIO_COMPRAS_AUTO:", e)
-    return "SUCURSAL_DESCONOCIDA_AUTO"
+        return "SUCURSAL_DESCONOCIDA_AUTO"
 
 # Actualiza la tabla DICCIONARIO_SUCURSALES desde los datos en DICCIONARIO_COMPRAS_AUTO
 def actualizar_diccionario_sucursales():
@@ -112,23 +108,14 @@ def actualizar_diccionario_sucursales():
     Actualiza la tabla DICCIONARIO_SUCURSALES con la sucursal más reciente por cada dirección
     registrada en DICCIONARIO_COMPRAS_AUTO.
     """
-    print("📥 Actualizando DICCIONARIO_SUCURSALES con nuevas referencias...")
     try:
         with get_connection() as conn:
             with conn.cursor() as cur:
                 # Obtener la sucursal más reciente para cada dirección
                 cur.execute("""
                     SELECT DIRECCION, SUCURSAL
-                    FROM (
-                        SELECT DIRECCION,
-                                SUCURSAL,
-                                ROW_NUMBER() OVER (
-                                    PARTITION BY DIRECCION
-                                    ORDER BY ULTIMA_COMPRA DESC
-                                ) AS RN
-                        FROM DICCIONARIO_COMPRAS_AUTO
-                    ) sub
-                    WHERE RN = 1
+                    FROM DICCIONARIO_COMPRAS_AUTO
+                    WHERE SUCURSAL IS NOT NULL
                 """)
                 rows = cur.fetchall()
 
@@ -179,7 +166,6 @@ def actualizar_diccionario_sucursales():
                         updates += 1
 
                 conn.commit()
-                print(f"✅ Diccionario actualizado. Inserciones: {inserts}, Actualizaciones: {updates}")
     except Exception as e:
         print("❌ Error actualizando el diccionario de sucursales:", e)
 
@@ -222,48 +208,46 @@ def identificar_sucursal_por_descripcion(data):
     return "SUCURSAL_DESCONOCIDA_POR_DESCRIPCION"
 
 # Analiza un JSON de compra
-def analizar_json_dict(data):
-    # Extraer descripción desde el campo correcto
-    descripcion = data.get("emisor", {}).get("direccion", {}).get("complemento", "")
+def ObtenerSucursal(data: dict) -> str:
+    """
+    Analiza un JSON de compra y devuelve la sucursal identificada.
+    - Extrae la descripción desde emisor.direccion.complemento
+    - Extrae y normaliza el NIT de emisor.nit
+    - Intenta identificar la sucursal usando:
+      1) DICCIONARIO_SUCURSALES (coincidencia exacta o fuzzy)
+      2) DICCIONARIO_COMPRAS_AUTO (busca en la tabla de aprendizaje)
+      3) Si el proveedor es general y aún no se identifica, usa la descripción de ítems
+    - Actualiza el diccionario de sucursales y retorna el nombre final de la sucursal
+    """
+    # 1) Extraer descripción
+    descripcion = data.get("emisor", {}).get("direccion", {}).get("complemento", "") or ""
 
-    # Extraer NIT
-    nit = data.get("emisor", {}).get("nit", "")
-    # Normalizar nit (Se le extraeron los guiones y espacios)
+    # 2) Extraer y normalizar NIT
+    nit = data.get("emisor", {}).get("nit", "") or ""
     nit = normalize_nit(nit)
-    print(f"🔍 NIT del proveedor: {nit}")
 
-    # Cargar diccionario desde la base de datos
+    # 3) Cargar diccionario de sucursales desde la BD
     diccionario = cargar_diccionario_sucursales()
 
-    # Identificar sucursal por diccionario principal
+    # 4) Intentar identificar por diccionario principal
     sucursal = identificar_sucursal(descripcion, diccionario)
 
-    # Si no se encuentra, buscar por dirección en la tabla de aprendizaje
+    # 5) Si no se encontró, buscar en DICCIONARIO_COMPRAS_AUTO
     if sucursal == "SUCURSAL_DESCONOCIDA":
-        print("🔍 No se encontró coincidencia en DICCIONARIO_SUCURSALES. Buscando en DICCIONARIO_COMPRAS_AUTO...")
-        sucursal = identificar_sucursal_auto(descripcion, diccionario)
+        sucursal_auto = identificar_sucursal_auto(descripcion, diccionario)
+        sucursal = sucursal_auto
 
-    # Si aún no se encuentra, y el proveedor es general, analizar por descripción del ítem
+    # 6) Si aún no se encontró y es proveedor general, buscar por descripción de ítem
     if sucursal == "SUCURSAL_DESCONOCIDA_AUTO" and nit in PROVEEDORES_GENERALES:
-        print("🔍 Proveedor general detectado. Intentando identificar sucursal desde la descripción del ítem...")
-        sucursal = identificar_sucursal_por_descripcion(data)
+        sucursal_item = identificar_sucursal_por_descripcion(data)
+        sucursal = sucursal_item
 
-    # Resultado final
-    print("\n✅ Resultado del análisis:")
-    print(f"➡️ Sucursal detectada: {sucursal}")
-    print(f"➡️ Descripción detectada:\n{descripcion.strip()}")
-
-    # Actualizar diccionario con nuevas entradas
+    # 7) Actualizar diccionario con posibles nuevos registros
     actualizar_diccionario_sucursales()
-    
-# 🚀 Punto de entrada público
-def IniciarProceso(data):
-    try:
-        if not isinstance(data, dict):
-            raise ValueError("⚠️ El argumento debe ser un diccionario JSON (objeto de Python).")
-        analizar_json_dict(data)
-    except Exception as e:
-        print("❌ Error al ejecutar el proceso:", e)
+
+    # 8) Devolver la sucursal finalmente identificada
+    return sucursal
+
 
 # 🔌 Ejecutar prueba automática si se corre el script directamente
 if __name__ == "__main__":
@@ -271,7 +255,5 @@ if __name__ == "__main__":
     data_ejemplo = json.loads(input("Ingrese el JSON a analizar: ")) 
 
     # Llamar a la función de inicio del proceso}
-    
     print("🚀 Iniciando prueba automática...")
-    IniciarProceso(data_ejemplo)
-    print("🏁 Prueba completada")
+    ObtenerSucursal(data_ejemplo)
