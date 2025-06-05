@@ -26,11 +26,9 @@ class FormatearControlDTE:
         
 # Punto de entrada para prueba manual
 if __name__ == "__main__":
-    print("🚀 Servicio Formateo DTE iniciado...")
     try:
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)
         resultado = FormatearControlDTE.procesar(data)
-        print(json.dumps(resultado, indent=2, ensure_ascii=False))
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")

@@ -46,7 +46,6 @@ def EsCombustible(data: dict) -> tuple[int, float, float]:
 
 # Punto de entrada para prueba manual
 if __name__ == "__main__":
-    print("🚀 Servicio EsCombustible iniciado...")
     try:
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)

@@ -29,7 +29,6 @@ class ListarInsertarProductos:
         items = data.get("cuerpoDocumento", [])
         result_ids: list[str] = []
         current_date = datetime.now().strftime('%d-%b-%y').upper()  # e.g. '05-APR-25'
-        print(f"🔎 Procesando {len(items)} ítem(s) - Fecha: {current_date}")
         try:
             with get_connection() as conn:
                 with conn.cursor() as cur:
@@ -37,7 +36,6 @@ class ListarInsertarProductos:
                         num_item = item.get("numItem", idx)
                         desc = item.get("descripcion", "") or ""
                         precio = item.get("precioUni") or item.get("precio_unitario") or 0
-                        print(f"\n🛒 Ítem {num_item}: '{desc[:30]}...', precio={precio}")
                         # 1) Buscar producto existente
                         cur.execute(
                             "SELECT PRODUCTO"
@@ -46,10 +44,8 @@ class ListarInsertarProductos:
                             {"nombre": desc}
                         )
                         row = cur.fetchone()
-                        print(f"  → Búsqueda existente: {row}")
                         if row and row[0] is not None:
                             prod_code = str(row[0]).strip().zfill(8)
-                            print(f"✅ Existente ID={prod_code}")
                             result_ids.append(prod_code)
                         else:
                             # 2) Calcular siguiente ID
@@ -57,7 +53,6 @@ class ListarInsertarProductos:
                             max_val = cur.fetchone()[0] or 0
                             next_id = int(max_val) + 1
                             code_str = str(next_id).zfill(8)
-                            print(f"⚠️ No encontrado. Insertando ID={code_str}, columna={num_item}")
                             # 3) Insertar nuevo producto
                             cur.execute(
                                 "INSERT INTO TA_PRODUCTOS ("
@@ -73,22 +68,17 @@ class ListarInsertarProductos:
                                 }
                             )
                             conn.commit()
-                            print(f"✅ Insertado ID={code_str}")
                             result_ids.append(code_str)
         except Exception as e:
-            print(f"❌ Error al procesar productos: {e}")
             return []
 
-        print(f"🎉 Completado IDs: {result_ids}")
         return result_ids
 
 # Prueba manual
 if __name__ == "__main__":
-    print("🚀 Listar/Insertar Proveedores iniciado...")
     try:
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)
         resultado = ListarInsertarProductos.procesar(data)
-        print(json.dumps(resultado, indent=2, ensure_ascii=False))
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")
