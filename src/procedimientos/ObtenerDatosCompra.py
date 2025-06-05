@@ -20,7 +20,6 @@ def get_from_json(data: dict, paths: list[list[str]], default=None):
             continue
     return default
 
-
 def ObtenerDatosCompra(data: dict) -> tuple:
     """
     Extrae campos clave de una compra JSON, usando mapeos de rutas alternativas:
@@ -78,7 +77,7 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     compraig = float(get_from_json(
         data,
         paths=[['resumen','totalGravada'], ['resumen','totalSujetoRetencion'], ['cuerpoDocumento','montoSujetoPercepcion']],
-        default=0
+        default=0.0
     ))
 
     # 5) IVA (orígenes múltiples)
@@ -101,29 +100,29 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     # 6) TOTALCOMP
     totalcomp = float(get_from_json(
         data,
-        paths=[['resumen','totalPagar'], ['resumen','montoTotalOperacion']],
-        default=0
+        paths=[['resumen','totalPagar'], ['resumen','montoTotalOperacion'], ['resumen','totalSujetoRetencion']],
+        default=0.0
     ))
 
     # 7) RETENCION
     retencion = float(get_from_json(
         data,
         paths=[['resumen','ivaRete1'], ['resumen','totalIVAretenido']],
-        default=0
+        default=0.0
     ))
 
     # 8) DESCUENTOS
     descuentos = float(get_from_json(
         data,
         paths=[['resumen','totalDescu'], ['resumen','descuGravada']],
-        default=0
+        default=0.0
     ))
 
     # 9) IVA_PERCIBIDO
     iva_perci = float(get_from_json(
         data,
         paths=[['resumen','ivaPerci1']],
-        default=0
+        default=0.0
     ))
 
     # 10) IVA_PERCEPCION (2%)
@@ -139,7 +138,7 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     numero_control = str(get_from_json(
         data,
         paths=[['identificacion','numeroControl']],
-        default="Null"
+        default=None
     ))
     parts = numero_control.split('-')
     correlativo_dte = parts[-1] if parts else ''
@@ -148,21 +147,21 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     numero_control_dte = str(get_from_json(
         data,
         paths=[['identificacion','numeroControl']],
-        default="Null"
+        default=None
     ))
 
     # 13) SELLO_RECIBIDO
     sello_recibido = str(get_from_json(
         data,
-        paths=[['responseMH','selloRecibido'],['sello']],
-        default="Null"
+        paths=[['responseMH','selloRecibido'],['sello'],['selloRecibido']],
+        default=None
     ))
 
     #14) CODIGO_GENERACION_DTE
     codigo_generacion = str(get_from_json(
         data,
         paths=[['identificacion','codigoGeneracion']],
-        default="Null"
+        default=None
     ))
 
     #  & ) Hora y fecha de procesamiento
@@ -193,12 +192,9 @@ def ObtenerDatosCompra(data: dict) -> tuple:
 
 # Punto de entrada para prueba manual
 if __name__ == "__main__":
-    print("🚀 Servicio ObtenerDatosCompra iniciado...")
     try:
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)
         valores = ObtenerDatosCompra(data)
-
-        print(valores)    
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")

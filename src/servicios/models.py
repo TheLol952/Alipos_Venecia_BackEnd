@@ -77,9 +77,7 @@ class Database:
             self.cursor.execute(sql, params)
             self.connection.commit()
 
-            print(f"✅ Compra insertada correctamente. Comprobante: {params.get('COMPROB')}")
             return True
-
         except oracledb.Error as e:
             print(f"❌ Error al insertar la compra: {e}")
             return False

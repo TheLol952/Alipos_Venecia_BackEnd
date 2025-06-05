@@ -23,7 +23,6 @@ def consulta_documentos(codigoGeneracion, fechaEmision):
             "action": data.get("action"),
             "observaciones": observaciones_str
         }
-        print("Datos de la API del Ministerio de Hacienda obtenidos correctamente.")
     except requests.exceptions.RequestException as e:
         print(f"Error en la solicitud a la API del Ministerio de Hacienda: {e}")
         return None
