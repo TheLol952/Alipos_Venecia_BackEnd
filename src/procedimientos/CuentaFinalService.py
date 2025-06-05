@@ -29,7 +29,10 @@ class CuentaFinalService:
         """
         # Validación básica
         if 'xx' not in cuenta_base:
-            raise ValueError("El parámetro 'cuenta_base' debe contener el placeholder 'xx'.")
+            return {
+                'CuentaFinal': cuenta_base,
+                'CuentaRelacionada': None
+            }
 
         # 1. Formar CuentaFinal
         cuenta_final = cuenta_base.replace('xx', cod_contabilidad)
@@ -50,12 +53,10 @@ class CuentaFinalService:
 
 # Punto de entrada para prueba manual
 def main():
-    print("🚀 Servicio CuentaFinal iniciado...")
     try:
         cuenta_base = input("Ingrese CuentaBase (p.ej. '4301xx11'): ") or ""
         cod_contabilidad = input("Ingrese CodContabilidad (p.ej. '04'): ") or ""
         resultado = CuentaFinalService.generar_cuenta_final(cuenta_base, cod_contabilidad)
-        print(json.dumps(resultado, indent=2, ensure_ascii=False))
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")
 

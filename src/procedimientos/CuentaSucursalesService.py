@@ -94,11 +94,9 @@ class CuentaSucursalesService:
 
 # Punto de entrada para recibir input manual
 if __name__ == "__main__":
-    print("🚀 Servicio CuentaSucursales iniciado...")
     try:
         json_str = input("Ingrese el JSON de la compra: ")
         payload = json.loads(json_str)
         resultado = CuentaSucursalesService.obtener_datos_sucursal(payload)
-        print(json.dumps(resultado, indent=2, ensure_ascii=False))
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")
