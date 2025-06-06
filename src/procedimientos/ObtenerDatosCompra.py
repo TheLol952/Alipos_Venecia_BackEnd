@@ -1,8 +1,9 @@
 import json
 import oracledb
 from core.conexion_oracle import get_connection
-from procedimientos.FormateoDTE import FormatearControlDTE
+from FormateoDTE import FormatearControlDTE
 from datetime import datetime
+
 
 def get_from_json(data: dict, paths: list[list[str]], default=None):
     """
@@ -134,7 +135,7 @@ def ObtenerDatosCompra(data: dict) -> tuple:
         retencion2 = float(0)
 
     # 11) CORRELATIVO_DTE (con ceros)
-    numero_control = (get_from_json(
+    numero_control = str(get_from_json(
         data,
         paths=[['identificacion','numeroControl']],
         default=None
@@ -143,28 +144,25 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     correlativo_dte = parts[-1] if parts else ''
 
     # 12) NUMERO_CONTROL (puro)
-    tmp_numero_control_dte = (get_from_json(
+    numero_control_dte = str(get_from_json(
         data,
         paths=[['identificacion','numeroControl']],
         default=None
     ))
-    numero_control_dte = str(tmp_numero_control_dte) if tmp_numero_control_dte is not None else None
 
     # 13) SELLO_RECIBIDO
-    tmp_sello_recibido = (get_from_json(
+    sello_recibido = str(get_from_json(
         data,
         paths=[['responseMH','selloRecibido'],['sello'],['selloRecibido']],
         default=None
     ))
-    sello_recibido = str(tmp_sello_recibido) if tmp_sello_recibido is not None else None
 
     #14) CODIGO_GENERACION_DTE
-    tmp_codigo_generacion = str(get_from_json(
+    codigo_generacion = str(get_from_json(
         data,
         paths=[['identificacion','codigoGeneracion']],
         default=None
     ))
-    codigo_generacion = str(tmp_codigo_generacion) if tmp_codigo_generacion is not None else None
 
     #  & ) Hora y fecha de procesamiento
     now = datetime.now()
@@ -198,6 +196,5 @@ if __name__ == "__main__":
         entrada = input("Ingrese el JSON de la compra: ")
         data = json.loads(entrada)
         valores = ObtenerDatosCompra(data)
-        #print(valores)
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")

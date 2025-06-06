@@ -4,7 +4,7 @@ from core.conexion_oracle import get_connection
 import unicodedata
 
 try:
-    import procedimientos.DiccionarioSucursales as ds
+    import DiccionarioSucursales as ds
 except ImportError:
     from . import DiccionarioSucursales as ds
 

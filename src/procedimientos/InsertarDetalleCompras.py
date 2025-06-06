@@ -1,12 +1,12 @@
 import json
 import oracledb
 from core.conexion_oracle import get_connection
-from procedimientos.FormateoDTE import FormatearControlDTE
-from procedimientos.Listar_InsertarProveedores import ListarInsertarProveedores
-from procedimientos.Listar_InsertarProductos import ListarInsertarProductos
+from FormateoDTE import FormatearControlDTE
+from Listar_InsertarProveedores import ListarInsertarProveedores
+from Listar_InsertarProductos import ListarInsertarProductos
 
 try:
-    import procedimientos.DiccionarioSucursales as ds
+    import DiccionarioSucursales as ds
 except ImportError:
     from . import DiccionarioSucursales as ds
 
@@ -101,10 +101,10 @@ class InsertarDetallesCompras:
 if __name__ == "__main__":
     try:
         data = json.loads(input("Ingrese JSON de compra: "))
-        corre = 22848
-        codtipo = 'CCF'
-        cuenta = 43011330
-        ids = InsertarDetallesCompras.procesar(data, corre,  codtipo, cuenta) 
+        corre = int(input("Ingrese CORRE_COMPRA: "))
+        cuenta = input("Ingrese CUENTA_CONTABLE: ")
+        ids = InsertarDetallesCompras.procesar(data, corre, cuenta) 
+        print(f"IDs insertados: {ids}")       
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")
 

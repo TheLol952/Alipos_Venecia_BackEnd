@@ -3,19 +3,19 @@ import sys
 from typing import Optional, Dict, Any
 
 try:
-    from procedimientos.CuentaSucursalesService import CuentaSucursalesService
+    from CuentaSucursalesService import CuentaSucursalesService
 except ImportError:
-    from procedimientos.CuentaSucursalesService import CuentaSucursalesService
+    from .CuentaSucursalesService import CuentaSucursalesService
 
 try:
-    from procedimientos.CuentaBaseService import CuentaBaseService
+    from CuentaBaseService import CuentaBaseService
 except ImportError:
-    from procedimientos.CuentaBaseService import CuentaBaseService
+    from .CuentaBaseService import CuentaBaseService
 
 try:
-    from procedimientos.CuentaFinalService import CuentaFinalService
+    from CuentaFinalService import CuentaFinalService
 except ImportError:
-    from procedimientos.CuentaFinalService import CuentaFinalService
+    from .CuentaFinalService import CuentaFinalService
 
 
 def obtenerCuentaContable(data: dict) -> tuple:

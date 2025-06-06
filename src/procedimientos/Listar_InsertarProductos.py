@@ -5,7 +5,7 @@ from datetime import datetime
 
 # Función de normalización reutilizada
 try:
-    import procedimientos.DiccionarioSucursales as ds
+    import DiccionarioSucursales as ds
 except ImportError:
     from . import DiccionarioSucursales as ds
 
