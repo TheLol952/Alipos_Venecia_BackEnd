@@ -6,15 +6,16 @@ import os
 import json
 import logging
 import socket
+import sys
 from datetime import date
 from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
 from datetime import datetime
-import sys
+from procedimientos.InsertarCompraMain import InsertarCompras
 from pathlib import Path
-from servicios.services import recepcion_factura
-from servicios.models import Database
+#from servicios.services import recepcion_factura
+#from core.conexion_oracle import get_connection
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -116,6 +117,13 @@ def ensure_damaged_folder(year, month):
     path = os.path.join(folder_path, "Archivos_Dañados")
     os.makedirs(path, exist_ok=True)
     return path
+
+# ---------------------------- Crear carpeta para compras pendientes (Que no se insertaron en la DB), segun el año y periodo ----------------------------
+def ensure_pending_folder(year, month):
+    base = ensure_folder_structure(year, month)
+    pending = os.path.join(base, "Compras_Pendientes")
+    os.makedirs(pending, exist_ok=True)
+    return pending  
 
 # ---------------------------- Procesar correos electrónicos ----------------------------
 def process_emails(start_date, end_date):
@@ -277,19 +285,40 @@ def process_emails(start_date, end_date):
 
                 # Insertar en BD solo si ambos archivos son válidos
                 try:
-                    db = Database()
-                    # Revisa si ya hay una factura duplicada en la db
-                    if db.check_invoice(codigo_generacion):
-                        logging.info(f"🟡 Duplicado: {codigo_generacion}")
+                    resultado = InsertarCompras(json_data)
+                    #print(f"→ Resultado de InsertarCompras: {resultado!r}")
+
+                    if resultado == 1:
+                        total_facturas_insertadas += 1
+                        print(f"✅ [INSERTADA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']} → factura #{total_facturas_insertadas}")
+                        try:
+                            mail.uid('STORE', uid, '+FLAGS', '\\Seen')
+                        except Exception as e:
+                            logging.error(f"❌ Error marcando como visto el correo UID {uid}: {e}")
+                    elif resultado == 2:
+                        print(f"⚠️ [OMITIDA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']}  (motivo: Duplicada)")
+                        # Opcional: marcamos también como leído si queremos saltar ese correo
+                        try:
+                            mail.uid('STORE', uid, '+FLAGS', '\\Seen')
+                        except:
+                            pass
                     else:
-                        if recepcion_factura(json_data, year, month):
-                            total_facturas_insertadas += 1
-                            try:
-                                mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-                            except Exception as e:
-                                logging.error(f"❌ Error marcando como visto el correo UID {uid}: {str(e)}")
-                            logging.info(f"✅ Insertada: {codigo_generacion}")
-                    db.close()
+                        # Si NO se pudo insertar por error o validación, movemos ambos archivos a “Compras Pendientes”
+                        pending_folder = ensure_pending_folder(year, month)
+
+                        # Construimos las rutas destino usando el mismo nombre de archivo
+                        dest_json = os.path.join(pending_folder, os.path.basename(json_path))
+                        dest_pdf  = os.path.join(pending_folder, os.path.basename(pdf_path))
+
+                            # Renombramos (mueve) los archivos
+                        os.replace(json_path, dest_json)
+                        os.replace(pdf_path,  dest_pdf)
+
+                        logging.warning(
+                            f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
+                            f"no insertada (estado={resultado}), movida a: {pending_folder}"
+                        )
+
                 except Exception as e:
                     logging.error(f"❌ Error insertando factura: {str(e)}")
                     continue
