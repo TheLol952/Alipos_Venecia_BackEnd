@@ -175,3 +175,5 @@ cython_debug/
 estructura.py
 FACTURAS_VENECIA
 data
+ignored_damaged
+incomplete_files

@@ -1,3 +1,6 @@
+## Ejecutar script main
+'python -m src.api.app'
+
 ##  Para instalar las dependencias del proyecto:
 'pip install -r src/core/requirements.txt'
 
