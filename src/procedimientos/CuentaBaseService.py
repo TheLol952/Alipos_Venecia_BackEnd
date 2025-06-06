@@ -4,9 +4,9 @@ from core.conexion_oracle import get_connection
 
 # Importar la función para obtener sucursal
 try:
-    from DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
+    from procedimientos.DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
 except ImportError:
-    from .DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
+    from procedimientos.DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
 
 class CuentaBaseService:
     @staticmethod

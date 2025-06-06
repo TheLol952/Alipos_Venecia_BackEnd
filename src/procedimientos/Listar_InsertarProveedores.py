@@ -3,7 +3,7 @@ import oracledb
 from core.conexion_oracle import get_connection
 
 try:
-    import DiccionarioSucursales as ds
+    import procedimientos.DiccionarioSucursales as ds
 except ImportError:
     from . import DiccionarioSucursales as ds
 
@@ -33,7 +33,8 @@ class ListarInsertarProveedores:
                     )
                     row = cur.fetchone()
                     if row and row[0] is not None:
-                        return str(row[0]).strip().zfill(8)
+                        código_existente = str(row[0]).strip().zfill(8)
+                        return código_existente
                     # No existe: calcular siguiente código
                     cur.execute("SELECT MAX(TO_NUMBER(PROVEEDOR)) FROM TA_PROVEEDORES")
                     max_val = cur.fetchone()[0] or 0
@@ -53,9 +54,11 @@ class ListarInsertarProveedores:
                     )
                     conn.commit()
                     return codigo_nuevo
-        except Exception:
+        except Exception as e:
             # En caso de error, devolver None o cadena vacía
+            print(f"⚠️ Error al buscar/crear proveedor: {e}")
             return None
+        
 
 # Punto de entrada para prueba manual
 if __name__ == "__main__":

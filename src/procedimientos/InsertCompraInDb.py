@@ -1,7 +1,7 @@
 import json
 import oracledb
 from core.conexion_oracle import get_connection
-from InsertarDetalleCompras import InsertarDetallesCompras
+from procedimientos.InsertarDetalleCompras import InsertarDetallesCompras
 
 def InsertCompraInDb(
     corre,
@@ -100,23 +100,25 @@ def InsertCompraInDb(
                         "sello":    sello_recibido
                     })
                     if cur.fetchone():
-                        return
+                        return 2
 
                 # 2) Si faltó alguno de los tres, usamos fallback NIT+FECHA+TOTALCOMP
-                if codigo_nuevo and fecha and totalcomp:
+                if codigo_nuevo and fecha and totalcomp and numero_control_dte:
                     cur.execute("""
                             SELECT 1
                             FROM CO_COMPRAS
                             WHERE CDPROV    = :codprov
                             AND FECHA     = TO_DATE(:fecha_emision,'DD/MM/YYYY')
                             AND TOTALCOMP = :monto_total
+                            AND NUMERO_CONTROL_DTE = :num_ctrl
                     """, {
                         "codprov":       codigo_nuevo,
                         "fecha_emision": fecha,
-                        "monto_total":   totalcomp
+                        "monto_total":   totalcomp,
+                        "num_ctrl": numero_control_dte
                     })
                     if cur.fetchone():
-                        return
+                        return 2
 
                 # 2) Si no es duplicado, proceder a la inserción
                 sql = """
@@ -224,7 +226,8 @@ def InsertCompraInDb(
                 }
 
                 cur.execute(sql, binds)
-            conn.commit()
+                conn.commit()
+                resultado = 1
             # Cuando se inserte la compra, se insertara sus prductos y demas en CO_DETCOMPRAS
             InsertarDetallesCompras.procesar(data, corre, codtipo, cuenta_final)
 
@@ -258,6 +261,8 @@ def InsertCompraInDb(
             except oracledb.DatabaseError as e:
                 print(f"⚠️ Error al insertar en DICCIONARIO_COMPRAS_AUTO: {e}")
                 # No interrumpir el flujo si falla la inserción del diccionario
+            
+            return resultado
 
     except oracledb.DatabaseError as e:
         # Extraer info del error Oracle
