@@ -2,29 +2,31 @@ import json
 import oracledb
 from datetime import datetime
 from core.conexion_oracle import get_connection
-from ObtenerDatosCompra import ObtenerDatosCompra
-from AutoCuentaContable import obtenerCuentaContable
-from Listar_InsertarProveedores import ListarInsertarProveedores
-from EsCombustible import EsCombustible
-from InsertCompraInDb import InsertCompraInDb
+from procedimientos.ObtenerDatosCompra import ObtenerDatosCompra
+from procedimientos.AutoCuentaContable import obtenerCuentaContable
+from procedimientos.Listar_InsertarProveedores import ListarInsertarProveedores
+from procedimientos.EsCombustible import EsCombustible
+from procedimientos.InsertCompraInDb import InsertCompraInDb
 
 
 def InsertarCompras(data: dict) -> None:
     try:
         #Obtener datos generales de la compra
-
-        ##Obtener id de la compra
+        #print("DEBUG ↪ Iniciando InsertarCompras")
         with get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute("SELECT COALESCE(MAX(CORRE), 0) + 1 FROM CO_COMPRAS")
                 corre = cur.fetchone()[0]
+                #print("DEBUG ↪ Nuevo corre calculado:", corre)
                 data['corre'] = corre
 
         # Obtener año actual mediante datetime
         year = datetime.now().year
         month = datetime.now().month
+        #print(f"DEBUG ↪ Año actual: {year}, Mes actual: {month}")
         data['year'] = year
         codemp = (f"ALIPOS{year}")
+        #print("DEBUG ↪ codemp:", codemp)
 
         exportacio = 0
         retencioniva = 0
@@ -50,6 +52,7 @@ def InsertarCompras(data: dict) -> None:
         #Codigo interno de Alipos xx-xxxx-xxxx
         month_str = f"{month:02d}"  # Asegura que el mes tenga dos dígitos
         filtro_prefijo = f"{month_str}-{year}-%"
+        #print("DEBUG ↪ filtro_prefijo para CODIGO_FACTURA_CORRE:", filtro_prefijo)
         with get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -65,8 +68,11 @@ def InsertarCompras(data: dict) -> None:
                     {"prefijo": filtro_prefijo}
                 )
                 max_sufijo = cur.fetchone()[0] or 0
+                #print("DEBUG ↪ max_sufijo encontrado:", max_sufijo)
                 next_sufijo = int(max_sufijo) + 1
         codigo_factura_corre = f"{month_str}-{year}-{next_sufijo}"
+        #print("DEBUG ↪ codigo_factura_corre generado:", codigo_factura_corre)
+
         tipo_activo = None
         porcentaje = None
         vida_util = None
@@ -80,19 +86,27 @@ def InsertarCompras(data: dict) -> None:
 
         ## Obtener datos mediante procedimientos
         compra_datos = ObtenerDatosCompra(data)
+        #print("DEBUG ↪ compra_datos:", compra_datos)
         if not compra_datos:
+            #print("DEBUG ↪ compra_datos es None o vacío, saliendo.")
             return
         
         cuenta_contable = obtenerCuentaContable(data)
+        #print("DEBUG ↪ compra_datos es None o vacío, saliendo.")
         if not cuenta_contable:
+            #print("DEBUG ↪ cuenta_contable es None o vacío, saliendo.")
             return
         
         proveedor = ListarInsertarProveedores.procesar(data)
+        #print("DEBUG ↪ proveedor:", proveedor)
         if not proveedor:
+            #print("DEBUG ↪ proveedor es None o vacío, saliendo.")
             return
         
         es_combustible = EsCombustible(data)
+        #print("DEBUG ↪ es_combustible:", es_combustible)
         if not es_combustible:
+            #print("DEBUG ↪ es_combustible es None o vacío, saliendo.")
             return
             
 
@@ -188,9 +202,12 @@ def InsertarCompras(data: dict) -> None:
             procesado_prorrateo_hecho,
             compra_original
         )
+        #print("DEBUG ↪ datosCompra completo:", datosCompra)
 
         # Insertar en la base de datos
-        InsertCompraInDb(*datosCompra, data=data)
+        resultado = InsertCompraInDb(*datosCompra, data=data)
+        #print("DEBUG ↪ Resultado de InsertCompraInDb:", resultado)
+        return resultado
     except oracledb.DatabaseError as db_err:
         # Extraer información detallada del error Oracle
         error_obj, = db_err.args
@@ -238,8 +255,9 @@ def InsertarCompras(data: dict) -> None:
 if __name__ == "__main__":
     try:
         entrada = input("Ingrese el JSON de compra: ")
-        data = json.loads(entrada)    # aquí parseas la cadena a lista
-        InsertarCompras(data)         # pasas la lista directamente
+        data = json.loads(entrada) 
+        resultado = InsertarCompras(data)
+        print("DEBUG ↪ Valor retornado por InsertarCompras:", resultado)
     except Exception as ex:
         print(json.dumps({
             "STATUS": "ERROR",
