@@ -230,37 +230,38 @@ def InsertCompraInDb(
                 resultado = 1
             # Cuando se inserte la compra, se insertara sus prductos y demas en CO_DETCOMPRAS
             InsertarDetallesCompras.procesar(data, corre, codtipo, cuenta_final)
+            nit = data.get('emisor', {}).get('nit')
+            direccion = data.get('emisor', {}).get('direccion', {}).get('completa')
 
-            try:
-                with get_connection() as conn:
-                    with conn.cursor() as cur:
-                        cur.execute("""
-                            INSERT INTO DICCIONARIO_COMPRAS_AUTO(
-                                NIT, NOMBRE_PROVEEDOR, DIRECCION, PRODUCTO,
-                                CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION,
-                                SECTOR, TIPO_COSTO_GASTO, SUCURSAL
-                            ) VALUES (
-                                :nit, :nombre_proveedor, :direccion, :producto,
-                                :cuenta_contable, :tipo_operacion, :clasificacion,
-                                :sector, :tipo_costo_gasto, :sucursal
-                            )
-                        """, {
-                            'nit':                data.get('emisor', {}).get('nit'),
-                            'nombre_proveedor':   data.get('emisor', {}).get('nombre'),
-                            'direccion':          data.get('emisor', {}).get('direccion', {}).get('completa'),
-                            'producto':           None,
-                            'cuenta_contable':    cuenta_final,
-                            'tipo_operacion':     tipo_op,
-                            'clasificacion':      clasif,
-                            'sector':             sector,
-                            'tipo_costo_gasto':   tipo_costo,
-                            'sucursal':           None
-                        })
-                    # El commit debe quedar dentro del with
-                    conn.commit()
-            except oracledb.DatabaseError as e:
-                print(f"⚠️ Error al insertar en DICCIONARIO_COMPRAS_AUTO: {e}")
-                # No interrumpir el flujo si falla la inserción del diccionario
+            if nit and '-' in nit and direccion:
+                try:
+                    with get_connection() as conn:
+                        with conn.cursor() as cur:
+                            cur.execute("""
+                                INSERT INTO DICCIONARIO_COMPRAS_AUTO(
+                                    NIT, NOMBRE_PROVEEDOR, DIRECCION, PRODUCTO,
+                                    CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION,
+                                    SECTOR, TIPO_COSTO_GASTO, SUCURSAL
+                                ) VALUES (
+                                    :nit, :nombre_proveedor, :direccion, :producto,
+                                    :cuenta_contable, :tipo_operacion, :clasificacion,
+                                    :sector, :tipo_costo_gasto, :sucursal
+                                )
+                            """, {
+                                'nit':               nit,
+                                'nombre_proveedor':  data['emisor']['nombre'],
+                                'direccion':         direccion,
+                                'producto':          None,
+                                'cuenta_contable':   cuenta_final,
+                                'tipo_operacion':    tipo_op,
+                                'clasificacion':     clasif,
+                                'sector':            sector,
+                                'tipo_costo_gasto':  tipo_costo,
+                                'sucursal':          None
+                            })
+                        conn.commit()
+                except oracledb.DatabaseError as e:
+                    print(f"⚠️ Error al insertar en DICCIONARIO_COMPRAS_AUTO: {e}")
             
             return resultado
 

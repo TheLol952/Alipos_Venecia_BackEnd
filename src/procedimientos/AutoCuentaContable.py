@@ -47,20 +47,23 @@ def obtenerCuentaContable(data: dict) -> tuple:
             print("⚠️ No se obtuvieron datos de cuenta base")
         
         cuenta_base = base_info.get("CuentaBase")
-        if cuenta_base is None:
-            cuenta_base = "00000000"  # Valor por defecto si no se obtiene
 
         # Validación de código de contabilidad
-        if not cod_contabilidad:
-            print("⚠️ CodContabilidad es inválido")
+        if cod_contabilidad is None:
+            cod_contabilidad = '0'
 
-        # Generación de cuenta final
+        if con_entidad == '':
+            con_entidad = None
+
+        # Generar cuenta final y relacionada
+        cuenta_final = None
+        cuenta_rel = None
         final_info = CuentaFinalService.generar_cuenta_final(cuenta_base, cod_contabilidad)
-        if not final_info:
-            print("⚠️ No se generó la cuenta final")
-        
-        cuenta_final = final_info.get("CuentaFinal")
-        cuenta_rel = final_info.get("CuentaRelacionada")
+        # Ahora recibe tupla (cuenta_final, cuenta_relacionada)
+        if isinstance(final_info, tuple) and len(final_info) == 2:
+            cuenta_final, cuenta_rel = final_info
+        else:
+            print("⚠️ CuentaFinalService no devolvió tupla válida")
 
         # Obtención de datos adicionales
         tipo_op = base_info.get("TipoOperacion")
@@ -80,7 +83,6 @@ def obtenerCuentaContable(data: dict) -> tuple:
 
     except Exception as ex:
         print(f"\n❌ ERROR CRÍTICO: {type(ex).__name__}: {ex}", file=sys.stderr)
-
 
 if __name__ == "__main__":
     try:

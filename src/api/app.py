@@ -14,8 +14,6 @@ from dotenv import load_dotenv
 from datetime import datetime
 from procedimientos.InsertarCompraMain import InsertarCompras
 from pathlib import Path
-#from servicios.services import recepcion_factura
-#from core.conexion_oracle import get_connection
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -48,16 +46,16 @@ def connect_to_email():
     retries = 0
     while retries < MAX_RETRIES:
         try:
-            logging.info("🟢 Intentando conectar al servidor IMAP...")
+            #logging.info("🟢 Intentando conectar al servidor IMAP...")
             mail = imaplib.IMAP4_SSL(IMAP_SERVER, 993, timeout=60)  # Puerto 993 y timeout 60s
             mail.login(EMAIL_ACCOUNT, PASSWORD)
             mail.select("INBOX")
-            logging.info("✅ Conexión IMAP establecida con éxito.")
+            #logging.info("✅ Conexión IMAP establecida con éxito.")
             failed_connections = 0
             return mail
         except Exception as e:  # Captura todos los errores
             retries += 1
-            logging.warning(f"⚠️ Error en la conexión IMAP ({retries}/{MAX_RETRIES}): {str(e)}")
+            #logging.warning(f"⚠️ Error en la conexión IMAP ({retries}/{MAX_RETRIES}): {str(e)}")
             time.sleep(WAIT_TIME * retries)
     logging.error("❌ No se pudo conectar después de varios intentos.")
     raise Exception("Error IMAP")
@@ -77,12 +75,12 @@ def fetch_email(mail, email_uid):
             else:
                 logging.warning(f"⚠️ Fallo al recuperar UID {email_uid}. Reintentando...")
         except (imaplib.IMAP4.abort, socket.error, EOFError, imaplib.IMAP4.error) as e:
-            logging.warning("La conexión IMAP se ha perdido, intentando reconectar...")
+            #logging.warning("La conexión IMAP se ha perdido, intentando reconectar...")
             mail = connect_to_email()
             mail.select("INBOX")
         retries += 1
         time.sleep(WAIT_TIME * retries)
-    logging.error(f"❌ No se pudo recuperar el correo UID {email_uid}.")
+    #logging.error(f"❌ No se pudo recuperar el correo UID {email_uid}.")
     return None, mail
 
 # ---------------------------- Formatear fecha para búsqueda en IMAP ----------------------------
@@ -134,8 +132,8 @@ def process_emails(start_date, end_date):
     year = today.year
     month = today.month
 
-    print(f"🗓️ Año tributario detectado automáticamente: {year}")
-    print(f"🗓️ Mes tributario detectado automáticamente: {str(month).zfill(2)}")
+    #print(f"🗓️ Año tributario detectado automáticamente: {year}")
+    #print(f"🗓️ Mes tributario detectado automáticamente: {str(month).zfill(2)}")
 
     try:
         mail = connect_to_email()
@@ -234,7 +232,7 @@ def process_emails(start_date, end_date):
                 if not valid_json_part:
                     archivos_dañados += 1
                     message = f"UID {uid}: Error crítico en JSON: {json_error}\n"
-                    logging.error(message)
+                    #logging.error(message)
                     with open("ignored_damaged.txt", "a", encoding="utf-8") as f:
                         f.write(message)
                     if pdf_candidates:
@@ -249,7 +247,7 @@ def process_emails(start_date, end_date):
                         damaged_pdf_path = os.path.join(damaged_folder, f"Archivo_dañado_{uid}.pdf")
                         with open(damaged_pdf_path, 'wb') as f:
                             f.write(damaged_pdf)
-                        logging.info(f"PDF corrupto guardado en: {damaged_pdf_path}")
+                        #logging.info(f"PDF corrupto guardado en: {damaged_pdf_path}")
                     continue
 
                 # Si no se encontró un PDF válido, se registra y se guarda el primero como dañado.
@@ -272,21 +270,20 @@ def process_emails(start_date, end_date):
                 json_path = os.path.join(folder_path, json_filename)
                 with open(json_path, 'wb') as f:
                     f.write(json_content)
-                logging.info(f"JSON guardado en: {json_path}")
+                #logging.info(f"JSON guardado en: {json_path}")
 
                 # Guardar PDF
                 pdf_filename = f"{codigo_generacion}.pdf"
                 pdf_path = os.path.join(folder_path, pdf_filename)
                 with open(pdf_path, 'wb') as f:
                     f.write(pdf_content)
-                logging.info(f"PDF guardado en: {pdf_path}")
+                #logging.info(f"PDF guardado en: {pdf_path}")
 
                 total_facturas_descargadas += 1
 
                 # Insertar en BD solo si ambos archivos son válidos
                 try:
                     resultado = InsertarCompras(json_data)
-                    #print(f"→ Resultado de InsertarCompras: {resultado!r}")
 
                     if resultado == 1:
                         total_facturas_insertadas += 1
@@ -310,14 +307,14 @@ def process_emails(start_date, end_date):
                         dest_json = os.path.join(pending_folder, os.path.basename(json_path))
                         dest_pdf  = os.path.join(pending_folder, os.path.basename(pdf_path))
 
-                            # Renombramos (mueve) los archivos
+                        # Renombramos (mueve) los archivos
                         os.replace(json_path, dest_json)
                         os.replace(pdf_path,  dest_pdf)
 
-                        logging.warning(
-                            f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
-                            f"no insertada (estado={resultado}), movida a: {pending_folder}"
-                        )
+                        # logging.warning(
+                        #     f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
+                        #     f"no insertada (estado={resultado}), movida a: {pending_folder}"
+                        # )
 
                 except Exception as e:
                     logging.error(f"❌ Error insertando factura: {str(e)}")

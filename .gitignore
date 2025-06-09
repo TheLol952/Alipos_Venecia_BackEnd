@@ -177,3 +177,5 @@ FACTURAS_VENECIA
 data
 ignored_damaged
 incomplete_files
+build
+dist

@@ -1,5 +1,9 @@
 ## Ejecutar script main
+'python .\main.py'
 'python -m src.api.app'
+
+## Crear archivo ejecutable
+'pyinstaller --onefile --add-data ".env;." --name FacturasDownloader main.py'
 
 ##  Para instalar las dependencias del proyecto:
 'pip install -r src/core/requirements.txt'

@@ -13,28 +13,34 @@ class CuentaFinalService:
     ]
 
     @staticmethod
-    def generar_cuenta_final(cuenta_base: str, cod_contabilidad: str) -> dict:
+    def generar_cuenta_final(cuenta_base: str | None, cod_contabilidad: str | None) -> tuple[str | None, str | None]:
         """
         Forma la cuenta final a partir de:
             - cuenta_base: string con placeholder 'xx', p.ej. '4301xx11'
             - cod_contabilidad: código a insertar en lugar de 'xx', p.ej. '04'
 
+        Si recibe None en cualquiera de los parámetros, lo notifica y retorna (None, None).
+
         Luego busca en MINI_DICCIONARIO_CUENTAS una entrada cuyo
         Cuenta_Contable (tras sustituir 'xx') coincida con la cuenta final,
         y si la hay, genera la cuenta relacionada sustituyendo 'xx'.
 
-        Retorna:
-            - CuentaFinal
-            - CuentaRelacionada (o None si no hay)
+        Retorna una tupla:
+            (cuenta_final, cuenta_relacionada)
+            - cuenta_final: cadena resultante o None si no puede generarse
+            - cuenta_relacionada: cadena relacionada o None si no hay análoga o en error
         """
-        # Validación básica
-        if 'xx' not in cuenta_base:
-            return {
-                'CuentaFinal': cuenta_base,
-                'CuentaRelacionada': None
-            }
+        # Validación de entrada
+        if cuenta_base is None or cod_contabilidad is None:
+            #print(f"⚠️ Parámetros inválidos en generar_cuenta_final: cuenta_base={cuenta_base}, "
+                #f"cod_contabilidad={cod_contabilidad}")
+            return None, None
 
-        # 1. Formar CuentaFinal
+        # Si no hay placeholder 'xx', devolvemos la base tal cual
+        if 'xx' not in cuenta_base:
+            return cuenta_base, None
+
+        # 1. Formar cuenta_final
         cuenta_final = cuenta_base.replace('xx', cod_contabilidad)
 
         # 2. Buscar cuenta relacionada en mini diccionario
@@ -42,23 +48,18 @@ class CuentaFinalService:
         for entry in CuentaFinalService.MINI_DICCIONARIO_CUENTAS:
             patron_base = entry['Cuenta_Contable'].replace('xx', cod_contabilidad)
             if patron_base == cuenta_final:
-                # Coincidencia: construir la cuenta relacionada
                 cuenta_relacionada = entry['Cuenta_Relacionada'].replace('xx', cod_contabilidad)
                 break
 
-        return {
-            'CuentaFinal': cuenta_final,
-            'CuentaRelacionada': cuenta_relacionada
-        }
+        return cuenta_final, cuenta_relacionada
 
 # Punto de entrada para prueba manual
-def main():
+if __name__ == "__main__":
     try:
-        cuenta_base = input("Ingrese CuentaBase (p.ej. '4301xx11'): ") or ""
-        cod_contabilidad = input("Ingrese CodContabilidad (p.ej. '04'): ") or ""
+        cuenta_base = input("Ingrese CuentaBase (p.ej. '4301xx11'): ") or None
+        cod_contabilidad = input("Ingrese CodContabilidad (p.ej. '04'): ") or None
         resultado = CuentaFinalService.generar_cuenta_final(cuenta_base, cod_contabilidad)
+        print(f"CuentaFinal: {resultado[0]}")
+        print(f"CuentaRelacionada: {resultado[1]}")
     except Exception as ex:
         print(f"❌ Error en ejecución: {ex}")
-
-if __name__ == "__main__":
-    main()
