@@ -180,7 +180,6 @@ def identificar_sucursal_por_descripcion(data):
     try:
         descripcion = data["cuerpoDocumento"][0]["descripcion"]
     except (KeyError, IndexError):
-        print("⚠️ No se encontró la descripción en 'cuerpoDocumento[0] → descripcion'.")
         return "SUCURSAL_DESCONOCIDA_POR_DESCRIPCION"
 
     desc_normalizado = normalize(descripcion)

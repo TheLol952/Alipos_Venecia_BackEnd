@@ -2,110 +2,67 @@ import json
 import oracledb
 from core.conexion_oracle import get_connection
 
-# Importar la función para obtener sucursal
 try:
-    from procedimientos.DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
+    from procedimientos.DiccionarioSucursales import normalize_nit
 except ImportError:
-    from procedimientos.DiccionarioSucursales import ObtenerSucursal, normalize, normalize_nit
+    from procedimientos.DiccionarioSucursales import normalize_nit
 
 class CuentaBaseService:
     @staticmethod
-    def obtener_cuenta_base(data: dict) -> dict:
-        """
-        Dado el JSON de compra, obtiene:
-            - Sucursal identificada
-            - CuentaBase (formato base de CUENTA_CONTABLE: p.ej. 4301xx11)
-            - TipoOperacion
-            - Clasificacion
-            - Sector
-            - TipoCostoGasto
-
-        Lógica:
-        1. Obtener sucursal con ObtenerSucursal
-        2. Extraer descripcionProducto y nitEmpresa
-        3. Si solo hay un producto y existe en DICCIONARIO_COMPRAS_AUTO (por PRODUCTO), usar esa fila
-        4. Si no, buscar por NIT en la misma tabla
-        """
-        # 1. Obtener sucursal
-        try:
-            sucursal = ObtenerSucursal(data)
-        except Exception as e:
-            print(f"❌ Error obteniendo sucursal: {e}")
-            sucursal = None
-
-        # 2. Extraer datos del JSON
-        lineas = data.get("cuerpoDocumento", [])
-        descripcion_producto = None
-        if len(lineas) == 1:
-            descripcion_producto = lineas[0].get("descripcion", "") or ""
+    def obtener_cuenta_base(data: dict, cuenta: str) -> tuple:
+        # 1) Extraer y normalizar NIT
         nit_raw = data.get("emisor", {}).get("nit", "") or ""
-
-        # 3. Normalizar
-        descripcion_norm = normalize(descripcion_producto) if descripcion_producto else None
         nit_norm = normalize_nit(nit_raw)
 
-        # Campos resultantes
+        # 2) Extraer dirección tal cual del JSON
+        direccion = data.get("emisor", {}) \
+                        .get("direccion", {}) \
+                        .get("complemento", "") or ""
+
+        # Inicializar resultados
         cuenta_base = None
         tipo_operacion = None
         clasificacion = None
         sector = None
         tipo_costo_gasto = None
 
-        # 4. Intento por producto si hay uno solo
-        if descripcion_norm:
+        # 3) Consultar el diccionario automático
+        if cuenta:
             try:
                 with get_connection() as conn:
                     with conn.cursor() as cur:
                         cur.execute(
-                            "SELECT CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION, SECTOR, TIPO_COSTO_GASTO"
-                            " FROM DICCIONARIO_COMPRAS_AUTO"
-                            " WHERE PRODUCTO = :despricion_norm",
-                            [descripcion_norm]
+                            """
+                            SELECT TIPO_OPERACION, CLASIFICACION, SECTOR, TIPO_COSTO_GASTO
+                                FROM DICCIONARIO_COMPRAS_AUTO
+                            WHERE NIT = :nit
+                                AND DIRECCION = :direccion
+                            """,
+                            [nit_norm, direccion]
                         )
                         fila = cur.fetchone()
                         if fila:
-                            cuenta_cont, tipo_operacion, clasificacion, sector, tipo_costo_gasto = fila
-                            cuenta_str = str(cuenta_cont)
+                            tipo_operacion, clasificacion, sector, tipo_costo_gasto = fila
+                            # Construir cuenta_base a partir de la cadena 'cuenta'
+                            cuenta_str = str(cuenta)
                             if len(cuenta_str) >= 6:
                                 cuenta_base = f"{cuenta_str[:4]}xx{cuenta_str[-2:]}"
             except Exception as e:
-                print(f"❌ Error buscando por PRODUCTO '{descripcion_norm}': {e}")
+                print(f"❌ Error buscando por NIT y Direccion '{nit_raw + direccion}': {e}")
 
-        # 5. Fallback por NIT si no obtuvo con PRODUCTO
-        if not cuenta_base:
-            try:
-                with get_connection() as conn:
-                    with conn.cursor() as cur:
-                        cur.execute(
-                            "SELECT CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION, SECTOR, TIPO_COSTO_GASTO"
-                            " FROM DICCIONARIO_COMPRAS_AUTO"
-                            " WHERE NIT = :nit_norm",
-                            [nit_norm]
-                        )
-                        fila = cur.fetchone()
-                        if fila:
-                            cuenta_cont, tipo_operacion, clasificacion, sector, tipo_costo_gasto = fila
-                            cuenta_str = str(cuenta_cont)
-                            if len(cuenta_str) >= 6:
-                                cuenta_base = f"{cuenta_str[:4]}xx{cuenta_str[-2:]}"
-            except Exception as e:
-                print(f"❌ Error buscando por NIT '{nit_norm}': {e}")
+        # 4) Mostrar cuenta_base y devolver tupla
+        return (
+            cuenta_base,
+            tipo_operacion,
+            clasificacion,
+            sector,
+            tipo_costo_gasto
+        )
 
-        # 6. Retornar estructura con sucursal incluida
-        return {
-            "Sucursal": sucursal,
-            "CuentaBase": cuenta_base,
-            "TipoOperacion": tipo_operacion,
-            "Clasificacion": clasificacion,
-            "Sector": sector,
-            "TipoCostoGasto": tipo_costo_gasto
-        }
-
-# Punto de entrada para prueba manual
+# Prueba manual
 if __name__ == "__main__":
-    try:
-        entrada = input("Ingrese el JSON de la compra: ")
-        data = json.loads(entrada)
-        resultado = CuentaBaseService.obtener_cuenta_base(data)
-    except Exception as ex:
-        print(f"❌ Error en ejecución: {ex}")
+    entrada = input("Ingrese el JSON de la compra: ")
+    data = json.loads(entrada)
+    # Ejemplo de llamada: requiere sucursal y cuenta existentes
+    resultado = CuentaBaseService.obtener_cuenta_base(data, "SUCURSAL_CENTRO", "43010140")
+    print("Resultado:", resultado)

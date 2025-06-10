@@ -28,25 +28,17 @@ def obtenerCuentaContable(data: dict) -> tuple:
         if not sucursal_info:
             print("⚠️ No se obtuvieron datos de sucursal")
             
-        nombre_sucursal = sucursal_info.get("NombreSucursal")
+        (sucursal, cuenta, cod_contabilidad, con_entidad) = sucursal_info
 
-        # Validación de sucursal desconocida
-        if nombre_sucursal is None:
-            print("⚡ Sucursal es None, usando valores por defecto")
-            
-        if isinstance(nombre_sucursal, str) and "DESCONOCIDA" in nombre_sucursal.upper():
+        if isinstance(sucursal, str) and "DESCONOCIDA" in sucursal.upper():
             print("⚡ Sucursal desconocida detectada")
 
-        # Procesamiento para sucursal conocida
-        con_entidad = sucursal_info.get("ConEntidad")
-        cod_contabilidad = sucursal_info.get("CodContabilidad")
-
         # Obtención de cuenta base
-        base_info = CuentaBaseService.obtener_cuenta_base(data)
+        base_info = CuentaBaseService.obtener_cuenta_base(data, cuenta)
         if not base_info:
             print("⚠️ No se obtuvieron datos de cuenta base")
         
-        cuenta_base = base_info.get("CuentaBase")
+        (cuenta_base, tipo_operacion, clasificacion, sector, tipo_costo_gasto) = base_info
 
         # Validación de código de contabilidad
         if cod_contabilidad is None:
@@ -65,20 +57,15 @@ def obtenerCuentaContable(data: dict) -> tuple:
         else:
             print("⚠️ CuentaFinalService no devolvió tupla válida")
 
-        # Obtención de datos adicionales
-        tipo_op = base_info.get("TipoOperacion")
-        clasif = base_info.get("Clasificacion")
-        sector = base_info.get("Sector")
-        tipo_costo = base_info.get("TipoCostoGasto")
 
         return (
             cuenta_final,
             cuenta_rel,
             con_entidad,
-            tipo_op,
-            clasif,
+            tipo_operacion,
+            clasificacion,
             sector,
-            tipo_costo
+            tipo_costo_gasto
         )
 
     except Exception as ex:

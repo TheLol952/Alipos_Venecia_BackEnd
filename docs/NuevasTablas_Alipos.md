@@ -45,7 +45,7 @@ DECLARE
     v_sector            CO_COMPRAS.DTE_SECTOR%TYPE;
     v_tipo_costo        CO_COMPRAS.DTE_TIPO_COSTO_GASTO%TYPE;
 
-    -- 3) Variables para traducir CON_ENTIDAD→nombre_sucursal
+    -- 3) Variables para traducir CON_ENTIDAD → nombre_sucursal
     v_codigo_entidad    CO_COMPRAS.CON_ENTIDAD%TYPE;
     v_sucursal_nombre   CON_ENTIDADES.NOMBRE_CON_ENTIDAD%TYPE;
 
@@ -72,7 +72,7 @@ BEGIN
            AND ROWNUM = 1;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            RETURN;  -- si el proveedor no existe, no tiene sentido continuar
+            RETURN;  -- si el proveedor no existe, salimos
     END;
 
     -----------------------------------------------------------------
@@ -91,7 +91,7 @@ BEGIN
             SELECT c.NOMBRE_CON_ENTIDAD
               INTO v_sucursal_nombre
               FROM CON_ENTIDADES c
-             WHERE c.CON_ENTIDAD = v_codigo_entidad
+             WHERE TRIM(c.CON_ENTIDAD) = TRIM(v_codigo_entidad)
                AND ROWNUM = 1;
         EXCEPTION
             WHEN NO_DATA_FOUND THEN
@@ -102,35 +102,33 @@ BEGIN
     END IF;
 
     -----------------------------------------------------------------
-    -- Paso 5: verificar existencia en DICCIONARIO_COMPRAS_AUTO por NIT
+    -- Paso 5: verificar existencia en DICCIONARIO_COMPRAS_AUTO por NIT y DIRECCION
     SELECT COUNT(*)
       INTO v_exists
       FROM DICCIONARIO_COMPRAS_AUTO d
-     WHERE d.NIT = v_nit;
+     WHERE d.NIT       = v_nit
+       AND d.DIRECCION = v_direccion_prov;
 
     IF v_exists > 0 THEN
         -----------------------------------------------------------------
-        -- Paso 6a: actualizar la fila existente, si :NEW trae valores no null
+        -- Paso 6a: actualizar solo la fila que coincide en NIT+Dirección
         UPDATE DICCIONARIO_COMPRAS_AUTO d
-           SET 
-             -- Si :NEW.CUENTA_CONTABLE NO es NULL → lo ponemos.
-             -- Si es NULL → dejamos el valor que ya había en d.CUENTA_CONTABLE.
-             d.CUENTA_CONTABLE   = COALESCE(v_cuenta_contable, d.CUENTA_CONTABLE),
-
-             d.TIPO_OPERACION    = COALESCE(v_tipo_operacion,    d.TIPO_OPERACION),
-             d.CLASIFICACION     = COALESCE(v_clasificacion,     d.CLASIFICACION),
-             d.SECTOR            = COALESCE(v_sector,            d.SECTOR),
-             d.TIPO_COSTO_GASTO  = COALESCE(v_tipo_costo,        d.TIPO_COSTO_GASTO),
-
-             -- Para la sucursal, si v_sucursal_nombre NO es NULL → lo dejamos;
-             -- si viene NULL, no toca el valor que ya había.
-             d.SUCURSAL          = COALESCE(v_sucursal_nombre,   d.SUCURSAL)
-
-         WHERE d.NIT = v_nit;
-
+           SET
+             d.CUENTA_CONTABLE  = COALESCE(:NEW.CUENTA_CONTABLE,  d.CUENTA_CONTABLE),
+             d.TIPO_OPERACION   = COALESCE(:NEW.DTE_TIPO_OPERACION,   d.TIPO_OPERACION),
+             d.CLASIFICACION    = COALESCE(:NEW.DTE_CLASIFICACION,    d.CLASIFICACION),
+             d.SECTOR           = COALESCE(:NEW.DTE_SECTOR,           d.SECTOR),
+             d.TIPO_COSTO_GASTO = COALESCE(:NEW.DTE_TIPO_COSTO_GASTO, d.TIPO_COSTO_GASTO),
+             d.SUCURSAL         = CASE
+                                    WHEN v_sucursal_nombre IS NOT NULL
+                                      THEN v_sucursal_nombre
+                                    ELSE d.SUCURSAL
+                                  END
+         WHERE d.NIT       = v_nit
+           AND d.DIRECCION = v_direccion_prov;
     ELSE
         -----------------------------------------------------------------
-        -- Paso 6b: insertar una fila nueva
+        -- Paso 6b: insertar nueva fila con esa NIT+Dirección
         INSERT INTO DICCIONARIO_COMPRAS_AUTO (
             NIT,
             NOMBRE_PROVEEDOR,
@@ -146,25 +144,23 @@ BEGIN
             v_nit,
             v_nom_proveedor,
             v_direccion_prov,
-            NULL,                  -- producto desconocido al momento
-            v_cuenta_contable,
-            v_tipo_operacion,
-            v_clasificacion,
-            v_sector,
-            v_tipo_costo,
+            NULL,                     -- producto desconocido
+            :NEW.CUENTA_CONTABLE,
+            :NEW.DTE_TIPO_OPERACION,
+            :NEW.DTE_CLASIFICACION,
+            :NEW.DTE_SECTOR,
+            :NEW.DTE_TIPO_COSTO_GASTO,
             v_sucursal_nombre
         );
     END IF;
 
 EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        -- Por seguridad, no interrumpimos la inserción/actualización en CO_COMPRAS
-        NULL;
     WHEN OTHERS THEN
-        -- En un trigger no queremos bloquear CO_COMPRAS:
-        ROLLBACK;
-END;
+        -- No bloqueamos la operación principal
+        NULL;
+END AutoUpdateDiccionario;
 /
+
 
 5)-Procedimiento
 CREATE OR REPLACE PROCEDURE SP_INSERT_DICCIONARIO_AUTO (

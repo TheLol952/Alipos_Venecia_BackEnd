@@ -70,7 +70,7 @@ def fetch_email(mail, email_uid):
             # Se utiliza la conexión 'mail' que ya se pasó como argumento.
             status, data = mail.uid('fetch', email_uid, "(BODY.PEEK[])")
             if status == "OK" and data != [None]:
-                time.sleep(0.5)  # Tiempo de espera
+                time.sleep(0.5)  # Tiempo de espera x correo
                 return data, mail
             else:
                 logging.warning(f"⚠️ Fallo al recuperar UID {email_uid}. Reintentando...")

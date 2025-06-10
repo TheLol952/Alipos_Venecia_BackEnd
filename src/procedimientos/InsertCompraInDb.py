@@ -1,7 +1,9 @@
 import json
 import oracledb
+import unicodedata
 from core.conexion_oracle import get_connection
 from procedimientos.InsertarDetalleCompras import InsertarDetallesCompras
+from procedimientos.CuentaSucursalesService import CuentaSucursalesService
 
 def InsertCompraInDb(
     corre,
@@ -230,39 +232,62 @@ def InsertCompraInDb(
                 resultado = 1
             # Cuando se inserte la compra, se insertara sus prductos y demas en CO_DETCOMPRAS
             InsertarDetallesCompras.procesar(data, corre, codtipo, cuenta_final)
-            nit = data.get('emisor', {}).get('nit')
-            direccion = data.get('emisor', {}).get('direccion', {}).get('completa')
+            # 2) Normalizar NIT y DIRECCION de la compra
+            raw_nit  = data['emisor']['nit']
+            raw_direccion  = data['emisor']['direccion']['complemento']
+            # quita acentos, pasa a ascii, mayúsculas y trim
+            nit_norm = raw_nit.strip()
+            direccion_norm = unicodedata.normalize("NFKD", raw_direccion) \
+                            .encode("ASCII", "ignore").decode() \
+                            .upper().strip()
 
-            if nit and '-' in nit and direccion:
+            # 3) Obtén la sucursal “correcta” de tu servicio
+            svc = CuentaSucursalesService.obtener_datos_sucursal(data) or {}
+            (sucursal) = svc
+
+            # 4) Si tenemos nit con guiones y dirección no vacía…
+            if nit_norm and '-' in nit_norm and direccion_norm:
                 try:
                     with get_connection() as conn:
                         with conn.cursor() as cur:
+                            # 4.1) ¿Ya existe EXACTO NIT+DIRECCIÓN?
                             cur.execute("""
-                                INSERT INTO DICCIONARIO_COMPRAS_AUTO(
+                                SELECT 1
+                                FROM DICCIONARIO_COMPRAS_AUTO d
+                                WHERE TRIM(d.NIT)       = :nit
+                                AND TRIM(UPPER(d.DIRECCION)) = :dir
+                            """, { 'nit': nit_norm, 'dir': direccion_norm })
+                            if cur.fetchone():
+                                # existe → ignoramos
+                                print(f"ℹ️ Ya hay diccionario para {nit_norm} / {direccion_norm}")
+                            else:
+                                # no existe → INSERT con su SUCURSAL
+                                cur.execute("""
+                                    INSERT INTO DICCIONARIO_COMPRAS_AUTO(
                                     NIT, NOMBRE_PROVEEDOR, DIRECCION, PRODUCTO,
                                     CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION,
                                     SECTOR, TIPO_COSTO_GASTO, SUCURSAL
-                                ) VALUES (
-                                    :nit, :nombre_proveedor, :direccion, :producto,
-                                    :cuenta_contable, :tipo_operacion, :clasificacion,
-                                    :sector, :tipo_costo_gasto, :sucursal
-                                )
-                            """, {
-                                'nit':               nit,
-                                'nombre_proveedor':  data['emisor']['nombre'],
-                                'direccion':         direccion,
-                                'producto':          None,
-                                'cuenta_contable':   cuenta_final,
-                                'tipo_operacion':    tipo_op,
-                                'clasificacion':     clasif,
-                                'sector':            sector,
-                                'tipo_costo_gasto':  tipo_costo,
-                                'sucursal':          None
-                            })
-                        conn.commit()
+                                    ) VALUES (
+                                    :nit, :nom, :dir, :prod,
+                                    :cta, :tipo, :clas, :sector, :tcosto, :suc
+                                    )
+                                """, {
+                                    'nit':  nit_norm,
+                                    'nom':  data['emisor']['nombre'],
+                                    'dir':  direccion_norm,
+                                    'prod': None,
+                                    'cta':  cuenta_final,
+                                    'tipo': tipo_op,
+                                    'clas': clasif,
+                                    'sector': sector,
+                                    'tcosto': tipo_costo,
+                                    'suc': sucursal
+                                })
+                                conn.commit()
+                                print(f"✅ Nuevo dict para {nit_norm} / {direccion_norm} → {sucursal}")
                 except oracledb.DatabaseError as e:
-                    print(f"⚠️ Error al insertar en DICCIONARIO_COMPRAS_AUTO: {e}")
-            
+                    print(f"⚠️ Error diccionario: {e}")
+
             return resultado
 
     except oracledb.DatabaseError as e:
