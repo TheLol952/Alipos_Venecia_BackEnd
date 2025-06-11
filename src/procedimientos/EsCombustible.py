@@ -1,5 +1,3 @@
-import json
-
 def get_from_json(data: dict, paths: list[list[str]], default=None):
     """
     Intenta extraer un valor de `data` usando rutas alternativas.
@@ -58,13 +56,3 @@ def EsCombustible(data: dict) -> tuple[int, float, float]:
 
     return es_combus, fovial, cotrans
 
-# Punto de entrada para prueba manual
-if __name__ == "__main__":
-    try:
-        entrada = input("Ingrese el JSON de la compra: ")
-        data = json.loads(entrada)
-        es, fov, cot = EsCombustible(data)
-        # Mostrar los valores separados por espacios
-        print(f"Es Combustible?: {es}, Fovial: {fov}, Cotrans: {cot}")
-    except Exception as ex:
-        print(f"❌ Error en ejecución: {ex}")

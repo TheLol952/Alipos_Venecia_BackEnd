@@ -7,22 +7,27 @@ def consulta_documentos(codigoGeneracion, fechaEmision):
         response = requests.get(url, timeout=10)  # Tiempo límite
         response.raise_for_status()  # Lanzar error si el código de estado no es 200
         data = response.json()
-        
-        # Convertir las observaciones a cadena si son una lista
-        observaciones = data.get("observaciones")
-        if isinstance(observaciones, list):
-            observaciones_str = ', '.join(observaciones)
-        else:
-            observaciones_str = observaciones
 
-        return {
-            "estadoDocInc": data.get("estadoDocInc"),
-            "estadoDoc": data.get("estadoDoc"),
-            "selloVal": data.get("selloVal"),
-            "numIdenRecep": data.get("numeIdenRecep"),
-            "action": data.get("action"),
-            "observaciones": observaciones_str
-        }
+        sello_recibido = data.get("selloVal")
+        
+        # # Convertir las observaciones a cadena si son una lista
+        # observaciones = data.get("observaciones")
+        # if isinstance(observaciones, list):
+        #     observaciones_str = ', '.join(observaciones)
+        # else:
+        #     observaciones_str = observaciones
+
+        # return {
+        #     "estadoDocInc": data.get("estadoDocInc"),
+        #     "estadoDoc": data.get("estadoDoc"),
+        #     "selloVal": data.get("selloVal"),
+        #     "numIdenRecep": data.get("numeIdenRecep"),
+        #     "action": data.get("action"),
+        #     "observaciones": observaciones_str
+        # }
+
+        return sello_recibido
+    
     except requests.exceptions.RequestException as e:
         print(f"Error en la solicitud a la API del Ministerio de Hacienda: {e}")
         return None

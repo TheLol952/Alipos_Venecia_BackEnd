@@ -4,15 +4,13 @@ from datetime import datetime
 from core.conexion_oracle import get_connection
 from procedimientos.ObtenerDatosCompra import ObtenerDatosCompra
 from procedimientos.AutoCuentaContable import obtenerCuentaContable
-from procedimientos.Listar_InsertarProveedores import ListarInsertarProveedores
+from procedimientos.Listar_InsertarProveedores import proveedores
 from procedimientos.EsCombustible import EsCombustible
 from procedimientos.InsertCompraInDb import InsertCompraInDb
-
 
 def InsertarCompras(data: dict) -> None:
     try:
         #Obtener datos generales de la compra
-        #print("DEBUG ↪ Iniciando InsertarCompras")
         with get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute("SELECT COALESCE(MAX(CORRE), 0) + 1 FROM CO_COMPRAS")
@@ -97,7 +95,7 @@ def InsertarCompras(data: dict) -> None:
             #print("DEBUG ↪ cuenta_contable es None o vacío, saliendo.")
             return
         
-        proveedor = ListarInsertarProveedores.procesar(data)
+        proveedor = proveedores(data)
         #print("DEBUG ↪ proveedor:", proveedor)
         if not proveedor:
             #print("DEBUG ↪ proveedor es None o vacío, saliendo.")
@@ -109,7 +107,6 @@ def InsertarCompras(data: dict) -> None:
             #print("DEBUG ↪ es_combustible es None o vacío, saliendo.")
             return
             
-
         # Extraer datos de la compra
         (codtipo, comprob, fecha, compraie, compraee,
             compraig, iva, totalcomp, retencion,
@@ -249,17 +246,4 @@ def InsertarCompras(data: dict) -> None:
             "STATUS":  "ERROR inesperado",
             "MESSAGE": str(e),
             "TYPE":     type(e).__name__
-        }, indent=2, ensure_ascii=False))
-
-# Punto de entrada para prueba manual
-if __name__ == "__main__":
-    try:
-        entrada = input("Ingrese el JSON de compra: ")
-        data = json.loads(entrada) 
-        resultado = InsertarCompras(data)
-        print("DEBUG ↪ Valor retornado por InsertarCompras:", resultado)
-    except Exception as ex:
-        print(json.dumps({
-            "STATUS": "ERROR",
-            "MESSAGE": str(ex)
         }, indent=2, ensure_ascii=False))
