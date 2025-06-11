@@ -1,14 +1,10 @@
-import json
-import oracledb
 from core.conexion_oracle import get_connection
-from procedimientos.FormateoDTE import FormatearControlDTE
+from procedimientos.FormateoDTE import FormatDTE
+from servicios.clients import consulta_documentos
+
 from datetime import datetime
 
 def get_from_json(data: dict, paths: list[list[str]], default=None):
-    """
-    Intenta extraer un valor de `data` usando rutas alternativas.
-    Cada ruta es una lista de llaves anidadas. Retorna el primer valor encontrado o `default`.
-    """
     for path in paths:
         current = data
         try:
@@ -20,23 +16,6 @@ def get_from_json(data: dict, paths: list[list[str]], default=None):
     return default
 
 def ObtenerDatosCompra(data: dict) -> tuple:
-    """
-    Extrae campos clave de una compra JSON, usando mapeos de rutas alternativas:
-    - CODTIPO: consulta SQL por tipoDte
-    - COMPROB: correlativo sin ceros
-    - FECHA: fecEmi
-    - COMPRAIE, COMPRAEE: 0
-    - COMPRAIG: totalGravada o totalSujetoRetencion
-    - IVA: valor tributo código '20'
-    - TOTALCOMP: totalPagar o montoTotalOperacion
-    - RETENCION: ivaRete1 o totalIVAretenido
-    - DESCUENTOS: totalDescu o descuGravada
-    - IVA_PERCIBIDO: ivaPerci1
-    - IVA_PERCIBIDO_2: cuerpoDocumento.ivaPercibido (percepción)
-    - CORRELATIVO_DTE: parte final de numeroControl con ceros
-    - HORA: hora actual de procesamiento HH:mm:ss
-    - FECHA_FACTURACION_FECHA: fecha y hora de procesamiento dd/MM/YYYY HH:mm:ss
-    """
     # 1) CODTIPO via SQL
     tipo_dte = data.get('identificacion', {}).get('tipoDte')
     codtipo = ''
@@ -55,18 +34,17 @@ def ObtenerDatosCompra(data: dict) -> tuple:
         print(f"❌ Error obteniendo CODTIPO: {e}")
 
     # 2) COMPROB
-    comprob = FormatearControlDTE.procesar(data)
+    comprob = FormatDTE(data)
 
     # 3) FECHA factura
-    fecha = data.get('identificacion', {}).get('fecEmi', '')
+    fecha_raw = data.get('identificacion', {}).get('fecEmi', '')
+    fecha = None
     #Formatear fecha a dd/MM/YY
-    if fecha:
+    if fecha_raw:
         try:
-            fecha = datetime.strptime(fecha, '%Y-%m-%d').strftime('%d/%m/%y')
+            fecha = datetime.strptime(fecha_raw, '%Y-%m-%d').strftime('%d/%m/%y')
         except ValueError:
             print(f"❌ Error formateando fecha: {fecha}")
-            fecha = ''
-
 
     # Campos fijos
     compraie = 0
@@ -74,6 +52,7 @@ def ObtenerDatosCompra(data: dict) -> tuple:
 
     # 4) COMPRAIG
     compraig = float(get_from_json(
+
         data,
         paths=[['resumen','totalGravada'], ['resumen','totalSujetoRetencion'], ['cuerpoDocumento','montoSujetoPercepcion']],
         default=0.0
@@ -150,21 +129,27 @@ def ObtenerDatosCompra(data: dict) -> tuple:
     ))
     numero_control_dte = str(tmp_numero_control_dte) if tmp_numero_control_dte is not None else None
 
-    # 13) SELLO_RECIBIDO
-    tmp_sello_recibido = (get_from_json(
-        data,
-        paths=[['responseMH','selloRecibido'],['sello'],['selloRecibido']],
-        default=None
-    ))
-    sello_recibido = str(tmp_sello_recibido) if tmp_sello_recibido is not None else None
-
-    #14) CODIGO_GENERACION_DTE
+    #13) CODIGO_GENERACION_DTE
     tmp_codigo_generacion = str(get_from_json(
         data,
         paths=[['identificacion','codigoGeneracion']],
         default=None
     ))
     codigo_generacion = str(tmp_codigo_generacion) if tmp_codigo_generacion is not None else None
+
+    # 14) SELLO_RECIBIDO
+    tmp_sello_recibido = (get_from_json(
+        data,
+        paths=[['responseMH','selloRecibido'],['sello'],['selloRecibido']],
+        default=None
+    ))
+    sello_recibido = str(tmp_sello_recibido) 
+
+    if sello_recibido == 'None':
+        try:
+            sello_recibido = consulta_documentos(codigo_generacion, fecha_raw)
+        except:
+            print('No se pudo obtener sello...')
 
     #  & ) Hora y fecha de procesamiento
     now = datetime.now()
@@ -192,12 +177,3 @@ def ObtenerDatosCompra(data: dict) -> tuple:
         fecha_facturacion_fecha
     )
 
-# Punto de entrada para prueba manual
-if __name__ == "__main__":
-    try:
-        entrada = input("Ingrese el JSON de la compra: ")
-        data = json.loads(entrada)
-        valores = ObtenerDatosCompra(data)
-        #print(valores)
-    except Exception as ex:
-        print(f"❌ Error en ejecución: {ex}")

@@ -1,23 +1,10 @@
 import unicodedata
-import json
-import oracledb
-import os
-import sys
 from dotenv import load_dotenv
 from pathlib import Path
 from core.conexion_oracle import get_connection
-from rapidfuzz import fuzz, process
+from rapidfuzz import fuzz
 
-# Cargar configuración de entorno
 load_dotenv()
-
-# Proveedores generales con una sola dirección, que pueden llegar a ofrecer servicios en diferentes sucursales
-PROVEEDORES_GENERALES = [
-    "0614-010791-103-9",  # COSASE
-    "06140312931018",  # BANCO DE AMÉRICA
-    "02100501991017",  # COSELSA
-    # Agrega más si es necesario
-]
 
 # Normalizador de texto
 def normalize(text):
@@ -41,7 +28,8 @@ def normalize_nit(nit):
 
 # Cargar diccionario de sucursales desde la BD
 def cargar_diccionario_sucursales():
-    """Carga el diccionario manual de sucursales desde la BD"""
+    """Carga el diccionario manual de sucursales desde la BD,
+    agrupando todas las palabras clave en listas."""
     try:
         with get_connection() as conn:
             with conn.cursor() as cur:
@@ -50,9 +38,19 @@ def cargar_diccionario_sucursales():
                     FROM DICCIONARIO_SUCURSALES
                     ORDER BY ID
                 """)
-                return {normalize(sucursal): normalize(clave) 
-                        for sucursal, clave in cur.fetchall()}
+                rows = cur.fetchall()
+
+        diccionario: dict[str, list[str]] = {}
+        for sucursal, clave in rows:
+            suc_norm = normalize(sucursal)
+            clave_norm = normalize(clave)
+            # agrupa en lista
+            diccionario.setdefault(suc_norm, []).append(clave_norm)
+
+        return diccionario
+
     except Exception as e:
+        print("❌ Error cargando diccionario:", e)
         return {}
 
 # Identifica la sucursal según la descripción y el diccionario, usando fuzzy matching
@@ -64,13 +62,7 @@ def identificar_sucursal(descripcion, diccionario, umbral=80):
     """
     desc_normalizado = normalize(descripcion)
 
-    # 1) Coincidencia exacta parcial (keyword in description)
-    for sucursal, claves in diccionario.items():
-        for clave in claves:
-            if clave in desc_normalizado:
-                return sucursal
-
-    # 2) Fuzzy matching: evaluar cada clave y tomar la mejor puntuación
+    #Fuzzy matching: evaluar cada clave y tomar la mejor puntuación
     mejor_sucursal = None
     mejor_puntaje = 0
     for sucursal, claves in diccionario.items():
@@ -208,16 +200,6 @@ def identificar_sucursal_por_descripcion(data):
 
 # Analiza un JSON de compra
 def ObtenerSucursal(data: dict) -> str:
-    """
-    Analiza un JSON de compra y devuelve la sucursal identificada.
-    - Extrae la descripción desde emisor.direccion.complemento
-    - Extrae y normaliza el NIT de emisor.nit
-    - Intenta identificar la sucursal usando:
-      1) DICCIONARIO_SUCURSALES (coincidencia exacta o fuzzy)
-      2) DICCIONARIO_COMPRAS_AUTO (busca en la tabla de aprendizaje)
-      3) Si el proveedor es general y aún no se identifica, usa la descripción de ítems
-    - Actualiza el diccionario de sucursales y retorna el nombre final de la sucursal
-    """
     # 1) Extraer descripción
     descripcion = data.get("emisor", {}).get("direccion", {}).get("complemento", "") or ""
 
@@ -236,11 +218,6 @@ def ObtenerSucursal(data: dict) -> str:
         sucursal_auto = identificar_sucursal_auto(descripcion, diccionario)
         sucursal = sucursal_auto
 
-    # 6) Si aún no se encontró y es proveedor general, buscar por descripción de ítem
-    if sucursal == "SUCURSAL_DESCONOCIDA_AUTO" and nit in PROVEEDORES_GENERALES:
-        sucursal_item = identificar_sucursal_por_descripcion(data)
-        sucursal = sucursal_item
-
     # 7) Actualizar diccionario con posibles nuevos registros
     actualizar_diccionario_sucursales()
 
@@ -248,11 +225,4 @@ def ObtenerSucursal(data: dict) -> str:
     return sucursal
 
 
-# 🔌 Ejecutar prueba automática si se corre el script directamente
-if __name__ == "__main__":
-    # Datos de prueba
-    data_ejemplo = json.loads(input("Ingrese el JSON a analizar: ")) 
 
-    # Llamar a la función de inicio del proceso}
-    print("🚀 Iniciando prueba automática...")
-    ObtenerSucursal(data_ejemplo)

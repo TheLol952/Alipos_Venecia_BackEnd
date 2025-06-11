@@ -1,9 +1,8 @@
-import json
 import oracledb
 import unicodedata
 from core.conexion_oracle import get_connection
-from procedimientos.InsertarDetalleCompras import InsertarDetallesCompras
-from procedimientos.CuentaSucursalesService import CuentaSucursalesService
+from procedimientos.InsertarDetalleCompras import InsertDetalleCompra
+from procedimientos.CuentaSucursalesService import obtenerDatosSucursal
 
 def InsertCompraInDb(
     corre,
@@ -122,7 +121,7 @@ def InsertCompraInDb(
                     if cur.fetchone():
                         return 2
 
-                # 2) Si no es duplicado, proceder a la inserción
+                # 3) Si no es duplicado, proceder a la inserción
                 sql = """
                     INSERT INTO CO_COMPRAS (
                         CORRE, CODEMP, CODTIPO, COMPROB, FECHA,
@@ -231,8 +230,8 @@ def InsertCompraInDb(
                 conn.commit()
                 resultado = 1
             # Cuando se inserte la compra, se insertara sus prductos y demas en CO_DETCOMPRAS
-            InsertarDetallesCompras.procesar(data, corre, codtipo, cuenta_final)
-            # 2) Normalizar NIT y DIRECCION de la compra
+            InsertDetalleCompra(data, corre, codtipo, cuenta_final)
+            #Normalizar NIT y DIRECCION de la compra
             raw_nit  = data['emisor']['nit']
             raw_direccion  = data['emisor']['direccion']['complemento']
             # quita acentos, pasa a ascii, mayúsculas y trim
@@ -242,7 +241,7 @@ def InsertCompraInDb(
                             .upper().strip()
 
             # 3) Obtén la sucursal “correcta” de tu servicio
-            svc = CuentaSucursalesService.obtener_datos_sucursal(data) or {}
+            svc = obtenerDatosSucursal(data) or {}
             (sucursal) = svc
 
             # 4) Si tenemos nit con guiones y dirección no vacía…
