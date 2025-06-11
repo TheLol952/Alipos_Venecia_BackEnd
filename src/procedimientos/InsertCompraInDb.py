@@ -261,20 +261,19 @@ def InsertCompraInDb(
                                 print(f"ℹ️ Ya hay diccionario para {nit_norm} / {direccion_norm}")
                             else:
                                 # no existe → INSERT con su SUCURSAL
-                                cur.execute("""
-                                    INSERT INTO DICCIONARIO_COMPRAS_AUTO(
-                                    NIT, NOMBRE_PROVEEDOR, DIRECCION, PRODUCTO,
+                                cur.execute("""DICCIONARIO_COMPRAS_AUTO
+                                    INSERT INTO (
+                                    NIT, NOMBRE_PROVEEDOR, DIRECCION,
                                     CUENTA_CONTABLE, TIPO_OPERACION, CLASIFICACION,
                                     SECTOR, TIPO_COSTO_GASTO, SUCURSAL
                                     ) VALUES (
-                                    :nit, :nom, :dir, :prod,
+                                    :nit, :nom, :dir,
                                     :cta, :tipo, :clas, :sector, :tcosto, :suc
                                     )
                                 """, {
                                     'nit':  nit_norm,
                                     'nom':  data['emisor']['nombre'],
                                     'dir':  direccion_norm,
-                                    'prod': None,
                                     'cta':  cuenta_final,
                                     'tipo': tipo_op,
                                     'clas': clasif,
