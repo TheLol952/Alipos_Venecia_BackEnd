@@ -179,5 +179,6 @@ ignored_damaged/
 incomplete_files/
 build
 dist
-docs
+docs/
 .vscode/
+FacturasDownloader.spec

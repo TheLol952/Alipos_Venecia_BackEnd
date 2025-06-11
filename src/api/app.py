@@ -1,5 +1,4 @@
 import imaplib
-import email
 import time
 import sys
 import os
@@ -13,7 +12,6 @@ from email.parser import BytesParser
 from dotenv import load_dotenv
 from datetime import datetime
 from procedimientos.InsertarCompraMain import InsertarCompras
-from pathlib import Path
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -344,21 +342,3 @@ def save_file(filepath, file_data):
             f.write(file_data.get_payload(decode=True))
     except Exception as e:
         logging.error(f"Error guardando archivo {filepath}: {e}")
-
-#----------------------------- Inicio del script ----------------------------
-if __name__ == "__main__":
-    start_date = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
-    end_date = input("Ingrese la fecha de fin (YYYY-MM-DD): ")
-
-    if not os.path.exists(DOWNLOAD_FOLDER):
-        os.makedirs(DOWNLOAD_FOLDER)
-
-    process_emails(start_date, end_date)
-
-    # 📌 **Resumen detallado**
-    logging.info("\n--- Resumen del procesamiento ---")
-    logging.info(f"📩 Total de correos revisados: {total_correos}")
-    logging.info(f"📥 Total de facturas descargadas: {total_facturas_descargadas}")
-    logging.info(f"✅ Facturas insertadas en la BD: {total_facturas_insertadas}")
-    logging.info(f"📛 Archivos dañados: {archivos_dañados}")
-    logging.info(f"🚫 Correos ignorados o no válidos: {correos_ignorados or 0}")
