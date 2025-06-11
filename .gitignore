@@ -175,7 +175,9 @@ cython_debug/
 estructura.py
 FACTURAS_VENECIA
 data
-ignored_damaged
-incomplete_files
+ignored_damaged/
+incomplete_files/
 build
 dist
+docs
+.vscode/
