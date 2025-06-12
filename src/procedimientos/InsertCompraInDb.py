@@ -1,8 +1,8 @@
 import oracledb
 import unicodedata
-from core.conexion_oracle import get_connection
-from procedimientos.InsertarDetalleCompras import InsertDetalleCompra
-from procedimientos.CuentaSucursalesService import obtenerDatosSucursal
+from src.core.conexion_oracle import get_connection
+from src.procedimientos.InsertarDetalleCompras import InsertDetalleCompra
+from src.procedimientos.CuentaSucursalesService import obtenerDatosSucursal
 
 def InsertCompraInDb(
     corre,

@@ -1,7 +1,7 @@
-from core.conexion_oracle import get_connection
-from procedimientos.FormateoDTE import FormatDTE
-from procedimientos.Listar_InsertarProveedores import proveedores
-from procedimientos.Listar_InsertarProductos import productos
+from src.core.conexion_oracle import get_connection
+from src.procedimientos.FormateoDTE import FormatDTE
+from src.procedimientos.Listar_InsertarProveedores import proveedores
+from src.procedimientos.Listar_InsertarProductos import productos
 
 def InsertDetalleCompra(data: dict, corre_compra: int, cod_tipo: str, cuenta_contable: str) -> list[int]:
     with get_connection() as conn:

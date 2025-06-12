@@ -1,7 +1,7 @@
 import sys
-from procedimientos.CuentaSucursalesService import obtenerDatosSucursal
-from procedimientos.CuentaBaseService import obtenerCuentaBase
-from procedimientos.CuentaFinalService import generarCuentaFinal
+from src.procedimientos.CuentaSucursalesService import obtenerDatosSucursal
+from src.procedimientos.CuentaBaseService import obtenerCuentaBase
+from src.procedimientos.CuentaFinalService import generarCuentaFinal
 
 def obtenerCuentaContable(data: dict) -> tuple:
     try:

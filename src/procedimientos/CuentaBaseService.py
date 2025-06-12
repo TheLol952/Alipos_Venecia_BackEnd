@@ -1,5 +1,5 @@
-from core.conexion_oracle import get_connection
-from procedimientos.DiccionarioSucursales import normalize_nit
+from src.core.conexion_oracle import get_connection
+from src.procedimientos.DiccionarioSucursales import normalize_nit
 
 def obtenerCuentaBase(data: dict, cuenta: str) -> tuple:
     # 1) Extraer y normalizar NIT

@@ -1,4 +1,4 @@
-from core.conexion_oracle import get_connection
+from src.core.conexion_oracle import get_connection
 
 def productos(data: dict) -> list[str]:
     items = data.get("cuerpoDocumento", [])
