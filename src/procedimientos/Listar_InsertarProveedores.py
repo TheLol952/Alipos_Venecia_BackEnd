@@ -1,5 +1,5 @@
-from core.conexion_oracle import get_connection
-import procedimientos.DiccionarioSucursales as ds
+from src.core.conexion_oracle import get_connection
+import src.procedimientos.DiccionarioSucursales as ds
 
 def proveedores(data: dict) -> str:
     emisor = data.get("emisor", {})

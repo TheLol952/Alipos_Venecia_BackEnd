@@ -11,7 +11,7 @@ from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
 from datetime import datetime
-from procedimientos.InsertarCompraMain import InsertarCompras
+from src.procedimientos.InsertarCompraMain import InsertarCompras
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")

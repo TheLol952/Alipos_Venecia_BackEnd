@@ -1,6 +1,6 @@
-from core.conexion_oracle import get_connection
-from procedimientos.FormateoDTE import FormatDTE
-from servicios.clients import consulta_documentos
+from src.core.conexion_oracle import get_connection
+from src.procedimientos.FormateoDTE import FormatDTE
+from src.servicios.clients import consulta_documentos
 
 from datetime import datetime
 

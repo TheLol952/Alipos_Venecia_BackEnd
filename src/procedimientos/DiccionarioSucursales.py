@@ -1,7 +1,7 @@
 import unicodedata
 from dotenv import load_dotenv
 from pathlib import Path
-from core.conexion_oracle import get_connection
+from src.core.conexion_oracle import get_connection
 from rapidfuzz import fuzz
 
 load_dotenv()

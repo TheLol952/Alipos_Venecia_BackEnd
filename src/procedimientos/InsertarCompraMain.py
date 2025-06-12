@@ -1,12 +1,12 @@
 import json
 import oracledb
 from datetime import datetime
-from core.conexion_oracle import get_connection
-from procedimientos.ObtenerDatosCompra import ObtenerDatosCompra
-from procedimientos.AutoCuentaContable import obtenerCuentaContable
-from procedimientos.Listar_InsertarProveedores import proveedores
-from procedimientos.EsCombustible import EsCombustible
-from procedimientos.InsertCompraInDb import InsertCompraInDb
+from src.core.conexion_oracle import get_connection
+from src.procedimientos.ObtenerDatosCompra import ObtenerDatosCompra
+from src.procedimientos.AutoCuentaContable import obtenerCuentaContable
+from src.procedimientos.Listar_InsertarProveedores import proveedores
+from src.procedimientos.EsCombustible import EsCombustible
+from src.procedimientos.InsertCompraInDb import InsertCompraInDb
 
 def InsertarCompras(data: dict) -> None:
     try:

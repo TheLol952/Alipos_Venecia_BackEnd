@@ -4,6 +4,8 @@ Este repositorio sigue una estructura organizada para facilitar el trabajo colab
 
 ---
 
+pyinstaller --onefile --add-data ".env;." --name FacturasDownloader main.py
+
 ## 📌 Estructura de Ramas
 
 ### Ramas principales:
