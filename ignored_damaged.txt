@@ -1,0 +1,4 @@
+UID 5046: Error crítico en JSON: Expecting value: line 180 column 22 (char 4829)
+UID 5047: Error crítico en JSON: Expecting value: line 140 column 22 (char 3886)
+UID 5050: Error crítico en JSON: Expecting value: line 180 column 22 (char 4890)
+UID 5059: Error crítico en JSON: Extra data: line 2 column 1 (char 3632)

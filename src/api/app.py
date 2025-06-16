@@ -11,7 +11,7 @@ from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
 from datetime import datetime
-from src.procedimientos.InsertarCompraMain import InsertarCompras
+#from src.procedimientos.InsertarCompraMain import InsertarCompras
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -53,7 +53,7 @@ def connect_to_email():
             return mail
         except Exception as e:  # Captura todos los errores
             retries += 1
-            #logging.warning(f"⚠️ Error en la conexión IMAP ({retries}/{MAX_RETRIES}): {str(e)}")
+            logging.warning(f"⚠️ Error en la conexión IMAP ({retries}/{MAX_RETRIES}): {str(e)}")
             time.sleep(WAIT_TIME * retries)
     logging.error("❌ No se pudo conectar después de varios intentos.")
     raise Exception("Error IMAP")
@@ -73,12 +73,12 @@ def fetch_email(mail, email_uid):
             else:
                 logging.warning(f"⚠️ Fallo al recuperar UID {email_uid}. Reintentando...")
         except (imaplib.IMAP4.abort, socket.error, EOFError, imaplib.IMAP4.error) as e:
-            #logging.warning("La conexión IMAP se ha perdido, intentando reconectar...")
+            logging.warning("La conexión IMAP se ha perdido, intentando reconectar...")
             mail = connect_to_email()
             mail.select("INBOX")
         retries += 1
         time.sleep(WAIT_TIME * retries)
-    #logging.error(f"❌ No se pudo recuperar el correo UID {email_uid}.")
+    logging.error(f"❌ No se pudo recuperar el correo UID {email_uid}.")
     return None, mail
 
 # ---------------------------- Formatear fecha para búsqueda en IMAP ----------------------------
@@ -230,7 +230,7 @@ def process_emails(start_date, end_date):
                 if not valid_json_part:
                     archivos_dañados += 1
                     message = f"UID {uid}: Error crítico en JSON: {json_error}\n"
-                    #logging.error(message)
+                    logging.error(message)
                     with open("ignored_damaged.txt", "a", encoding="utf-8") as f:
                         f.write(message)
                     if pdf_candidates:
@@ -245,7 +245,7 @@ def process_emails(start_date, end_date):
                         damaged_pdf_path = os.path.join(damaged_folder, f"Archivo_dañado_{uid}.pdf")
                         with open(damaged_pdf_path, 'wb') as f:
                             f.write(damaged_pdf)
-                        #logging.info(f"PDF corrupto guardado en: {damaged_pdf_path}")
+                        logging.info(f"PDF corrupto guardado en: {damaged_pdf_path}")
                     continue
 
                 # Si no se encontró un PDF válido, se registra y se guarda el primero como dañado.
@@ -268,55 +268,56 @@ def process_emails(start_date, end_date):
                 json_path = os.path.join(folder_path, json_filename)
                 with open(json_path, 'wb') as f:
                     f.write(json_content)
-                #logging.info(f"JSON guardado en: {json_path}")
+                logging.info(f"JSON guardado en: {json_path}")
 
                 # Guardar PDF
                 pdf_filename = f"{codigo_generacion}.pdf"
                 pdf_path = os.path.join(folder_path, pdf_filename)
                 with open(pdf_path, 'wb') as f:
                     f.write(pdf_content)
-                #logging.info(f"PDF guardado en: {pdf_path}")
+                logging.info(f"PDF guardado en: {pdf_path}")
 
                 total_facturas_descargadas += 1
+                mail.uid('STORE', uid, '+FLAGS', '\\Seen')
 
-                # Insertar en BD solo si ambos archivos son válidos
-                try:
-                    resultado = InsertarCompras(json_data)
+                # # Insertar en BD solo si ambos archivos son válidos
+                # try:
+                #     resultado = InsertarCompras(json_data)
 
-                    if resultado == 1:
-                        total_facturas_insertadas += 1
-                        print(f"✅ [INSERTADA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']} → factura #{total_facturas_insertadas}")
-                        try:
-                            mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-                        except Exception as e:
-                            logging.error(f"❌ Error marcando como visto el correo UID {uid}: {e}")
-                    elif resultado == 2:
-                        print(f"⚠️ [OMITIDA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']}  (motivo: Duplicada)")
-                        # Opcional: marcamos también como leído si queremos saltar ese correo
-                        try:
-                            mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-                        except:
-                            pass
-                    else:
-                        # Si NO se pudo insertar por error o validación, movemos ambos archivos a “Compras Pendientes”
-                        pending_folder = ensure_pending_folder(year, month)
+                #     if resultado == 1:
+                #         total_facturas_insertadas += 1
+                #         print(f"✅ [INSERTADA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']} → factura #{total_facturas_insertadas}")
+                #         try:
+                #             mail.uid('STORE', uid, '+FLAGS', '\\Seen')
+                #         except Exception as e:
+                #             logging.error(f"❌ Error marcando como visto el correo UID {uid}: {e}")
+                #     elif resultado == 2:
+                #         print(f"⚠️ [OMITIDA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']}  (motivo: Duplicada)")
+                #         # Opcional: marcamos también como leído si queremos saltar ese correo
+                #         try:
+                #             mail.uid('STORE', uid, '+FLAGS', '\\Seen')
+                #         except:
+                #             pass
+                #     else:
+                #         # Si NO se pudo insertar por error o validación, movemos ambos archivos a “Compras Pendientes”
+                #         pending_folder = ensure_pending_folder(year, month)
 
-                        # Construimos las rutas destino usando el mismo nombre de archivo
-                        dest_json = os.path.join(pending_folder, os.path.basename(json_path))
-                        dest_pdf  = os.path.join(pending_folder, os.path.basename(pdf_path))
+                #         # Construimos las rutas destino usando el mismo nombre de archivo
+                #         dest_json = os.path.join(pending_folder, os.path.basename(json_path))
+                #         dest_pdf  = os.path.join(pending_folder, os.path.basename(pdf_path))
 
-                        # Renombramos (mueve) los archivos
-                        os.replace(json_path, dest_json)
-                        os.replace(pdf_path,  dest_pdf)
+                #         # Renombramos (mueve) los archivos
+                #         os.replace(json_path, dest_json)
+                #         os.replace(pdf_path,  dest_pdf)
 
-                        # logging.warning(
-                        #     f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
-                        #     f"no insertada (estado={resultado}), movida a: {pending_folder}"
-                        # )
+                #         # logging.warning(
+                #         #     f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
+                #         #     f"no insertada (estado={resultado}), movida a: {pending_folder}"
+                #         # )
 
-                except Exception as e:
-                    logging.error(f"❌ Error insertando factura: {str(e)}")
-                    continue
+                # except Exception as e:
+                #     logging.error(f"❌ Error insertando factura: {str(e)}")
+                #     continue
 
                 # Mantener conexión activa
                 if i % 5 == 0:
