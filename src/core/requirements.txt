@@ -1,8 +1,2 @@
-Flask
-oracledb
-requests
 python-dotenv
-pytest
-rapidfuzz
 pyinstaller
-APScheduler 

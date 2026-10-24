@@ -6,7 +6,7 @@ def job():
     today = date.today()
     start_date = today.strftime("%Y-%m-%d")
     end_date = (today + timedelta(days=1)).strftime("%Y-%m-%d")
-    print(f"Ejecutando proceso automático: {start_date} → {end_date}")
+    print(f"Descargando documentos del correo: {start_date} → {end_date}")
     process_emails(start_date, end_date)
 
 

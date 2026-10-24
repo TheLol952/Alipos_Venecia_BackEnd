@@ -5,13 +5,11 @@ import os
 import json
 import logging
 import socket
-import sys
-from datetime import date
+from datetime import date, datetime
 from email import policy
 from email.parser import BytesParser
 from dotenv import load_dotenv
-from datetime import datetime
-#from src.procedimientos.InsertarCompraMain import InsertarCompras
+from src.servicios.documentos import identificar_documento, nombre_archivo_seguro
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -27,20 +25,15 @@ DOWNLOAD_FOLDER = os.getenv("DOWNLOAD_FOLDER", "facturas_test")
 # Configuración de reconexión y tiempo de espera
 MAX_RETRIES = 5
 WAIT_TIME = 5
-MAX_FAILED_CONNECTIONS = 10  # Si la conexión falla 10 veces seguidas, cerramos la sesión
 
 # Contadores
 total_correos = 0
-correos_procesados = 0
 archivos_dañados = 0
 correos_ignorados = 0
-total_facturas_descargadas = 0
-total_facturas_insertadas = 0
-failed_connections = 0  # Contador de fallos consecutivos en la conexión
+total_documentos_descargados = 0
 
 # ---------------------------- Conectar al servidor IMAP ----------------------------
 def connect_to_email():
-    global failed_connections
     retries = 0
     while retries < MAX_RETRIES:
         try:
@@ -49,7 +42,6 @@ def connect_to_email():
             mail.login(EMAIL_ACCOUNT, PASSWORD)
             mail.select("INBOX")
             #logging.info("✅ Conexión IMAP establecida con éxito.")
-            failed_connections = 0
             return mail
         except Exception as e:  # Captura todos los errores
             retries += 1
@@ -61,7 +53,6 @@ def connect_to_email():
 # ---------------------------- Obtener un correo específico ----------------------------
 def fetch_email(mail, email_uid):
     """Obtiene un correo usando UID y maneja reconexiones."""
-    global failed_connections
     retries = 0
     while retries < MAX_RETRIES:
         try:
@@ -85,23 +76,6 @@ def fetch_email(mail, email_uid):
 def format_date(date_str):
     return datetime.strptime(date_str, "%Y-%m-%d").strftime("%d-%b-%Y")
 
-# ---------------------------- Extraer código de generación y número de control ----------------------------
-def extract_codigo_generacion(json_text, uid_str):
-    """Extrae el código de generación y número de control desde el JSON del DTE."""
-    try:
-        # Intentar cargar como JSON estándar
-        json_data = json.loads(json_text)
-        
-        # Fallback para JSON con BOM (caracteres especiales al inicio)
-        if not isinstance(json_data, dict):
-            json_text_clean = json_text.lstrip('\ufeff')  # Eliminar BOM
-            json_data = json.loads(json_text_clean)
-            
-        return json_data["identificacion"]["codigoGeneracion"], json_data["identificacion"]["numeroControl"]
-    except Exception as e:
-        logging.error(f"🚨 Error procesando JSON en UID {uid_str}: {str(e)}")
-        return f"Archivo_Dañado_{uid_str}", f"Archivo_Dañado_{uid_str}"
-
 # ---------------------------- Crear estructura de carpetas ----------------------------
 def ensure_folder_structure(year, month):
     path = os.path.join(DOWNLOAD_FOLDER, str(year), f"{month:02d}")
@@ -114,16 +88,9 @@ def ensure_damaged_folder(year, month):
     os.makedirs(path, exist_ok=True)
     return path
 
-# ---------------------------- Crear carpeta para compras pendientes (Que no se insertaron en la DB), segun el año y periodo ----------------------------
-def ensure_pending_folder(year, month):
-    base = ensure_folder_structure(year, month)
-    pending = os.path.join(base, "Compras_Pendientes")
-    os.makedirs(pending, exist_ok=True)
-    return pending  
-
 # ---------------------------- Procesar correos electrónicos ----------------------------
 def process_emails(start_date, end_date):
-    global total_correos, total_facturas_descargadas, total_facturas_insertadas, archivos_dañados, correos_ignorados
+    global total_correos, total_documentos_descargados, archivos_dañados, correos_ignorados
 
     # Obtener fecha actual mes y año
     today = date.today()
@@ -152,7 +119,7 @@ def process_emails(start_date, end_date):
         total_correos = len(email_uids)
 
         for i, uid_bytes in enumerate(email_uids):
-            sys.stdout.write("\rProcesando facturas ...")
+            sys.stdout.write("\rProcesando documentos ...")
             sys.stdout.flush()
             try:
                 uid = uid_bytes.decode('utf-8')
@@ -189,27 +156,19 @@ def process_emails(start_date, end_date):
                 # Intentar obtener un candidato JSON válido
                 valid_json_part = None
                 json_content = None
-                json_data = None
+                tipo_documento = None
+                identificador_documento = None
                 json_error = ""
                 for candidate in json_candidates:
                     try:
                         candidate_content = candidate.get_payload(decode=True)
                         candidate_text = candidate_content.decode("utf-8-sig", errors="replace").strip()
                         candidate_data = json.loads(candidate_text)
-                        # Validar campos requeridos
-                        required_fields = {
-                            "identificacion": ["codigoGeneracion", "numeroControl"],
-                            "resumen": []
-                        }
-                        for section, fields in required_fields.items():
-                            if section not in candidate_data:
-                                raise ValueError(f"Falta la sección: {section}")
-                            for field in fields:
-                                if field not in candidate_data[section]:
-                                    raise ValueError(f"Falta el campo: {section}.{field}")
+                        tipo_candidato, identificador_candidato = identificar_documento(candidate_data)
                         valid_json_part = candidate
                         json_content = candidate_content
-                        json_data = candidate_data
+                        tipo_documento = tipo_candidato
+                        identificador_documento = identificador_candidato
                         break
                     except Exception as ex:
                         json_error = str(ex)
@@ -261,63 +220,28 @@ def process_emails(start_date, end_date):
 
                 # Guardar archivos en disco (para facturas válidas se guardan ambos archivos)
                 folder_path = ensure_folder_structure(year, month)
-                codigo_generacion = json_data["identificacion"]["codigoGeneracion"]
+                nombre_base = nombre_archivo_seguro(identificador_documento)
 
                 # Guardar JSON
-                json_filename = f"{codigo_generacion}.json"
+                json_filename = f"{nombre_base}.json"
                 json_path = os.path.join(folder_path, json_filename)
                 with open(json_path, 'wb') as f:
                     f.write(json_content)
                 logging.info(f"JSON guardado en: {json_path}")
 
                 # Guardar PDF
-                pdf_filename = f"{codigo_generacion}.pdf"
+                pdf_filename = f"{nombre_base}.pdf"
                 pdf_path = os.path.join(folder_path, pdf_filename)
                 with open(pdf_path, 'wb') as f:
                     f.write(pdf_content)
                 logging.info(f"PDF guardado en: {pdf_path}")
 
-                total_facturas_descargadas += 1
+                total_documentos_descargados += 1
+                logging.info(
+                    f"Documento descargado: tipo={tipo_documento}, "
+                    f"identificador={identificador_documento}"
+                )
                 mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-
-                # # Insertar en BD solo si ambos archivos son válidos
-                # try:
-                #     resultado = InsertarCompras(json_data)
-
-                #     if resultado == 1:
-                #         total_facturas_insertadas += 1
-                #         print(f"✅ [INSERTADA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']} → factura #{total_facturas_insertadas}")
-                #         try:
-                #             mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-                #         except Exception as e:
-                #             logging.error(f"❌ Error marcando como visto el correo UID {uid}: {e}")
-                #     elif resultado == 2:
-                #         print(f"⚠️ [OMITIDA] CódigoGeneración={json_data['identificacion']['codigoGeneracion']}  (motivo: Duplicada)")
-                #         # Opcional: marcamos también como leído si queremos saltar ese correo
-                #         try:
-                #             mail.uid('STORE', uid, '+FLAGS', '\\Seen')
-                #         except:
-                #             pass
-                #     else:
-                #         # Si NO se pudo insertar por error o validación, movemos ambos archivos a “Compras Pendientes”
-                #         pending_folder = ensure_pending_folder(year, month)
-
-                #         # Construimos las rutas destino usando el mismo nombre de archivo
-                #         dest_json = os.path.join(pending_folder, os.path.basename(json_path))
-                #         dest_pdf  = os.path.join(pending_folder, os.path.basename(pdf_path))
-
-                #         # Renombramos (mueve) los archivos
-                #         os.replace(json_path, dest_json)
-                #         os.replace(pdf_path,  dest_pdf)
-
-                #         # logging.warning(
-                #         #     f"→ Factura {json_data['identificacion']['codigoGeneracion']} "
-                #         #     f"no insertada (estado={resultado}), movida a: {pending_folder}"
-                #         # )
-
-                # except Exception as e:
-                #     logging.error(f"❌ Error insertando factura: {str(e)}")
-                #     continue
 
                 # Mantener conexión activa
                 if i % 5 == 0:
@@ -334,12 +258,3 @@ def process_emails(start_date, end_date):
             mail.logout()
         except Exception:
             pass
-
-#----------------------------- Guardar archivos ----------------------------
-def save_file(filepath, file_data):
-    """Guarda archivos en la ruta especificada."""
-    try:
-        with open(filepath, "wb") as f:
-            f.write(file_data.get_payload(decode=True))
-    except Exception as e:
-        logging.error(f"Error guardando archivo {filepath}: {e}")
