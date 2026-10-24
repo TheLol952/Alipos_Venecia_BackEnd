@@ -14,13 +14,23 @@ from src.servicios.documentos import identificar_documento, nombre_archivo_segur
 # Configuración de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 
-# Cargar variables de entorno
-load_dotenv()
+def application_directory():
+    """Directorio estable tanto en código fuente como en un ejecutable PyInstaller."""
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(sys.executable)
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+
+# El .env permanece externo y se distribuye junto al ejecutable.
+APPLICATION_DIRECTORY = application_directory()
+load_dotenv(os.path.join(APPLICATION_DIRECTORY, ".env"))
 
 IMAP_SERVER = os.getenv("IMAP_SERVER")
 EMAIL_ACCOUNT = os.getenv("EMAIL_ACCOUNT")
 PASSWORD = os.getenv("EMAIL_PASSWORD")
-DOWNLOAD_FOLDER = os.getenv("DOWNLOAD_FOLDER", "facturas_test")
+DOWNLOAD_FOLDER = os.getenv("DOWNLOAD_FOLDER", "documentos_descargados")
+if not os.path.isabs(DOWNLOAD_FOLDER):
+    DOWNLOAD_FOLDER = os.path.join(APPLICATION_DIRECTORY, DOWNLOAD_FOLDER)
 
 # Configuración de reconexión y tiempo de espera
 MAX_RETRIES = 5
@@ -34,6 +44,20 @@ total_documentos_descargados = 0
 
 # ---------------------------- Conectar al servidor IMAP ----------------------------
 def connect_to_email():
+    faltantes = [
+        nombre
+        for nombre, valor in (
+            ("IMAP_SERVER", IMAP_SERVER),
+            ("EMAIL_ACCOUNT", EMAIL_ACCOUNT),
+            ("EMAIL_PASSWORD", PASSWORD),
+        )
+        if not valor
+    ]
+    if faltantes:
+        raise RuntimeError(
+            "Faltan variables en el archivo .env: " + ", ".join(faltantes)
+        )
+
     retries = 0
     while retries < MAX_RETRIES:
         try:
@@ -92,6 +116,11 @@ def ensure_damaged_folder(year, month):
 def process_emails(start_date, end_date):
     global total_correos, total_documentos_descargados, archivos_dañados, correos_ignorados
 
+    total_correos = 0
+    total_documentos_descargados = 0
+    archivos_dañados = 0
+    correos_ignorados = 0
+
     # Obtener fecha actual mes y año
     today = date.today()
     year = today.year
@@ -104,7 +133,7 @@ def process_emails(start_date, end_date):
         mail = connect_to_email()
     except Exception as e:
         logging.error(f"No se pudo conectar al correo: {e}")
-        return
+        return obtener_resumen()
 
     since_date = format_date(start_date)
     before_date = format_date(end_date)
@@ -113,7 +142,7 @@ def process_emails(start_date, end_date):
         status, messages = mail.uid('search', None, f"(SINCE {since_date} BEFORE {before_date})")
         if status != "OK":
             logging.error("Error buscando correos en IMAP.")
-            return
+            return obtener_resumen()
 
         email_uids = messages[0].split()
         total_correos = len(email_uids)
@@ -258,3 +287,13 @@ def process_emails(start_date, end_date):
             mail.logout()
         except Exception:
             pass
+    return obtener_resumen()
+
+
+def obtener_resumen():
+    return {
+        "correos_revisados": total_correos,
+        "documentos_descargados": total_documentos_descargados,
+        "archivos_danados": archivos_dañados,
+        "correos_ignorados": correos_ignorados,
+    }

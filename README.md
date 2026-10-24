@@ -48,7 +48,19 @@ python -m pip install -r src/core/requirements.txt
 python main.py
 ```
 
-La ejecución normal descarga los documentos recibidos durante el día actual.
+Al ejecutar `python main.py` o abrir el ejecutable se muestra un menú con ambos
+modos de operación:
+
+1. Descargar los documentos del día actual.
+2. Ingresar una fecha inicial y una final. Ambas fechas se incluyen en la búsqueda.
+
+También puede ejecutarse sin interacción, por ejemplo desde el Programador de
+tareas de Windows:
+
+```bash
+DocumentosDownloader.exe --automatico
+DocumentosDownloader.exe --desde 2026-10-01 --hasta 2026-10-19
+```
 
 ## Pruebas
 
@@ -59,5 +71,8 @@ python -m unittest discover -s src/tests -p "test_*.py" -v
 ## Empaquetado para Windows
 
 ```bash
-pyinstaller --onefile --add-data ".env;." --name DocumentosDownloader main.py
+pyinstaller --onefile --name DocumentosDownloader main.py
 ```
+
+El archivo `.env` no se incrusta en el ejecutable porque contiene credenciales.
+Debe colocarse en la misma carpeta que `DocumentosDownloader.exe`.
